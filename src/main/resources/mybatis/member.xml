@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="member">
+
+    <select id="login" resultType="Member">
+        SELECT * FROM member
+        WHERE id = #{id} AND pwd = PASSWORD(#{pwd})
+    </select>
+
+    <insert id="signup">
+        INSERT INTO member
+        VALUES (#{id}, PASSWORD(#{pwd}), #{name}, #{phoneNumber})
+    </insert>
+
+    <select id="checkId" resultType="Integer">
+        SELECT COUNT(*) FROM member
+        WHERE id = #{id}
+    </select>
+
+    <select id="findId" resultType="Member">
+    SELECT id FROM member
+    WHERE name = #{name} AND phone_number = #{phoneNumber}
+    </select>
+
+    <select id="findPwd" resultType="Integer">
+        SELECT COUNT(*) FROM member
+        WHERE id = #{id} AND name = #{name} AND phone_number = #{phoneNumber}
+    </select>
+
+    <update id="newPwd">
+        update member
+        set pwd = PASSWORD(#{pwd})
+        WHERE id = #{id}
+    </update>
+
+
+
+
+</mapper>
