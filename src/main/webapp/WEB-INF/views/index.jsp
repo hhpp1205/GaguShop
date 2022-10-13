@@ -29,17 +29,53 @@
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
-        <li class="nav-item"><a class="nav-link active" aria-current="page" href="#!">Home</a></li>
-        <li class="nav-item"><a class="nav-link" href="#!">About</a></li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Shop</a>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="#!">All Products</a></li>
-            <li><hr class="dropdown-divider" /></li>
-            <li><a class="dropdown-item" href="#!">Popular Items</a></li>
-            <li><a class="dropdown-item" href="#!">New Arrivals</a></li>
-          </ul>
-        </li>
+        <%--하트--%>
+        <li class="nav-item"><a class="nav-link active" aria-current="page" href="/like"><i class="bi bi-suit-heart-fill fs-4"></i></a></li>
+        <%--돋보기--%>
+        <li class="nav-item"><a class="nav-link" href="#!" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="bi bi-search fs-4"></i></a></li>
+        <%--검색 모달창--%>
+          <!-- Modal -->
+          <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h1 class="modal-title fs-5" id="exampleModalLabel">검색</h1>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <form method="post" action="gagu/search">
+                      <div class="col-auto">
+                        <label class="visually-hidden" for="autoSizingInputGroup">Username</label>
+                        <div class="input-group">
+                          <div class="input-group-text"><i class="bi bi-search fs-5"></i></div>
+                          <input type="text" class="form-control" id="autoSizingInputGroup" name="keyword">
+                        </div>
+                      </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+                      <button type="submit" class="btn btn-primary">검색</button>
+                    </div>
+                  </form>
+              </div>
+            </div>
+            </div>
+          </div>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+
+<%--        <li class="nav-item dropdown">--%>
+<%--          <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Shop</a>--%>
+<%--          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">--%>
+<%--            <li><a class="dropdown-item" href="#!">All Products</a></li>--%>
+<%--            <li><hr class="dropdown-divider" /></li>--%>
+<%--            <li><a class="dropdown-item" href="#!">Popular Items</a></li>--%>
+<%--            <li><a class="dropdown-item" href="#!">New Arrivals</a></li>--%>
+<%--          </ul>--%>
+<%--        </li>--%>
       </ul>
       <c:if test="${sessionScope.member == null}">
         <form class="d-flex" method="get" action="/login">
@@ -52,12 +88,12 @@
       <c:if test="${sessionScope.member != null}">
         <form class="d-flex" method="get" action="/logout">
           <button class="btn btn-outline-dark" style="margin-right: 5px;" type="submit">
-            <i class="bi bi-door-open fs-4"></i>
+            <i class="bi bi-door-open-fill fs-4"></i>
             Logout
           </button>
         </form>
       </c:if>
-      <form class="d-flex">
+      <form class="d-flex" method="get" action="/gagu/cart">
         <button class="btn btn-outline-dark" type="submit">
           <i class="bi-cart-fill me-1"></i>
           Cart
@@ -68,15 +104,16 @@
   </div>
 </nav>
 <!-- Header-->
-<header class="bg-dark py-5">
+<header class="py-5" style="background-color: #EBE1D7;">
   <div class="container px-4 px-lg-5 my-5">
-    <div class="text-center text-white">
-      <h1 class="display-4 fw-bolder">Shop in style</h1>
-      <p class="lead fw-normal text-white-50 mb-0">With this shop hompeage template</p>
+    <div class="text-center" style="color: #525252;">
+      <h1 class="display-4 fw-bolder">J FurnitureStore In Your Life</h1>
+      <p class="lead fw-normal mb-0" style="color: #525252; opacity: 50%;">J FurnitureStoreA 제품들로 클래식한 나만의 안식처를 만들어보세요.</p>
     </div>
   </div>
 </header>
 <!-- Section-->
+<h5 class="text-center mt-5">인기상품</h5>
 <section class="py-5">
   <div class="container px-4 px-lg-5 mt-5">
       <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
@@ -86,7 +123,7 @@
             <!-- Sale badge-->
 <%--              <div id="add_delete_button" class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">♥</div>--%>
             <!-- Product image-->
-            <img class="card-img-top" src="loadImg/${item.gaguImg}" alt="..." />
+            <img class="card-img-top h-75" src="loadImg/${item.gaguImg}" alt="..." />
             <!-- Product details-->
             <div class="card-body p-4">
               <div class="text-center">
@@ -107,8 +144,8 @@
   </div>
 </section>
   <!-- Footer-->
-  <footer class="py-5 bg-dark">
-    <div class="container"><p class="m-0 text-center text-white">Copyright &copy; Your Website 2022</p></div>
+  <footer class="py-5" style="background-color: #EBE1D7;">
+    <div class="container"><p class="m-0 text-center" style="color: #525252;">Daejeon Polytechnic &reg; HongSeongMin</p></div>
   </footer>
   <!-- Bootstrap core JS-->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>

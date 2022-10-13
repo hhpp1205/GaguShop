@@ -72,5 +72,9 @@ public class GaguServiceImpl implements GaguService{
         return dao.keywordList();
     }
 
+    @Override
+    public List<Gagu> search(String keyword) {
+        return dao.search(keyword);
+    }
 
 }

@@ -49,11 +49,6 @@ public class MemberDaoImpl implements MemberDao{
     }
 
     @Override
-    public List<Gagu> search(String keyword) {
-        return sql.selectList("gagu.search", keyword);
-    }
-
-    @Override
     public List<Gagu> afterLoginList(String memberId) {
         return sql.selectList("gagu.afterLoginList", memberId);
     }

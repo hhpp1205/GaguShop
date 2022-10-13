@@ -15,4 +15,6 @@ public interface GaguDao {
     void delete(int id);
 
     List<String> keywordList();
+
+    List<Gagu> search(String keyword);
 }

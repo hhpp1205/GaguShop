@@ -156,4 +156,15 @@ public class GaguController {
 
         return path + "cart";
     }
+
+    //멤버 컨트롤러에서 가구 컨트롤러오 이동함
+    @PostMapping("/search")
+    public String search(@RequestParam("keyword") String keyword, Model model){
+        List<Gagu> list = service.search(keyword);
+
+        model.addAttribute("list", list);
+        model.addAttribute("keyword", keyword);
+
+        return "gagu/search";
+    }
 }

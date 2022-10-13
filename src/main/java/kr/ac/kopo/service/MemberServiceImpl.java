@@ -62,10 +62,6 @@ public class MemberServiceImpl implements MemberService{
         return dao.findId(member);
     }
 
-    @Override
-    public List<Gagu> search(String keyword) {
-        return dao.search(keyword);
-    }
 
     @Override
     public List<Gagu> afterLoginList(String memberId) {

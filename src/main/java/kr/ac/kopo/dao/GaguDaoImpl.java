@@ -38,4 +38,9 @@ public class GaguDaoImpl implements GaguDao{
     public List<String> keywordList() {
         return sql.selectList("gagu.keywordList");
     }
+
+    @Override
+    public List<Gagu> search(String keyword) {
+        return sql.selectList("gagu.search", keyword);
+    }
 }

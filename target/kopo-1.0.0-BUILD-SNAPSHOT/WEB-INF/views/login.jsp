@@ -41,13 +41,22 @@
           </ul>
         </li>
       </ul>
-      <form class="d-flex" method="get" action="/login">
-        <button class="btn btn-outline-dark" style="margin-right: 5px;" type="submit">
-          <i class="bi bi-door-open fs-4"></i>
-          Login
-          <%--          <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>--%>
-        </button>
-      </form>
+      <c:if test="${sessionScope.member == null}">
+        <form class="d-flex" method="get" action="/login">
+          <button class="btn btn-outline-dark" style="margin-right: 5px;" type="submit">
+            <i class="bi bi-door-open fs-4"></i>
+            Login
+          </button>
+        </form>
+      </c:if>
+      <c:if test="${sessionScope.member != null}">
+        <form class="d-flex" method="get" action="/logout">
+          <button class="btn btn-outline-dark" style="margin-right: 5px;" type="submit">
+            <i class="bi bi-door-open-fill fs-4"></i>
+            Logout
+          </button>
+        </form>
+      </c:if>
       <form class="d-flex">
         <button class="btn btn-outline-dark" type="submit">
           <i class="bi-cart-fill me-1"></i>

@@ -20,7 +20,5 @@ public interface MemberService {
 
     Member findId(Member member);
 
-    List<Gagu> search(String keyword);
-
     List<Gagu> afterLoginList(String memberId);
 }

@@ -69,15 +69,6 @@ public class RootController {
             return "redirect:login";
     }
 
-//    @ResponseBody
-//    @PostMapping("checkId/{id}")
-//    public String checkId(@PathVariable String id){
-//        if(service.checkId(id))
-//            return "OK";
-//        else
-//            return "FAIL";
-//    }
-
     @ResponseBody
     @PostMapping("checkId")
     public String checkId(String id){
@@ -124,13 +115,5 @@ public class RootController {
         return "login";
     }
 
-    @PostMapping("/search")
-    public String search(@RequestParam("keyword") String keyword, Model model){
-        List<Gagu> list = service.search(keyword);
 
-        model.addAttribute("list", list);
-        model.addAttribute("keyword", keyword);
-
-        return "gagu/search";
-    }
 }

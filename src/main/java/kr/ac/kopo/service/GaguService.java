@@ -22,4 +22,6 @@ public interface GaguService {
     List<Gagu> cartList(String memberId);
 
     List<String> keywordList();
+
+    List<Gagu> search(String keyword);
 }
