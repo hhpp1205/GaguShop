@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="gagu">
+
+    <select id="beforeLoginList" resultType="Gagu">
+        SELECT * FROM gagu
+    </select>
+
+    <select id="afterLoginList" resultType="Gagu">
+        SELECT g.*,c.id cart_id FROM gagu g LEFT JOIN cart c
+        ON c.member_id = #{memberId} AND c.gagu_id = g.id;
+    </select>
+
+    <insert id="add">
+        INSERT INTO gagu
+        VALUES (NULL, #{name}, #{price}, #{gaguImg}, #{keyword}, #{memberId})
+
+        <selectKey keyProperty="id" resultType="Integer" order="AFTER">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+
+    </insert>
+
+    <select id="info" resultType="Gagu">
+        SELECT * FROM gagu
+        WHERE id = #{id}
+    </select>
+
+    <update id="update">
+        UPDATE gagu
+        SET name = #{name}, price = #{price}, kind = #{kind}
+        WHERE id = #{id} AND member_id = #{memberId}
+    </update>
+
+    <delete id="delete">
+        DELETE FROM gagu
+        WHERE id = #{id}
+    </delete>
+
+    <select id="search" resultType="Gagu">
+        SELECT * FROM gagu
+        WHERE name LIKE CONCAT(CONCAT("%", #{keyword}), "%")
+    </select>
+
+    <select id="keywordList" resultType="GaguKeyword">
+        SELECT * FROM gagu_keyword
+    </select>
+
+</mapper>

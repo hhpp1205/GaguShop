@@ -134,7 +134,7 @@ public class GaguController {
     }
 
     @PostMapping("/addDeleteCart/{id}")
-    public String addCart(@PathVariable int id, @SessionAttribute Member member,@RequestParam int cartId,HttpSession session ){
+    public String addCart(@PathVariable int id, @SessionAttribute Member member,@RequestParam int cartId, HttpSession session ){
         HashMap map = new HashMap<>();
 
         map.put("memberId", member.getId());

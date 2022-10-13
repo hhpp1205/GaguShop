@@ -44,7 +44,7 @@ public class RootController {
     @PostMapping("/login")
     public String login(Member member, HttpSession session){
         if(service.login(member)){
-            member.setPwd(null);
+
             session.setAttribute("member", member);
             return "OK";
         }else {

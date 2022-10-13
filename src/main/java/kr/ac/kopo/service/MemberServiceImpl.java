@@ -18,6 +18,7 @@ public class MemberServiceImpl implements MemberService{
     public boolean login(Member member) {
 
         if(dao.login(member) != null){
+            member.setPwd(null);
             return true;
         }else
             return false;
