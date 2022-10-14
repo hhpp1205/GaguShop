@@ -57,14 +57,11 @@
                     </div>
                   </form>
               </div>
-            </div>
+              </div>
             </div>
           </div>
       </ul>
     </div>
-  </div>
-</nav>
-
 
 
 <%--        <li class="nav-item dropdown">--%>

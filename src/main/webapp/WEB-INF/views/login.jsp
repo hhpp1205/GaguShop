@@ -29,42 +29,64 @@
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
-        <li class="nav-item"><a class="nav-link active" aria-current="page" href="#!">Home</a></li>
-        <li class="nav-item"><a class="nav-link" href="#!">About</a></li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Shop</a>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="#!">All Products</a></li>
-            <li><hr class="dropdown-divider" /></li>
-            <li><a class="dropdown-item" href="#!">Popular Items</a></li>
-            <li><a class="dropdown-item" href="#!">New Arrivals</a></li>
-          </ul>
-        </li>
+        <%--하트--%>
+        <li class="nav-item"><a class="nav-link active" aria-current="page" href="/like"><i class="bi bi-suit-heart-fill fs-4"></i></a></li>
+        <%--돋보기--%>
+        <li class="nav-item"><a class="nav-link" href="#!" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="bi bi-search fs-4"></i></a></li>
+        <%--검색 모달창--%>
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">검색</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <form method="post" action="gagu/search">
+                  <div class="col-auto">
+                    <label class="visually-hidden" for="autoSizingInputGroup">Username</label>
+                    <div class="input-group">
+                      <div class="input-group-text"><i class="bi bi-search fs-5"></i></div>
+                      <input type="text" class="form-control" id="autoSizingInputGroup" name="keyword">
+                    </div>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+                    <button type="submit" class="btn btn-primary">검색</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
       </ul>
-      <c:if test="${sessionScope.member == null}">
-        <form class="d-flex" method="get" action="/login">
-          <button class="btn btn-outline-dark" style="margin-right: 5px;" type="submit">
-            <i class="bi bi-door-open fs-4"></i>
-            Login
-          </button>
-        </form>
-      </c:if>
-      <c:if test="${sessionScope.member != null}">
-        <form class="d-flex" method="get" action="/logout">
-          <button class="btn btn-outline-dark" style="margin-right: 5px;" type="submit">
-            <i class="bi bi-door-open-fill fs-4"></i>
-            Logout
-          </button>
-        </form>
-      </c:if>
-      <form class="d-flex">
-        <button class="btn btn-outline-dark" type="submit">
-          <i class="bi-cart-fill me-1"></i>
-          Cart
-          <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
+    </div>
+    </ul>
+    <c:if test="${sessionScope.member == null}">
+      <form class="d-flex" method="get" action="/login">
+        <button class="btn btn-outline-dark" style="margin-right: 5px;" type="submit">
+          <i class="bi bi-door-open fs-4"></i>
+          Login
         </button>
       </form>
-    </div>
+    </c:if>
+    <c:if test="${sessionScope.member != null}">
+      <form class="d-flex" method="get" action="/logout">
+        <button class="btn btn-outline-dark" style="margin-right: 5px;" type="submit">
+          <i class="bi bi-door-open-fill fs-4"></i>
+          Logout
+        </button>
+      </form>
+    </c:if>
+    <form class="d-flex" method="get" action="/gagu/cart">
+      <button class="btn btn-outline-dark" type="submit">
+        <i class="bi-cart-fill me-1"></i>
+        Cart
+        <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
+      </button>
+    </form>
+  </div>
   </div>
 </nav>
 

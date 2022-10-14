@@ -73,35 +73,6 @@ public class GaguController {
         return "redirect:../";
     }
 
-
-
-        //        try {
-//            file.transferTo(new File("C:/img\\" + file.getOriginalFilename()));
-//            item.setGaguImg(file.getOriginalFilename());
-//            item.setMemberId(member.getId());
-//
-//            List<Attach> list = new ArrayList<>();
-//
-//            for(MultipartFile attach : item.getAttach()){
-//                if(attach != null && !attach.isEmpty()){
-//                    String filename = attach.getOriginalFilename();
-//
-//                    attach.transferTo(new File("C:/img\\" + filename));
-//
-//                    Attach attachItem = new Attach();
-//                    attachItem.setFilename(filename);
-//
-//                    list.add(attachItem);
-//                }
-//            }
-//            item.setAttachs(list);
-//
-//            service.add(item);
-//        }catch (Exception e){
-//            e.printStackTrace();
-//
-
-
     @GetMapping("/info/{id}")
     public String info(@PathVariable int id, Model model){
         Gagu item = service.info(id);
@@ -157,7 +128,6 @@ public class GaguController {
         return path + "cart";
     }
 
-    //멤버 컨트롤러에서 가구 컨트롤러오 이동함
     @PostMapping("/search")
     public String search(@RequestParam("keyword") String keyword, Model model){
         List<Gagu> list = service.search(keyword);
