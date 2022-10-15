@@ -22,9 +22,20 @@
 
     </insert>
 
-    <select id="info" resultType="Gagu">
-        SELECT * FROM gagu
-        WHERE id = #{id}
+    <resultMap type="Gagu" id="GaguMap" autoMapping="true">
+        <id column="id" property="id"/>
+        <collection property="attachs" column="gagu_id" ofType="Attach" javaType="ArrayList">
+            <id column="attach_id" property="id" />
+            <id column="gagu_id" property="gaguId" />
+            <id column="filename" property="filename" />
+        </collection>
+    </resultMap>
+
+    <select id="info" resultMap="GaguMap">
+        SELECT gagu.*, attach.id attach_id, gagu_id, filename
+        FROM gagu LEFT JOIN attach
+            ON (gagu.id = attach.gagu_id)
+        WHERE gagu.id = #{id};
     </select>
 
     <update id="update">

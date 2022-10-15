@@ -18,7 +18,8 @@
     <!-- Bootstrap icons-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
     <!-- Core theme CSS (includes Bootstrap)-->
-    <link href="/css/styles.css" rel="stylesheet" />
+    <link href="/css/styles.css" rel="stylesheet"/>
+    <link href="/css/info.css" rel="stylesheet"/>
 </head>
 <body>
 <!-- Navigation-->
@@ -89,10 +90,62 @@
     </div>
 </nav>
 <%--제품상세정보--%>
-<c:set var="item" value="${item}"/>
-        <div><h3>제품 상세정보</h3></div>
-    <div><label>제품명 : ${item.name}</label></div>
-        <div><label>가격 : ${item.price}</label></div>
-
+<div class="container position-relative mt-5 h-100">
+<%--    <c:set var="item" value="${item}"/>--%>
+    <div class="product_imgs">
+        <img class="product_mainImg" src="/loadImg/${item.gaguImg}">
+        <div class="row row-cols-4">
+            <div class="col">
+                <img class="product_img_etc" src="/loadImg/${item.gaguImg}">
+            </div>
+            <c:forEach var="attach" items="${item.attachs}">
+                <div class="col">
+                    <img class="product_img_etc" src="/loadImg/${attach.filename}">
+                </div>
+            </c:forEach>
+        </div>
+    </div>
+    <div class="product_info">
+        <div class="item_name">
+            <p>제품명 : ${item.name}</p>
+        </div>
+        <div class="item_price">
+            <span>${item.price}원</span>
+        </div>
+        <hr class="info_hr">
+        <div class="product_count">
+            <button type="button" class="count_button"> > </button>
+            <span class="product_count_num">1</span>
+            <button type="button" class="count_button"> < </button>
+        </div>
+        <div class="product_total_price">
+            <b>총 구매가</b>
+            <span>123원</span>
+        </div>
+        <hr class="info_hr">
+        <div class="product_buttons">
+            <button type="button" class="btn btn-danger buy_button">결제하기</button>
+            <button type="button" class="btn btn-secondary cart_button">장바구니</button>
+        </div>
+        <div class="etc_button">
+            <%--좋아요(하트)버튼--%>
+            <button class="btn btn-secondary like_button">
+                <i class="bi bi-suit-heart fs-3"></i>
+            </button>
+            <%--공유하기버튼--%>
+            <button class="btn btn-secondary share_button">
+                <i class="bi bi-share-fill fs-3"></i>
+            </button>
+        </div>
+    </div>
+</div>
+<!-- Footer-->
+<footer class="py-5" style="background-color: #EBE1D7;">
+    <div class="container"><p class="m-0 text-center" style="color: #525252;">Daejeon Polytechnic &reg; HongSeongMin</p></div>
+</footer>
+<!-- Bootstrap core JS-->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Core theme JS-->
+<script src="/js/scripts.js"></script>
 </body>
 </html>

@@ -1,0 +1,97 @@
+.product_imgs{
+    display: inline-block;
+    width: 600px;
+    height: 797px;
+    /*background: #0dcaf0;*/
+    margin-right: 70px;
+
+}
+.product_mainImg{
+    width: 600px;
+    height: 600px;
+    margin-bottom: 25px;
+}
+.product_img_etc{
+    width: 112px;
+    height: 112px;
+}
+.product_info{
+    display: inline-block;
+    position: absolute;
+    width: 470px;
+    height: 797px;
+    /*background: #198754;*/
+}
+.item_name {
+    font-size: 25px;
+    margin-bottom: 100px;
+}
+.item_price{
+    font-size: 25px;
+    color: #c80a1e;
+    margin-bottom: 60px;
+}
+.product_count{
+    height: 95px;
+}
+.product_count_num{
+    display: inline-block;
+    border: 1px solid #AAAAAA;
+    box-sizing: border-box;
+    font-size: 25px;
+    float: right;
+    width: 35px;
+    text-align: center;
+    margin-right: 5px;
+}
+.count_button{
+    display: inline-block;
+    background: white;
+    border: white;
+    position: relative;
+    top: 5px;
+    float: right;
+    margin-right: 5px;
+}
+.info_hr{
+    margin-bottom: 60px;
+    height: 2px !important;
+    background: #AAAAAA;
+}
+.product_buttons{
+    clear: both;
+}
+.product_total_price{
+    clear: both;
+    margin-bottom: 50px;
+}
+.product_total_price span{
+    position: absolute;
+    right: 5px;
+    color: #c80a1e;
+}
+.buy_button{
+    display: block;
+    width: 100%;
+    height: 50px;
+    top: 447px;
+    left: 750px;
+    margin: 97px auto 15px auto;
+
+}
+.cart_button{
+    display: block;
+    width: 100%;
+    height: 50px;
+    top: 447px;
+    left: 750px;
+    margin: 0px auto 15px auto;
+}
+.like_button{
+    position: absolute;
+    right: 5px;
+}
+.share_button{
+    position: absolute;
+    right: 70px;
+}
