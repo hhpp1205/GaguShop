@@ -7,7 +7,7 @@ import java.util.Date;
 
 @Getter
 @Setter
-public class Order {
+public class Orders {
 
     private int id;
     private int count;
