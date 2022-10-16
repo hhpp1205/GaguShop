@@ -3,8 +3,12 @@
 <!-- CSS only -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
 <!-- JavaScript Bundle with Popper -->
+<script
+        src="https://code.jquery.com/jquery-3.6.1.js"
+        integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI="
+        crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
-<script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -94,7 +98,7 @@
 <%--    <c:set var="item" value="${item}"/>--%>
     <div class="product_imgs">
         <img class="product_mainImg" src="/loadImg/${item.gaguImg}">
-        <div class="row row-cols-4">
+        <div class="row row-cols-4 img_wrapper">
             <div class="col">
                 <img class="product_img_etc" src="/loadImg/${item.gaguImg}">
             </div>
@@ -108,24 +112,25 @@
     <div class="product_info">
         <div class="item_name">
             <p>제품명 : ${item.name}</p>
+            <input id="gaguId" type="hidden" value="${item.id}">
         </div>
         <div class="item_price">
             <span>${item.price}원</span>
         </div>
         <hr class="info_hr">
         <div class="product_count">
-            <button type="button" class="count_button"> > </button>
-            <span class="product_count_num">1</span>
-            <button type="button" class="count_button"> < </button>
+            <button type="button" class="count_button plu"> > </button>
+            <span class="product_count_num" data-count="1">1</span>
+            <button type="button" class="count_button miu"> < </button>
         </div>
         <div class="product_total_price">
             <b>총 구매가</b>
-            <span>123원</span>
+            <span data-price="${item.price}">${item.price}원</span>
         </div>
         <hr class="info_hr">
         <div class="product_buttons">
-            <button type="button" class="btn btn-danger buy_button">결제하기</button>
-            <button type="button" class="btn btn-secondary cart_button">장바구니</button>
+                <button type="button" class="btn btn-danger buy_button">결제하기</button>
+                <button type="button" class="btn btn-secondary cart_button">장바구니</button>
         </div>
         <div class="etc_button">
             <%--좋아요(하트)버튼--%>
@@ -147,5 +152,6 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 <!-- Core theme JS-->
 <script src="/js/scripts.js"></script>
+<script src="/js/info.js"></script>
 </body>
 </html>
