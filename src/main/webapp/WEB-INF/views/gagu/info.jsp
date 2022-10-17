@@ -94,7 +94,7 @@
     </div>
 </nav>
 <%--제품상세정보--%>
-<div class="container position-relative mt-5 h-100">
+<div class="container position-relative mt-5">
 <%--    <c:set var="item" value="${item}"/>--%>
     <div class="product_imgs">
         <img class="product_mainImg" src="/loadImg/${item.gaguImg}">

@@ -6,5 +6,4 @@
         INSERT INTO orders
         values (NULL, #{count}, NOW(), #{gaguId}, #{memberId})
     </insert>
-<!--꺼진 불이 있으면 그 맵퍼는 쓰레기다.-->
 </mapper>

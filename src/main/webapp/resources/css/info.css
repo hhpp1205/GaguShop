@@ -1,3 +1,6 @@
+.container{
+    margin-bottom: 45px;
+}
 .product_imgs{
     display: inline-block;
     width: 600px;
