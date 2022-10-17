@@ -14,13 +14,13 @@ public class CartDaoImpl implements CartDao{
     @Autowired
     SqlSession sql;
     @Override
-    public void addCart(HashMap map) {
-        sql.insert("cart.addCart", map);
+    public void addCart(Cart cart) {
+        sql.insert("cart.addCart", cart);
     }
 
     @Override
-    public int checkCart(HashMap map) {
-        return sql.selectOne("cart.checkCart", map);
+    public int checkCart(Cart cart) {
+        return sql.selectOne("cart.checkCart", cart);
     }
 
     @Override
@@ -29,7 +29,7 @@ public class CartDaoImpl implements CartDao{
     }
 
     @Override
-    public void deleteCart(HashMap map) {
-        sql.delete("cart.deleteCart", map);
+    public void deleteCart(Cart cart) {
+        sql.delete("cart.deleteCart", cart);
     }
 }

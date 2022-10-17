@@ -24,15 +24,15 @@ public class RootController {
     @GetMapping("/")
     public String index(Model model, HttpSession session){
         Member member = (Member) session.getAttribute("member");
-        if(member == null){
+//        if(member == null){
             List<Gagu> list = service.beforeLoginList();
             model.addAttribute("list", list);
             return "index";
-        }
-        String memberId = member.getId();
-        List<Gagu> list = service.afterLoginList(memberId);
-        model.addAttribute("list", list);
-        return "index";
+//        }
+//        String memberId = member.getId();
+//        List<Gagu> list = service.afterLoginList(memberId);
+//        model.addAttribute("list", list);
+//        return "index";
     }
 
     @GetMapping("/login")

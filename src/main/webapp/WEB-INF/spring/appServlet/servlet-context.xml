@@ -40,6 +40,7 @@
 		<interceptor>
 			<mapping path="/gagu/**"/>
 			<exclude-mapping path="/gagu/search"/>
+			<exclude-mapping path="/gagu/info/**"/>
 			<beans:bean class="kr.ac.kopo.interceptor.interceptor"></beans:bean>
 		</interceptor>
 	</interceptors>

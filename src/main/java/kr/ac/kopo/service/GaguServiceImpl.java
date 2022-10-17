@@ -3,10 +3,8 @@ package kr.ac.kopo.service;
 import kr.ac.kopo.dao.AttachDao;
 import kr.ac.kopo.dao.CartDao;
 import kr.ac.kopo.dao.GaguDao;
-import kr.ac.kopo.model.Attach;
-import kr.ac.kopo.model.Cart;
-import kr.ac.kopo.model.Gagu;
-import kr.ac.kopo.model.Member;
+import kr.ac.kopo.dao.WishDao;
+import kr.ac.kopo.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -24,6 +22,8 @@ public class GaguServiceImpl implements GaguService{
     CartDao cartDao;
     @Autowired
     AttachDao attachDao;
+    @Autowired
+    WishDao wishDao;
 
 
     @Override
@@ -55,14 +55,6 @@ public class GaguServiceImpl implements GaguService{
     }
 
     @Override
-    public void addDeleteCart(HashMap map) {
-        int cnt = cartDao.checkCart(map);
-        if(cnt == 0){
-            cartDao.addCart(map);
-        }
-            cartDao.deleteCart(map);
-    }
-    @Override
     public List<Gagu> cartList(String memberId) {
         return cartDao.cartList(memberId);
     }
@@ -75,6 +67,36 @@ public class GaguServiceImpl implements GaguService{
     @Override
     public List<Gagu> search(String keyword) {
         return dao.search(keyword);
+    }
+
+    @Override
+    public int checkCart(Cart cart) {
+        return cartDao.checkCart(cart);
+    }
+
+    @Override
+    public void addCart(Cart cart) {
+        cartDao.addCart(cart);
+    }
+
+    @Override
+    public void deleteCart(Cart cart) {
+        cartDao.deleteCart(cart);
+    }
+
+    @Override
+    public void addWish(Wish wish) {
+        wishDao.addWish(wish);
+    }
+
+    @Override
+    public int checkWish(Wish wish) {
+        return wishDao.checkWish(wish);
+    }
+
+    @Override
+    public void deleteWish(Wish wish) {
+        wishDao.deleteWish(wish);
     }
 
 }

@@ -7,11 +7,11 @@ import java.util.HashMap;
 import java.util.List;
 
 public interface CartDao {
-    void addCart(HashMap map);
+    void addCart(Cart cart);
 
-    int checkCart(HashMap map);
+    int checkCart(Cart cart);
 
     List<Gagu> cartList(String memberId);
 
-    void deleteCart(HashMap map);
+    void deleteCart(Cart cart);
 }

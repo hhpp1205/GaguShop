@@ -5,11 +5,12 @@
 
     <select id="beforeLoginList" resultType="Gagu">
         SELECT * FROM gagu
+        LIMIT 8
     </select>
 
-    <select id="afterLoginList" resultType="Gagu">
+    <select id="afterLoginInfo" resultType="Gagu">
         SELECT g.*,c.id cart_id FROM gagu g LEFT JOIN cart c
-        ON c.member_id = #{memberId} AND c.gagu_id = g.id;
+        ON c.member_id = #{memberId} AND c.gagu_id = g.id
     </select>
 
     <insert id="add">

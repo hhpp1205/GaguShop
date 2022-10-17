@@ -1,9 +1,6 @@
 package kr.ac.kopo.controller;
 
-import kr.ac.kopo.model.Attach;
-import kr.ac.kopo.model.Cart;
-import kr.ac.kopo.model.Gagu;
-import kr.ac.kopo.model.Member;
+import kr.ac.kopo.model.*;
 import kr.ac.kopo.service.GaguService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -68,17 +65,33 @@ public class GaguController {
             e.printStackTrace();
         }
 
-
-
         return "redirect:../";
     }
 
     @GetMapping("/info/{id}")
-    public String info(@PathVariable int id, Model model){
-        Gagu item = service.info(id);
-        model.addAttribute("item", item);
+    public String info(@PathVariable int id, Model model, HttpSession session){
+        Wish wish = new Wish();
+        wish.setGaguId(id);
+        Member member = (Member) session.getAttribute("member");
+        if(member == null){ // 로그인 전
+            Gagu item = service.info(id);
+            model.addAttribute("item", item);
 
-        return path + "info";
+            return path + "info";
+        }else{ // 로그인 후
+            wish.setMemberId(member.getId());
+            if(service.checkWish(wish) == 0){
+                Gagu item = service.info(id);
+                item.setWishId(0);
+                model.addAttribute("item", item);
+                return path + "info";
+            }else {
+                Gagu item = service.info(id);
+                item.setWishId(1);
+                model.addAttribute("item", item);
+                return path + "info";
+            }
+        }
     }
 
     @GetMapping("/update/{id}")
@@ -104,17 +117,18 @@ public class GaguController {
         return "redirect:/";
     }
 
-    @PostMapping("/addDeleteCart/{id}")
-    public String addCart(@PathVariable int id, @SessionAttribute Member member,@RequestParam int cartId, HttpSession session ){
-        HashMap map = new HashMap<>();
+    @ResponseBody
+    @PostMapping("/addCart")
+    public String addCart(Cart cart, @SessionAttribute Member member){
+        cart.setMemberId(member.getId());
 
-        map.put("memberId", member.getId());
-        map.put("gaguId", id);
-        map.put("id", cartId);
+        if(service.checkCart(cart) == 0){
+            service.addCart(cart);
+            return "add";
+        }else {
+            return "alreadyExist";
+        }
 
-        service.addDeleteCart(map);
-
-        return "redirect:/";
     }
 
     @GetMapping("/cart")
@@ -136,5 +150,17 @@ public class GaguController {
         model.addAttribute("keyword", keyword);
 
         return "gagu/search";
+    }
+    @ResponseBody
+    @PostMapping("/wish")
+    public String addDeleteWish(Wish wish, @SessionAttribute Member member){
+        wish.setMemberId(member.getId());
+        if(service.checkWish(wish) == 0){
+            service.addWish(wish);
+            return "add";
+        }else {
+            service.deleteWish(wish);
+            return "delete";
+        }
     }
 }
