@@ -5,6 +5,7 @@ $('.img_wrapper').click(function (e){
 
 //상품 주문 갯수
 let countProduct = 1;
+//총 구매가
 let totalPrice = 0;
 
 // 상품 주문갯수 감소 버튼

@@ -105,7 +105,7 @@
   <div class="container px-4 px-lg-5 my-5">
     <div class="text-center" style="color: #525252;">
       <h1 class="display-4 fw-bolder">J FurnitureStore In Your Life</h1>
-      <p class="lead fw-normal mb-0" style="color: #525252; opacity: 50%;">J FurnitureStoreA 제품들로 클래식한 나만의 안식처를 만들어보세요.</p>
+      <p class="lead fw-normal mb-0" style="color: #525252; opacity: 50%;">J FurnitureStore 제품들로 클래식한 나만의 안식처를 만들어보세요.</p>
     </div>
   </div>
 </header>
