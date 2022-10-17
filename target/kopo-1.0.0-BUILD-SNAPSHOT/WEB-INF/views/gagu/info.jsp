@@ -130,11 +130,11 @@
         <hr class="info_hr">
         <div class="product_buttons">
                 <button type="button" class="btn btn-danger buy_button">결제하기</button>
-                <button type="button" class="btn btn-secondary cart_button">장바구니</button>
+                <button type="button" class="btn btn-secondary cart_button">장바구니에 담기</button>
         </div>
         <div class="etc_button">
             <%--좋아요(하트)버튼--%>
-            <button class="btn btn-secondary like_button">
+            <button class="btn ${item.wishId == 0 ? "btn-secondary" : "btn-danger"} ${sessionScope.member == null ? "beforeLogin" : ""} like_button">
                 <i class="bi bi-suit-heart fs-3"></i>
             </button>
             <%--공유하기버튼--%>
@@ -144,10 +144,12 @@
         </div>
     </div>
 </div>
+
 <!-- Footer-->
 <footer class="py-5" style="background-color: #EBE1D7;">
     <div class="container"><p class="m-0 text-center" style="color: #525252;">Daejeon Polytechnic &reg; HongSeongMin</p></div>
 </footer>
+
 <!-- Bootstrap core JS-->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 <!-- Core theme JS-->

@@ -12,6 +12,7 @@
 		<typeAlias type="kr.ac.kopo.model.GaguKeyword" alias="GaguKeyword" />
 		<typeAlias type="kr.ac.kopo.model.Attach" alias="Attach" />
 		<typeAlias type="kr.ac.kopo.model.Orders" alias="Orders" />
+		<typeAlias type="kr.ac.kopo.model.Wish" alias="Wish" />
 	</typeAliases>
 	
 	<mappers>
@@ -20,5 +21,6 @@
 		<mapper resource="mybatis/cart.xml" />
 		<mapper resource="mybatis/attach.xml" />
 		<mapper resource="mybatis/orders.xml" />
+		<mapper resource="mybatis/wish.xml" />
 	</mappers>
 </configuration>

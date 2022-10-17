@@ -19,7 +19,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="/css/styles.css" rel="stylesheet" />
-    <link href="/css/index.css" rel="stylesheet">
+    <link href="/css/search.css" rel="stylesheet">
 </head>
 <body>
 <!-- Navigation-->
@@ -43,7 +43,7 @@
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                                <form method="post" action="gagu/search">
+                                <form method="post" action="/gagu/search">
                                     <div class="col-auto">
                                         <label class="visually-hidden" for="autoSizingInputGroup">Username</label>
                                         <div class="input-group">
@@ -90,23 +90,58 @@
     </div>
 </nav>
 <%--검색결과--%>
-<div>
-    <h1>'${keyword}' 검색결과</h1>
+<div class="keyword_wrapper">
+    <span class="keyword">'${keyword}' 검색결과</span>
 </div>
 
 <!-- 상품목록 불러오기 -->
-    <div class="content">
+<section class="py-5">
+    <div class="container px-4 px-lg-5 mt-5">
+<div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 "> <%-- justify-content-center--%>
         <c:forEach var="item" items="${list}">
-            <div class="card item">
-                <img src="/loadImg/${item.gaguImg}" class="card-img-top itemImg" alt="...">
-                <div class="card-body center">
-                    <h5 class="card-title">${item.name}</h5>
-                    <p class="card-text">${item.price}원</p>
-                    <a href="gagu/info/${item.id}" class="btn btn-primary">구매하기</a>
+            <div class="col mb-5">
+                <div class="card h-100">
+                    <!-- Sale badge-->
+                    <%--<div id="add_delete_button" class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">♥</div>--%>
+                    <!-- Product image-->
+                    <img class="card-img-top h-75" src="/loadImg/${item.gaguImg}" alt="..." />
+                    <!-- Product details-->
+                    <div class="card-body p-4">
+                        <div class="text-center">
+                            <!-- Product name-->
+                            <h5 class="fw-bolder">${item.name}</h5>
+                            <!-- Product price-->
+                            ₩ ${item.price}
+                        </div>
+                    </div>
+                        <!-- Product actions-->
+                    <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                        <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="/gagu/info/${item.id}">Product details</a></div>
+                    </div>
                 </div>
             </div>
         </c:forEach>
     </div>
+    </div>
+</section>
+<%--페이지네이션--%>
+<div class="ssmc-pagenation">
+    <a href="#" class="direction"><span>&lsaquo;</span></a>
+    <a href="#">1</a>
+    <strong>2</strong>
+    <a href="#">3</a>
+    <a href="#">4</a>
+    <a href="#">5</a>
+    <a href="#" class="direction"><span>&rsaquo;</span></a>
+</div>
 <!-- 상품목록 불러오기 끝-->
+<!-- Footer-->
+<footer class="py-5" style="background-color: #EBE1D7;">
+    <div class="container"><p class="m-0 text-center" style="color: #525252;">Daejeon Polytechnic &reg; HongSeongMin</p></div>
+</footer>
+<!-- Bootstrap core JS-->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Core theme JS-->
+<script src="/js/scripts.js"></script>
 </body>
 </html>

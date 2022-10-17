@@ -38,7 +38,6 @@ $('.buy_button').click(function (){
    $.ajax({
        type : "POST",
        url : "/order/",
-       // cache : false,
        data : {
             "count" : $('.product_count_num').data("count"),
             "gaguId" : $('#gaguId').val()
@@ -48,5 +47,66 @@ $('.buy_button').click(function (){
        }
    })
 });
+
+//장바구니 버튼 기능
+$('.cart_button').click(function (){
+    $.ajax({
+        type : "POST",
+        url : "/gagu/addCart",
+        data : {
+            "gaguId" : $('#gaguId').val()
+        },
+        success : function (data) {
+            if(data == "add"){
+                alert("장바구니에 추가되었습니다")
+            }else {
+                alert("이미 장바구니에 존재하는 상품 입니다")
+            }
+        }
+    });
+});
+
+//좋아요 버튼 기능
+$('.like_button').click(function (){
+    $.ajax({
+        type : "POST",
+        url : "/gagu/wish",
+        data : {
+            "gaguId" : $('#gaguId').val()
+        },
+        success : function (data) {
+            console.log(data);
+
+            if(data == "add"){
+                $('.like_button').removeClass("btn-secondary");
+                $('.like_button').addClass("btn-danger");
+            }else {
+                $('.like_button').removeClass("btn-danger");
+                $('.like_button').addClass("btn-secondary");
+            }
+        }
+    });
+});
+
+//좋아요 버튼 클릭시 로그인전 로그인 알림
+$('.like_button').click(function (){
+   if($(this).hasClass("beforeLogin")){
+       alert("로그인후 이용해 주세요");
+   }
+});
+
+//공유 버튼 클릭시
+$('.share_button').click(function (){
+    let url = '';
+    const textarea = document.createElement("textarea");
+    document.body.appendChild(textarea);
+    url = window.document.location.href;
+    textarea.value = url;
+    textarea.select();
+    document.execCommand("copy");
+    document.body.removeChild(textarea);
+    alert("URL이 복사되었습니다.")
+})
+
 
 
