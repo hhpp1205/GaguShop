@@ -2,6 +2,7 @@ package kr.ac.kopo.service;
 
 import kr.ac.kopo.model.Cart;
 import kr.ac.kopo.model.Gagu;
+import kr.ac.kopo.model.Pager;
 import kr.ac.kopo.model.Wish;
 
 import java.util.HashMap;
@@ -20,7 +21,7 @@ public interface GaguService {
 
     List<String> keywordList();
 
-    List<Gagu> search(String keyword);
+    List<Gagu> search(String keyword, Pager pager);
 
     int checkCart(Cart cart);
 
@@ -33,4 +34,6 @@ public interface GaguService {
     int checkWish(Wish wish);
 
     void deleteWish(Wish wish);
+
+    int total(Pager pager);
 }

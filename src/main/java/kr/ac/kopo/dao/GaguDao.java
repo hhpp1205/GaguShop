@@ -1,6 +1,7 @@
 package kr.ac.kopo.dao;
 
 import kr.ac.kopo.model.Gagu;
+import kr.ac.kopo.model.Pager;
 
 import java.util.HashMap;
 import java.util.List;
@@ -16,5 +17,7 @@ public interface GaguDao {
 
     List<String> keywordList();
 
-    List<Gagu> search(String keyword);
+    List<Gagu> search(String keyword, Pager pager);
+
+    int total(Pager pager);
 }

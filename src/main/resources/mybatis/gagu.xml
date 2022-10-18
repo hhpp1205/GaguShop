@@ -53,10 +53,15 @@
     <select id="search" resultType="Gagu">
         SELECT * FROM gagu
         WHERE name LIKE CONCAT(CONCAT("%", #{keyword}), "%")
+        LIMIT ${pager.offset}, ${pager.perPage}
     </select>
 
     <select id="keywordList" resultType="GaguKeyword">
         SELECT * FROM gagu_keyword
+    </select>
+
+    <select id="total" resultType="Integer">
+        SELECT COUNT(*) FROM gagu
     </select>
 
 </mapper>

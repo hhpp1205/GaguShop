@@ -65,8 +65,9 @@ public class GaguServiceImpl implements GaguService{
     }
 
     @Override
-    public List<Gagu> search(String keyword) {
-        return dao.search(keyword);
+    public List<Gagu> search(String keyword, Pager pager) {
+        pager.setTotal(dao.total(pager));
+        return dao.search(keyword, pager);
     }
 
     @Override
@@ -97,6 +98,11 @@ public class GaguServiceImpl implements GaguService{
     @Override
     public void deleteWish(Wish wish) {
         wishDao.deleteWish(wish);
+    }
+
+    @Override
+    public int total(Pager pager) {
+        return dao.total(pager);
     }
 
 }

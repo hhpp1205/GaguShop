@@ -142,12 +142,13 @@ public class GaguController {
         return path + "cart";
     }
 
-    @PostMapping("/search")
-    public String search(@RequestParam("keyword") String keyword, Model model){
-        List<Gagu> list = service.search(keyword);
+    @GetMapping("/search")
+    public String search(@RequestParam("keyword") String keyword, Model model, Pager pager){
+        List<Gagu> list = service.search(keyword, pager);
 
-        model.addAttribute("list", list);
+        model.addAttribute("pager", pager);
         model.addAttribute("keyword", keyword);
+        model.addAttribute("list", list);
 
         return "gagu/search";
     }

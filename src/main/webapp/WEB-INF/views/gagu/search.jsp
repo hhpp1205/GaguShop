@@ -43,7 +43,7 @@
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                                <form method="post" action="/gagu/search">
+                                <form method="get" action="/gagu/search">
                                     <div class="col-auto">
                                         <label class="visually-hidden" for="autoSizingInputGroup">Username</label>
                                         <div class="input-group">
@@ -127,11 +127,10 @@
 <%--페이지네이션--%>
 <div class="ssmc-pagenation">
     <a href="#" class="direction"><span>&lsaquo;</span></a>
-    <a href="#">1</a>
-    <strong>2</strong>
-    <a href="#">3</a>
-    <a href="#">4</a>
-    <a href="#">5</a>
+    <c:forEach var="pager" items="${pager.list}">
+        <a href="/gagu/search?page=${pager}&keyword=${keyword}">${pager}</a>
+    </c:forEach>
+<%--    <strong>2</strong>--%>
     <a href="#" class="direction"><span>&rsaquo;</span></a>
 </div>
 <!-- 상품목록 불러오기 끝-->
