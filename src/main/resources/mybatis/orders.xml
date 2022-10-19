@@ -6,4 +6,9 @@
         INSERT INTO orders
         values (NULL, #{count}, NOW(), #{gaguId}, #{memberId})
     </insert>
+
+    <delete id="deleteById">
+        DELETE FROM orders
+        WHERE gagu_id = #{id}
+    </delete>
 </mapper>

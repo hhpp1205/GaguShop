@@ -7,4 +7,9 @@
         values (NULL, #{gaguId}, #{filename})
     </insert>
 
+    <delete id="deleteById">
+        DELETE FROM attach
+        WHERE gagu_id = #{id}
+    </delete>
+
 </mapper>

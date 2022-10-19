@@ -53,10 +53,27 @@
     <select id="search" resultType="Gagu">
         SELECT * FROM gagu
         WHERE name LIKE CONCAT(CONCAT("%", #{keyword}), "%")
+        <choose>
+            <when test='changeSort == 0'> ORDER BY name </when>
+            <when test='changeSort == 1'> ORDER BY price DESC </when>
+            <when test='changeSort == 2'> ORDER BY price </when>
+            <when test='changeSort == 3'> ORDER BY name DESC </when>
+        </choose>
+        LIMIT ${pager.offset}, ${pager.perPage}
+    </select>
+
+    <select id="searchCount" resultType="Integer">
+        SELECT COUNT(*) FROM gagu
+        WHERE name LIKE CONCAT(CONCAT("%", #{keyword}), "%")
     </select>
 
     <select id="keywordList" resultType="GaguKeyword">
         SELECT * FROM gagu_keyword
+    </select>
+
+    <select id="total" resultType="Integer">
+        SELECT COUNT(*) FROM gagu
+        WHERE name LIKE CONCAT(CONCAT("%", #{keyword}), "%")
     </select>
 
 </mapper>

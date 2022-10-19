@@ -15,4 +15,9 @@ public class OrdersDaoImpl implements OrdersDao {
     public void order(Orders orders) {
         sql.insert("orders.createOrder",orders);
     }
+
+    @Override
+    public void deleteById(int id) {
+        sql.delete("orders.deleteById", id);
+    }
 }

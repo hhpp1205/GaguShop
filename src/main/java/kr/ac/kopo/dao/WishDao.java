@@ -8,4 +8,6 @@ public interface WishDao {
     void addWish(Wish wish);
 
     void deleteWish(Wish wish);
+
+    void deleteById(int id);
 }

@@ -1,6 +1,7 @@
 package kr.ac.kopo.controller;
 
 import kr.ac.kopo.model.*;
+import kr.ac.kopo.pager.Pager;
 import kr.ac.kopo.service.GaguService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,7 +13,6 @@ import javax.servlet.http.HttpSession;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 @Controller
@@ -64,6 +64,13 @@ public class GaguController {
         }catch (Exception e){
             e.printStackTrace();
         }
+
+        return "redirect:../";
+    }
+
+    @GetMapping("/dummy")
+    public String dummy(@SessionAttribute Member member){
+        service.dummy(member);
 
         return "redirect:../";
     }
@@ -128,7 +135,6 @@ public class GaguController {
         }else {
             return "alreadyExist";
         }
-
     }
 
     @GetMapping("/cart")
@@ -143,9 +149,15 @@ public class GaguController {
     }
 
     @GetMapping("/search")
-    public String search(@RequestParam("keyword") String keyword, Model model, Pager pager){
-        List<Gagu> list = service.search(keyword, pager);
+    public String search(@RequestParam("keyword") String keyword,
+                         @RequestParam(value = "changeSort", defaultValue = "0")int changeSort, Model model, Pager pager){
 
+        List<Gagu> list = service.search(keyword, pager, changeSort);
+        // 상품 검색결과 갯수
+        int searchCount = service.searchCount(keyword);
+
+        model.addAttribute("changeSort", changeSort);
+        model.addAttribute("searchCount", searchCount);
         model.addAttribute("pager", pager);
         model.addAttribute("keyword", keyword);
         model.addAttribute("list", list);

@@ -1,10 +1,30 @@
 .keyword_wrapper{
     text-align: center;
     margin-top: 48px;
+    font-size: 20px;
 }
 .keyword{
     color: #c80a1e;
-    font-size: 20px;
+}
+.select_count{
+    text-align: center;
+    margin-top: 30px;
+    margin-bottom: -45px;
+}
+.sort_product{
+    width: 1140px;
+    margin: 20px auto 0 auto;
+    padding: 0 48px;
+    text-align: right;
+    font-size: 14px;
+}
+.selected{
+    color: red !important;
+}
+.sort_product a{
+    padding: 0 7px;
+    text-decoration: none;
+    color: black;
 }
 /*페이지 네이션*/
 .ssmc-pagenation {

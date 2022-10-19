@@ -1,7 +1,7 @@
 package kr.ac.kopo.dao;
 
 import kr.ac.kopo.model.Gagu;
-import kr.ac.kopo.model.Pager;
+import kr.ac.kopo.pager.Pager;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -41,15 +41,22 @@ public class GaguDaoImpl implements GaguDao{
     }
 
     @Override
-    public List<Gagu> search(String keyword, Pager pager) {
+    public List<Gagu> search(String keyword, Pager pager, int changeSort) {
         HashMap map = new HashMap<>();
+        map.put("changeSort", changeSort);
         map.put("pager", pager);
         map.put("keyword", keyword);
         return sql.selectList("gagu.search", map);
     }
 
     @Override
-    public int total(Pager pager) {
-        return sql.selectOne("gagu.total");
+    public int total(Pager pager, String keyword) {
+
+        return sql.selectOne("gagu.total", keyword);
+    }
+
+    @Override
+    public int searchCount(String keyword) {
+        return sql.selectOne("gagu.searchCount", keyword);
     }
 }

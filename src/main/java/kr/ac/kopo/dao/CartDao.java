@@ -14,4 +14,6 @@ public interface CartDao {
     List<Gagu> cartList(String memberId);
 
     void deleteCart(Cart cart);
+
+    void deleteById(int id);
 }

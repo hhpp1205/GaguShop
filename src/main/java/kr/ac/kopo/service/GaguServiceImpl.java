@@ -1,16 +1,12 @@
 package kr.ac.kopo.service;
 
-import kr.ac.kopo.dao.AttachDao;
-import kr.ac.kopo.dao.CartDao;
-import kr.ac.kopo.dao.GaguDao;
-import kr.ac.kopo.dao.WishDao;
+import kr.ac.kopo.dao.*;
 import kr.ac.kopo.model.*;
+import kr.ac.kopo.pager.Pager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.servlet.http.HttpSession;
-import java.util.HashMap;
 import java.util.List;
 
 @Service
@@ -24,6 +20,8 @@ public class GaguServiceImpl implements GaguService{
     AttachDao attachDao;
     @Autowired
     WishDao wishDao;
+    @Autowired
+    OrdersDao ordersDao;
 
 
     @Override
@@ -48,9 +46,13 @@ public class GaguServiceImpl implements GaguService{
     public void update(Gagu item) {
         dao.update(item);
     }
-
+    @Transactional
     @Override
     public void delete(int id) {
+        attachDao.deleteById(id);
+        cartDao.deleteById(id);
+        ordersDao.deleteById(id);
+        wishDao.deleteById(id);
         dao.delete(id);
     }
 
@@ -65,9 +67,9 @@ public class GaguServiceImpl implements GaguService{
     }
 
     @Override
-    public List<Gagu> search(String keyword, Pager pager) {
-        pager.setTotal(dao.total(pager));
-        return dao.search(keyword, pager);
+    public List<Gagu> search(String keyword, Pager pager, int changeSort) {
+        pager.setTotal(dao.total(pager, keyword));
+        return dao.search(keyword, pager, changeSort);
     }
 
     @Override
@@ -101,8 +103,26 @@ public class GaguServiceImpl implements GaguService{
     }
 
     @Override
-    public int total(Pager pager) {
-        return dao.total(pager);
+    public int total(Pager pager, String keyword) {
+        return dao.total(pager, keyword);
+    }
+
+    @Override
+    public int searchCount(String keyword) {
+        return dao.searchCount(keyword);
+    }
+
+    @Override
+    public void dummy(Member member) {
+        for(int i = 0; i < 100; i++){
+            Gagu item = new Gagu();
+            item.setMemberId(member.getId());
+            item.setName("테스트" + i);
+            item.setPrice(1000*i);
+            item.setKeyword("거실장");
+
+            dao.add(item);
+        }
     }
 
 }

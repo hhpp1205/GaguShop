@@ -27,4 +27,6 @@ public class Gagu {
     //wish가 존재하면 1 존재하지 않으면 0
     private int wishId;
 
+    //상품 정렬
+    private int  changeSort;
 }

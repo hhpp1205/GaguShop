@@ -43,7 +43,7 @@
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                                <form method="post" action="/gagu/search">
+                                <form method="get" action="/gagu/search">
                                     <div class="col-auto">
                                         <label class="visually-hidden" for="autoSizingInputGroup">Username</label>
                                         <div class="input-group">
@@ -91,11 +91,21 @@
 </nav>
 <%--검색결과--%>
 <div class="keyword_wrapper">
-    <span class="keyword">'${keyword}' 검색결과</span>
+    <span class="keyword">'${keyword}' </span><span>검색결과</span>
+</div>
+<%--상품 검색 결과 갯수--%>
+<div class="select_count">
+    <p>${searchCount}개의 상품이 검색되었습니다.</p>
 </div>
 
 <!-- 상품목록 불러오기 -->
 <section class="py-5">
+    <div class="sort_product">
+        <a class="${changeSort==0 ? 'selected' : ''}" href="/gagu/search?page=1&keyword=${keyword}&changeSort=0">인기순</a>
+        <a class="${changeSort==1 ? 'selected' : ''}" href="/gagu/search?page=1&keyword=${keyword}&changeSort=1">높은가격순</a>
+        <a class="${changeSort==2 ? 'selected' : ''}" href="/gagu/search?page=1&keyword=${keyword}&changeSort=2">낮은가격순</a>
+        <a class="${changeSort==3 ? 'selected' : ''}" href="/gagu/search?page=1&keyword=${keyword}&changeSort=3">상품평순</a>
+    </div>
     <div class="container px-4 px-lg-5 mt-5">
 <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 "> <%-- justify-content-center--%>
         <c:forEach var="item" items="${list}">
@@ -126,13 +136,12 @@
 </section>
 <%--페이지네이션--%>
 <div class="ssmc-pagenation">
-    <a href="#" class="direction"><span>&lsaquo;</span></a>
-    <a href="#">1</a>
-    <strong>2</strong>
-    <a href="#">3</a>
-    <a href="#">4</a>
-    <a href="#">5</a>
-    <a href="#" class="direction"><span>&rsaquo;</span></a>
+    <a href="?page=1&keyword=${keyword}" class="direction"><span>&lsaquo;</span></a>
+    <c:forEach var="pager" items="${pager.list}">
+        <a href="/gagu/search?page=${pager}&keyword=${keyword}">${pager}</a>
+    </c:forEach>
+<%--    <strong>2</strong>--%>
+    <a href="?page=${pager.last}&keyword=${keyword}" class="direction"><span>&rsaquo;</span></a>
 </div>
 <!-- 상품목록 불러오기 끝-->
 <!-- Footer-->

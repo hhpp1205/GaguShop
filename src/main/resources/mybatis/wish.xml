@@ -18,4 +18,9 @@
         WHERE gagu_id = #{gaguId}
         AND member_id = #{memberId}
     </delete>
+
+    <delete id="deleteById">
+        DELETE FROM wish
+        WHERE gagu_id = #{id}
+    </delete>
 </mapper>
