@@ -19,8 +19,19 @@
         AND member_id = #{memberId}
     </delete>
 
-    <delete id="deleteById">
+    <delete id="deleteWishByGaguId">
         DELETE FROM wish
         WHERE gagu_id = #{id}
+    </delete>
+
+    <select id="allCheckWishByMemberId" resultType="Gagu">
+        SELECT gagu.*, wish.id wish_id FROM gagu, wish
+        WHERE gagu.id = wish.gagu_id
+        AND wish.member_id = 'kopo'
+    </select>
+
+    <delete id="deleteWishById">
+        DELETE FROM wish
+        WHERE id = #{wishId}
     </delete>
 </mapper>

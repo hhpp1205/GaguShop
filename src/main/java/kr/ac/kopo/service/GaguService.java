@@ -37,4 +37,8 @@ public interface GaguService {
     int searchCount(String keyword);
 
     void dummy(Member member);
+
+    List<Gagu> allCheckWishByMemberId(Member member);
+
+    void deleteWishById(int wishId);
 }

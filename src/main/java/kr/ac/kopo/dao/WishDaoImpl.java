@@ -1,9 +1,13 @@
 package kr.ac.kopo.dao;
 
+import kr.ac.kopo.model.Gagu;
+import kr.ac.kopo.model.Member;
 import kr.ac.kopo.model.Wish;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 @Repository
 public class WishDaoImpl implements WishDao {
@@ -27,7 +31,17 @@ public class WishDaoImpl implements WishDao {
     }
 
     @Override
-    public void deleteById(int id) {
-        sql.delete("deleteById", id);
+    public void deleteWishByGaguId(int id) {
+        sql.delete("wish.deleteWishByGaguId", id);
+    }
+
+    @Override
+    public List<Gagu> allCheckWishByMemberId(Member member) {
+        return sql.selectList("wish.allCheckWishByMemberId", member);
+    }
+
+    @Override
+    public void deleteWishById(int wishId) {
+        sql.delete("wish.deleteWishById", wishId);
     }
 }

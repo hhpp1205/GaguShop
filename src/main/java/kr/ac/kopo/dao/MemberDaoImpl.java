@@ -53,5 +53,15 @@ public class MemberDaoImpl implements MemberDao{
         return sql.selectList("gagu.afterLoginList", memberId);
     }
 
+    @Override
+    public int findIdCheck(Member member) {
+        return sql.selectOne("member.findIdCheck", member);
+    }
+
+    @Override
+    public int findPwdCheck(Member member) {
+        return sql.selectOne("member.findPwdCheck", member);
+    }
+
 
 }

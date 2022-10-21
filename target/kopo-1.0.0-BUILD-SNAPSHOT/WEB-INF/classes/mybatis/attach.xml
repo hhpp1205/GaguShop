@@ -7,7 +7,7 @@
         values (NULL, #{gaguId}, #{filename})
     </insert>
 
-    <delete id="deleteById">
+    <delete id="deleteAttachByGaguId">
         DELETE FROM attach
         WHERE gagu_id = #{id}
     </delete>

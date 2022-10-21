@@ -17,7 +17,7 @@ public class OrdersDaoImpl implements OrdersDao {
     }
 
     @Override
-    public void deleteById(int id) {
-        sql.delete("orders.deleteById", id);
+    public void deleteOrdersByGaguId(int id) {
+        sql.delete("orders.deleteOrdersByGaguId", id);
     }
 }

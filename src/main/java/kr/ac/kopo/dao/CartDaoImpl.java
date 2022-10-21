@@ -34,7 +34,7 @@ public class CartDaoImpl implements CartDao{
     }
 
     @Override
-    public void deleteById(int id) {
-        sql.delete("cart.deleteById", id);
+    public void deleteCartByGaguId(int id) {
+        sql.delete("cart.deleteCartByGaguId", id);
     }
 }

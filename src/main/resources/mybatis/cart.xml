@@ -22,7 +22,7 @@
         WHERE member_id = #{memberId} AND gagu_id = #{gaguId}
     </delete>
 
-    <delete id="deleteById">
+    <delete id="deleteCartByGaguId">
         DELETE FROM cart
         WHERE gagu_id = #{id}
     </delete>

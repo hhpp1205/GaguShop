@@ -12,7 +12,7 @@ $('.find-pwd').on('click', function (){
           <input type="text" id="name" name="name" placeholder="이름을 입력해 주세요">
           <label for="phoneNumber">전화번호</label>
           <input type="text" id="phoneNumber" name="phoneNumber" placeholder="전화번호를 입력해 주세요(-없이)">
-          <button>비밀번호 찾기</button>`);
+          <button type="button" class="findPwd_button">비밀번호 찾기</button>`);
 });
 
 // 아이디찾기 눌렀을때
@@ -27,5 +27,50 @@ $('.find-id').on('click', function (){
       <input type="text" id="name" name="name" placeholder="이름을 입력해 주세요">
       <label for="phoneNumber">전화번호</label>
       <input type="text" id="phoneNumber" name="phoneNumber" placeholder="전화번호를 입력해 주세요(-없이)">
-      <button>아이디 찾기</button>`);
+      <button type="button" class="findId_button">아이디 찾기</button>`);
+});
+
+//버튼 타입 변경 하기 submit button
+
+//아이디 찾기 (버튼) 눌렀을때
+$('#find-account').on('click', '.findId_button', function (){
+       $.ajax({
+           type : "POST",
+           url : "/findIdCheck",
+           cache : false,
+           data : {
+               "name" : $('#name').val(),
+               "phoneNumber" : $('#phoneNumber').val()
+           },
+           success : function (data){
+               if(data == "OK"){
+                   $("#find-account").submit();
+               }
+               if(data == "NO"){
+                   alert("정보가 일치하는 아이디가 없습니다");
+               }
+           }
+       });
+   });
+
+//비밀번호 찾기 (버튼) 눌렀을때
+$('#find-account').on('click', '.findPwd_button', function (){
+    $.ajax({
+        type : "POST",
+        url : "/findPwdCheck",
+        cache : false,
+        data : {
+            "id" : $('#id').val(),
+            "name" : $('#name').val(),
+            "phoneNumber" : $('#phoneNumber').val()
+        },
+        success : function (data){
+            if(data == "OK"){
+                $("#find-account").submit();
+            }
+            if(data == "NO"){
+                alert("정보가 일치하지 않습니다");
+            }
+        }
+    });
 });

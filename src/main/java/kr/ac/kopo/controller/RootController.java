@@ -83,7 +83,7 @@ public class RootController {
         return "findaccount";
     }
 
-    @PostMapping("findId")
+    @PostMapping("/findId")
     public  String findId(Member member, Model model){
         Member item = new Member();
         item = service.findId(member);
@@ -92,19 +92,40 @@ public class RootController {
 
         return "newid";
     }
+    @ResponseBody
+    @PostMapping("/findIdCheck")
+    public String findIdCheck(Member member){
+        int result = service.findIdCheck(member);
+
+        if(result == 1){
+            return "OK";
+        }else {
+            return "NO";
+        }
+    }
 
     @PostMapping("/findPwd")
-    public String findPwd(Member member, HttpSession session){
+    public String findPwd(Member member, Model model){
         boolean check;
         check = service.findPwd(member);
 
         if(check){
-            session.setAttribute("member", member);
+            model.addAttribute("member", member);
             return "newpwd";
         }else{
             return "findaccount";
         }
+    }
+    @ResponseBody
+    @PostMapping("/findPwdCheck")
+    public String findPwdCheck(Member member){
+        int result = service.findPwdCheck(member);
 
+        if(result == 1){
+            return "OK";
+        }else {
+            return "NO";
+        }
     }
 
     @PostMapping("/newPwd")

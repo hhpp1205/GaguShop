@@ -19,6 +19,7 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
   <!-- Core theme CSS (includes Bootstrap)-->
   <link href="/css/styles.css" rel="stylesheet" />
+  <link href="/css/signup.css" rel="stylesheet">
 </head>
 <body>
 <!-- Navigation-->
@@ -89,33 +90,67 @@
   </div>
 </nav>
 <%--회원가입--%>
-  <fieldset>
-    <legend>회원가입</legend>
-    <form class="signup-form" method="post" name="signup_form">
-      <div>
-        <label>아이디:</label>
-        <input type="text" name="id" id="id">
-        <button type="button" id="checkId">중복확인</button>
-      </div>
-      <div>
-        <label>비밀번호:</label>
-        <input type="password" id="pwd" name="pwd">
-      </div>
+
+<div class="loginbox">
+  <h2>회원가입</h2>
+  <form class="signup-form" method="post" name="signup_form">
+    <div>
+      <label for="id">아이디</label>
+      <input type="text" id="id" name="id" placeholder="아이디를 입력해 주세요">
+      <button type="button" id="checkId">중복확인</button>
+    </div>
+      <label for="pwd">비밀번호</label>
+      <input type="password" id="pwd" name="pwd" placeholder="비밀번호를 입력해 주세요">
       <label>비밀번호확인:</label>
-      <input type="password" id="pwdCheck" name="pwdCheck">
-      </div>
-      <div>
-        <label>이름:</label>
-        <input type="text" id="name" name="name">
-      </div>
-      <div>
-        <label>전화번호:</label>
-        <input type="number" id="phoneNumber" name="phoneNumber" placeholder="- 없이 입력하세요">
-      </div>
-      <button type="button" onclick="checkValue()">가입하기</button>
-      <button><a href="/">취소</a></button>
-    </form>
-  </fieldset>
-  <script src="/js/signup.js"></script>
+      <input type="password" id="pwdCheck" name="pwdCheck" placeholder="비밀번호확인을 입력해 주세요">
+      <label>이름:</label>
+      <input type="text" id="name" name="name" placeholder="이름을 입력해 주세요">
+      <label>전화번호:</label>
+      <input type="number" id="phoneNumber" name="phoneNumber" placeholder="- 없이 입력하세요">
+    <div class="button_wrapper">
+      <button class="signup_button" type="button" onclick="checkValue()">가입하기</button>
+      <button class="cancel_button" type="button">취소</button>
+    </div>
+  </form>
+</div>
+
+
+<%--  <fieldset>--%>
+<%--    <legend>회원가입</legend>--%>
+<%--    <form class="signup-form" method="post" name="signup_form">--%>
+<%--      <div>--%>
+<%--        <label>아이디:</label>--%>
+<%--        <input type="text" name="id" id="id">--%>
+<%--        <button type="button" id="checkId">중복확인</button>--%>
+<%--      </div>--%>
+<%--      <div>--%>
+<%--        <label>비밀번호:</label>--%>
+<%--        <input type="password" id="pwd" name="pwd">--%>
+<%--      </div>--%>
+<%--      <label>비밀번호확인:</label>--%>
+<%--      <input type="password" id="pwdCheck" name="pwdCheck">--%>
+<%--      </div>--%>
+<%--      <div>--%>
+<%--        <label>이름:</label>--%>
+<%--        <input type="text" id="name" name="name">--%>
+<%--      </div>--%>
+<%--      <div>--%>
+<%--        <label>전화번호:</label>--%>
+<%--        <input type="number" id="phoneNumber" name="phoneNumber" placeholder="- 없이 입력하세요">--%>
+<%--      </div>--%>
+<%--      <button type="button" onclick="checkValue()">가입하기</button>--%>
+<%--      <button><a href="/">취소</a></button>--%>
+<%--    </form>--%>
+<%--  </fieldset>--%>
+
+<!-- Footer-->
+<footer class="py-5" style="background-color: #EBE1D7;">
+  <div class="container"><p class="m-0 text-center" style="color: #525252;">Daejeon Polytechnic &reg; HongSeongMin</p></div>
+</footer>
+<!-- Bootstrap core JS-->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Core theme JS-->
+<script src="/js/scripts.js"></script>
+<script src="/js/signup.js"></script>
 </body>
 </html>

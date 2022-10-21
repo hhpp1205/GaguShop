@@ -49,10 +49,10 @@ public class GaguServiceImpl implements GaguService{
     @Transactional
     @Override
     public void delete(int id) {
-        attachDao.deleteById(id);
-        cartDao.deleteById(id);
-        ordersDao.deleteById(id);
-        wishDao.deleteById(id);
+        attachDao.deleteAttachByGaguId(id);
+        cartDao.deleteCartByGaguId(id);
+        ordersDao.deleteOrdersByGaguId(id);
+        wishDao.deleteWishByGaguId(id);
         dao.delete(id);
     }
 
@@ -123,6 +123,16 @@ public class GaguServiceImpl implements GaguService{
 
             dao.add(item);
         }
+    }
+
+    @Override
+    public List<Gagu> allCheckWishByMemberId(Member member) {
+         return wishDao.allCheckWishByMemberId(member);
+    }
+
+    @Override
+    public void deleteWishById(int wishId) {
+        wishDao.deleteWishById(wishId);
     }
 
 }

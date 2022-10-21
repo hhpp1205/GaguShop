@@ -68,5 +68,15 @@ public class MemberServiceImpl implements MemberService{
         return dao.afterLoginList(memberId);
     }
 
+    @Override
+    public int findIdCheck(Member member) {
+        return dao.findIdCheck(member);
+    }
+
+    @Override
+    public int findPwdCheck(Member member) {
+        return dao.findPwdCheck(member);
+    }
+
 
 }

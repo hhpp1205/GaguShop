@@ -97,8 +97,8 @@
     <!--작성하지 않아도 문제는 없음-->
     <fieldset>
       <legend>로그인 구역</legend>
-      <label for="id">아이디</label>
-      <input type="text" id="id" name="id" placeholder="아이디를 입력해 주세요">
+        <label for="id">아이디</label>
+        <input type="text" id="id" name="id" placeholder="아이디를 입력해 주세요">
       <label for="pwd">비밀번호</label>
       <input type="password" id="pwd" name="pwd" placeholder="비밀번호를 입력해 주세요">
       <ul>
@@ -113,8 +113,8 @@
 <!--로그인 끝-->
 
 <!-- Footer-->
-<footer class="py-5 bg-dark mt-auto">
-  <div class="container"><p class="m-0 text-center text-white">Copyright &copy; Your Website 2022</p></div>
+<footer class="py-5" style="background-color: #EBE1D7;">
+  <div class="container"><p class="m-0 text-center" style="color: #525252;">Daejeon Polytechnic &reg; HongSeongMin</p></div>
 </footer>
 <!-- Bootstrap core JS-->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>

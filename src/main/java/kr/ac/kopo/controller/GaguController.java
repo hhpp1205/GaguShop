@@ -176,4 +176,20 @@ public class GaguController {
             return "delete";
         }
     }
+
+    @GetMapping("/wish")
+    public String wish(@SessionAttribute Member member, Model model){
+        List<Gagu> list = service.allCheckWishByMemberId(member);
+
+        model.addAttribute("list", list);
+        return path + "/wish";
+    }
+
+    @GetMapping("/wishDelete/{wishId}")
+    public String wishDelete(@PathVariable int wishId, @SessionAttribute Member member){
+        service.deleteWishById(wishId);
+
+
+        return "redirect:/gagu/wish";
+    }
 }

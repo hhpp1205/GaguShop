@@ -7,7 +7,7 @@
         values (NULL, #{count}, NOW(), #{gaguId}, #{memberId})
     </insert>
 
-    <delete id="deleteById">
+    <delete id="deleteOrdersByGaguId">
         DELETE FROM orders
         WHERE gagu_id = #{id}
     </delete>

@@ -21,4 +21,8 @@ public interface MemberService {
     Member findId(Member member);
 
     List<Gagu> afterLoginList(String memberId);
+
+    int findIdCheck(Member member);
+
+    int findPwdCheck(Member member);
 }

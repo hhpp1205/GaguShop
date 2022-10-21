@@ -16,7 +16,7 @@ public class AttachDaoImpl implements AttachDao{
     }
 
     @Override
-    public void deleteById(int id) {
-        sql.delete("attach.deleteById", id);
+    public void deleteAttachByGaguId(int id) {
+        sql.delete("attach.deleteAttachByGaguId", id);
     }
 }

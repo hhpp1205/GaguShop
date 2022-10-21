@@ -5,5 +5,5 @@ import kr.ac.kopo.model.Orders;
 public interface OrdersDao {
     void order(Orders orders);
 
-    void deleteById(int id);
+    void deleteOrdersByGaguId(int id);
 }
