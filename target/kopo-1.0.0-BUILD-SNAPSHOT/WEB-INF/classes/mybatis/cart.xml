@@ -4,7 +4,7 @@
 <mapper namespace="cart">
     <insert id="addCart">
         INSERT INTO cart
-        VALUES (NULL, #{memberId}, #{gaguId})
+        VALUES (NULL, #{count}, #{memberId}, #{gaguId})
     </insert>
 
     <select id="checkCart" resultType="Integer">
@@ -13,8 +13,10 @@
     </select>
 
     <select id="cartList" resultType="Gagu">
-        SELECT g.*,c.id cart_id FROM cart c, gagu g
-        WHERE c.member_id = #{memberId} AND c.gagu_id = g.id;
+        SELECT gagu.*, cart.count cart_count, cart.id cart_id
+        FROM gagu, cart
+        WHERE gagu.id = cart.gagu_id
+        AND cart.member_id = #{memberId}
     </select>
 
     <delete id="deleteCart">
@@ -25,5 +27,10 @@
     <delete id="deleteCartByGaguId">
         DELETE FROM cart
         WHERE gagu_id = #{id}
+    </delete>
+
+    <delete id="deleteCartByCartId">
+        DELETE FROM cart
+        WHERE id = #{cartId}
     </delete>
 </mapper>

@@ -76,3 +76,21 @@ tr td img{
     width: 230px;
     height: 230px;
 }
+.orderButton_wrapper{
+    text-align: center;
+    margin: 122px 0 198px 0;
+}
+.selectOrder_button{
+    width: 240px;
+    height: 50px;
+    background-color: #63666A;
+    border: 0px;
+    color: #FFFFFF;
+}
+.allOrder_button{
+    width: 240px;
+    height: 50px;
+    background-color: red;
+    border: 0px;
+    color: #FFFFFF;
+}

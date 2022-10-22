@@ -6,4 +6,5 @@ public interface OrdersService {
 
     void order(Orders orders);
 
+    void addOrders(Orders orders);
 }

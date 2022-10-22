@@ -11,6 +11,8 @@ public class Orders {
 
     private int id;
     private int count;
+    private int price;
+    private int total;
     private Date saleDate;
 
     //Gagu

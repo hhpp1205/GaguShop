@@ -54,13 +54,14 @@ $('.cart_button').click(function (){
         type : "POST",
         url : "/gagu/addCart",
         data : {
-            "gaguId" : $('#gaguId').val()
+            "gaguId" : $('#gaguId').val(),
+            "count" : countProduct
         },
         success : function (data) {
             if(data == "add"){
-                alert("장바구니에 추가되었습니다")
+                alert("장바구니에 추가되었습니다");
             }else {
-                alert("이미 장바구니에 존재하는 상품 입니다")
+                alert("이미 장바구니에 존재하는 상품 입니다");
             }
         }
     });

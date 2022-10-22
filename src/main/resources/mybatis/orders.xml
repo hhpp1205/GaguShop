@@ -2,13 +2,18 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="orders">
-    <insert id="createOrder">
-        INSERT INTO orders
-        values (NULL, #{count}, NOW(), #{gaguId}, #{memberId})
-    </insert>
+<!--    <insert id="createOrder">-->
+<!--        INSERT INTO orders-->
+<!--        values (NULL, #{count}, NOW(), #{gaguId}, #{memberId})-->
+<!--    </insert>-->
 
     <delete id="deleteOrdersByGaguId">
         DELETE FROM orders
         WHERE gagu_id = #{id}
     </delete>
+
+    <insert id="addOrders">
+        INSERT INTO orders
+        VALUES(NULL, #{count}, #{price}, #{total}, NOW(), #{gaguId}, #{memberId})
+    </insert>
 </mapper>

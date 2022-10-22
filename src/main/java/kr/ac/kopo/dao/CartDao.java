@@ -2,6 +2,7 @@ package kr.ac.kopo.dao;
 
 import kr.ac.kopo.model.Cart;
 import kr.ac.kopo.model.Gagu;
+import kr.ac.kopo.model.Orders;
 
 import java.util.HashMap;
 import java.util.List;
@@ -18,4 +19,6 @@ public interface CartDao {
     void deleteCartByGaguId(int id);
 
     void deleteCartByCartId(int cartId);
+
+    void deleteCart(Orders orders);
 }

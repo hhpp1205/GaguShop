@@ -2,6 +2,7 @@ package kr.ac.kopo.dao;
 
 import kr.ac.kopo.model.Cart;
 import kr.ac.kopo.model.Gagu;
+import kr.ac.kopo.model.Orders;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -41,5 +42,10 @@ public class CartDaoImpl implements CartDao{
     @Override
     public void deleteCartByCartId(int cartId) {
         sql.delete("cart.deleteCartByCartId", cartId);
+    }
+
+    @Override
+    public void deleteCart(Orders orders) {
+        sql.delete("cart.deleteCart",orders);
     }
 }

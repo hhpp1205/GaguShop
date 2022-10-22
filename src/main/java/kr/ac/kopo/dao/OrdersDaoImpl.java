@@ -20,4 +20,9 @@ public class OrdersDaoImpl implements OrdersDao {
     public void deleteOrdersByGaguId(int id) {
         sql.delete("orders.deleteOrdersByGaguId", id);
     }
+
+    @Override
+    public void addOrders(Orders orders) {
+        sql.insert("orders.addOrders", orders);
+    }
 }

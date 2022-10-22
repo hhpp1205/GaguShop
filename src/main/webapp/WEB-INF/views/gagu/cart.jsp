@@ -108,19 +108,28 @@
     <c:forEach var="item" items="${list}">
       <tr>
         <td><input name="chbox" class="form-check-input oneCheck" type="checkbox" value=""></td>
-        <td><img src="/loadImg/${item.gaguImg}" /></td>
+        <td><img  src="/loadImg/${item.gaguImg}" /></td>
         <td>${item.name}</td>
         <td>₩ ${item.price}</td>
         <td>${item.cartCount}</td>
-        <td>₩ ${item.price * item.cartCount}</td>
+        <td data-count="${item.cartCount}">₩ ${item.price * item.cartCount}</td>
         <td class="product_td">
-          <a href="#" class="product_td_a">주문하기</a>
+          <a class="product_td_a addOrder_button"
+             data-count="${item.cartCount}"
+             data-price="${item.price}"
+             data-total="${item.price * item.cartCount}"
+             data-gaguid="${item.id}" >주문하기</a>
           <a href="/gagu/deleteCart/${item.cartId}" class="product_td_a">삭제</a>
         </td>
       </tr>
     </c:forEach>
     </tbody>
   </table>
+
+  <div class="orderButton_wrapper">
+    <button class="selectOrder_button" type="button">선택상품 주문하기</button>
+    <button class="allOrder_button" type="button">전체상품 주문하기</button>
+  </div>
 </div>
 
 <!-- Footer-->

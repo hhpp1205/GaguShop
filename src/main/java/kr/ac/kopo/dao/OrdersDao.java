@@ -6,4 +6,6 @@ public interface OrdersDao {
     void order(Orders orders);
 
     void deleteOrdersByGaguId(int id);
+
+    void addOrders(Orders orders);
 }
