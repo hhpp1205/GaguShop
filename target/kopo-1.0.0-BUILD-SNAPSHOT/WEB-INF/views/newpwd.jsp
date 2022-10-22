@@ -19,6 +19,7 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
   <!-- Core theme CSS (includes Bootstrap)-->
   <link href="/css/styles.css" rel="stylesheet" />
+  <link href="/css/newpwd.css" rel="stylesheet" />
 </head>
 <body>
 <!-- Navigation-->
@@ -97,7 +98,7 @@
       <legend>비밀번호찾기 구역</legend>
       <div id="test">
         <label for="id">아이디</label>
-        <input type="text" id="id" name="id" value="${sessionScope.member.id}" readonly>
+        <input type="text" id="id" name="id" value="${member.id}" readonly>
         <label for="pwd">새 비밀번호</label>
         <input type="password" id="pwd" name="pwd" placeholder="새 비밀번호를 입력하세요">
         <label for="pwd_check">새 비밀번호 확인</label>

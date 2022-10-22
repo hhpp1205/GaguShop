@@ -11,7 +11,7 @@ body{ background-color: #ededed; }
 
 .loginbox{
     width: 780px;
-    height: 550px;
+    /*height: 550px;*/
     margin: 0 auto;
     margin-bottom: 291px;
 }
@@ -24,7 +24,7 @@ body{ background-color: #ededed; }
     font-weight: normal;
 }
 .loginbox form{
-    width: 100%; height: 450px;
+    width: 100%;
     background-color: #fff;
     /* 패딩수치를 인사이드 처리 */
     padding: 60px; box-sizing: border-box;

@@ -7,6 +7,7 @@ import lombok.Setter;
 @Setter
 public class Cart {
     private int id;
+    private int count;
     private String memberId;
     private int gaguId;
 

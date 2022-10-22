@@ -85,10 +85,9 @@ public class RootController {
 
     @PostMapping("/findId")
     public  String findId(Member member, Model model){
-        Member item = new Member();
-        item = service.findId(member);
+        List<Member> list = service.findId(member);
 
-        model.addAttribute("item", item);
+        model.addAttribute("list", list);
 
         return "newid";
     }
@@ -97,10 +96,10 @@ public class RootController {
     public String findIdCheck(Member member){
         int result = service.findIdCheck(member);
 
-        if(result == 1){
-            return "OK";
-        }else {
+        if(result == 0){
             return "NO";
+        }else {
+            return "OK";
         }
     }
 

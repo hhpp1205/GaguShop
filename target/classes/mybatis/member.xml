@@ -23,9 +23,21 @@
     WHERE name = #{name} AND phone_number = #{phoneNumber}
     </select>
 
+    <select id="findIdCheck" resultType="Integer">
+        SELECT COUNT(*) FROM member
+        WHERE name = #{name} AND phone_number = #{phoneNumber}
+    </select>
+
     <select id="findPwd" resultType="Integer">
         SELECT COUNT(*) FROM member
         WHERE id = #{id} AND name = #{name} AND phone_number = #{phoneNumber}
+    </select>
+
+    <select id="findPwdCheck" resultType="Integer">
+        SELECT COUNT(*) FROM member
+        WHERE id = #{id}
+        AND name = #{name}
+        AND phone_number = #{phoneNumber}
     </select>
 
     <update id="newPwd">

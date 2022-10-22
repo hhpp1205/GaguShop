@@ -58,7 +58,7 @@ public class MemberServiceImpl implements MemberService{
     }
 
     @Override
-    public Member findId(Member member) {
+    public List<Member> findId(Member member) {
         return dao.findId(member);
     }
 

@@ -19,7 +19,7 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
   <!-- Core theme CSS (includes Bootstrap)-->
   <link href="/css/styles.css" rel="stylesheet" />
-  <link href="/css/index.css" rel="stylesheet">
+  <link href="/css/newid.css" rel="stylesheet">
 </head>
 <body>
 <!-- Navigation-->
@@ -96,18 +96,23 @@
     <!--작성하지 않아도 문제는 없음-->
     <fieldset>
       <legend>로그인 구역</legend>
-      <div id="test">
+      <c:forEach var="item" items="${list}">
+      <div>
         <label for="hi">아이디</label>
         <input type="text" id="hi" name="hi" value="${item.id}" readonly>
       </div>
+      </c:forEach>
     </fieldset>
   </form>
 </div>
 
-<script
-        src="https://code.jquery.com/jquery-3.6.1.js"
-        integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI="
-        crossorigin="anonymous"></script>
-<script src="/js/find-account.js"></script>
+<!-- Footer-->
+<footer class="py-5" style="background-color: #EBE1D7;">
+  <div class="container"><p class="m-0 text-center" style="color: #525252;">Daejeon Polytechnic &reg; HongSeongMin</p></div>
+</footer>
+<!-- Bootstrap core JS-->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Core theme JS-->
+<script src="/js/scripts.js"></script>
 </body>
 </html>

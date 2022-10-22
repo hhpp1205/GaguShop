@@ -44,8 +44,8 @@ public class MemberDaoImpl implements MemberDao{
     }
 
     @Override
-    public Member findId(Member member) {
-        return sql.selectOne("member.findId", member);
+    public List<Member> findId(Member member) {
+        return sql.selectList("member.findId", member);
     }
 
     @Override

@@ -138,14 +138,20 @@ public class GaguController {
     }
 
     @GetMapping("/cart")
-    public String cart(Model model, HttpSession session){
-        Member member = (Member)session.getAttribute("member");
+    public String cart(Model model, @SessionAttribute Member member){
         String memberId = member.getId();
 
         List<Gagu> list = service.cartList(memberId);
         model.addAttribute("list", list);
 
-        return path + "cart";
+        return path + "/cart";
+    }
+
+    @GetMapping("/deleteCart/{cartId}")
+    public String deleteCart(@PathVariable int cartId){
+        service.deleteCartByCartId(cartId);
+
+        return "redirect:/gagu/cart";
     }
 
     @GetMapping("/search")
@@ -192,4 +198,5 @@ public class GaguController {
 
         return "redirect:/gagu/wish";
     }
+
 }

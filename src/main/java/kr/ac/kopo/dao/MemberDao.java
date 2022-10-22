@@ -19,7 +19,7 @@ public interface MemberDao {
 
     void newPwd(Member member);
 
-    Member findId(Member member);
+    List<Member> findId(Member member);
 
     List<Gagu> afterLoginList(String memberId);
 

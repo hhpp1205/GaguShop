@@ -41,4 +41,6 @@ public interface GaguService {
     List<Gagu> allCheckWishByMemberId(Member member);
 
     void deleteWishById(int wishId);
+
+    void deleteCartByCartId(int cartId);
 }
