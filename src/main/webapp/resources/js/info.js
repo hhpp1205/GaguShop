@@ -60,8 +60,11 @@ $('.cart_button').click(function (){
         success : function (data) {
             if(data == "add"){
                 alert("장바구니에 추가되었습니다");
-            }else {
+            }else if(data == "alreadyExist") {
                 alert("이미 장바구니에 존재하는 상품 입니다");
+            }else {
+                alert("로그인후 이용해 주세요");
+                location.href = "/login";
             }
         }
     });

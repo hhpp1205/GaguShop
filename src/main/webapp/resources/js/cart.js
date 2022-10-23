@@ -55,12 +55,12 @@ $('.addOrder_button').click(function (){
     });
 });
 
-window.onpageshow = function (event) {
-    if (event.persisted){
-        console.log("event.persisted = " + event.persisted );
-        location.reload();
-    }
-}
+// window.onpageshow = function (event) {
+//     if (event.persisted){
+//         console.log("event.persisted = " + event.persisted );
+//         location.reload();
+//     }
+// }
 
 // $("li.item-a").closest("ul").css("background-color", "red");
 
