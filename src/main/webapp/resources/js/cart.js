@@ -34,10 +34,6 @@ $('.addOrder_button').click(function (){
     console.log("total = " + total);
     console.log("gaguId = " + gaguid);
 
-
-
-    $("li.item-a").closest("ul").css("background-color", "red");
-
     $.ajax({
         type : "POST",
         url : "/order/",
@@ -50,13 +46,23 @@ $('.addOrder_button').click(function (){
         success : function (data) {
             if(data == "OK"){
                 alert("주문이 완료 되었습니다");
-                location.replace("/gagu/cart");
+                location.href = "/gagu/cart";
+                // location.replace("/gagu/cart");
             }else {
                 alert("주문에 실패 했습니다");
             }
         }
     });
 });
+
+window.onpageshow = function (event) {
+    if (event.persisted){
+        console.log("event.persisted = " + event.persisted );
+        location.reload();
+    }
+}
+
+// $("li.item-a").closest("ul").css("background-color", "red");
 
 
 
