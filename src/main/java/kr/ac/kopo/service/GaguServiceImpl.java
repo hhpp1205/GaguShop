@@ -92,9 +92,21 @@ public class GaguServiceImpl implements GaguService{
         wishDao.addWish(wish);
     }
 
+//    @Override
+//    public int checkWish(Wish wish) {
+//        return  wishDao.checkWish(wish);
+//    }
+
     @Override
     public int checkWish(Wish wish) {
-        return wishDao.checkWish(wish);
+        int result = wishDao.checkWish(wish);
+
+        if(result == 0){
+            wishDao.addWish(wish);
+        }else {
+            wishDao.deleteWish(wish);
+        }
+        return result;
     }
 
     @Override

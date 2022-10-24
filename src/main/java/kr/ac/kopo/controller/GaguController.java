@@ -6,6 +6,7 @@ import kr.ac.kopo.service.GaguService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.StopWatch;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -170,15 +171,43 @@ public class GaguController {
 
         return "gagu/search";
     }
+
+//    @ResponseBody
+//    @PostMapping("/wish")
+//    public String addDeleteWish(Wish wish, @SessionAttribute Member member){
+//
+//        StopWatch stopWatch = new StopWatch();
+//        stopWatch.start();
+//
+//        wish.setMemberId(member.getId());
+//        if(service.checkWish(wish) == 0){
+//            service.addWish(wish);
+//            stopWatch.stop();
+//            System.out.println(stopWatch.prettyPrint());
+//            return "add";
+//        }else {
+//            service.deleteWish(wish);
+//            stopWatch.stop();
+//            System.out.println(stopWatch.prettyPrint());
+//            return "delete";
+//        }
+//    }
+
     @ResponseBody
     @PostMapping("/wish")
     public String addDeleteWish(Wish wish, @SessionAttribute Member member){
+
+        StopWatch stopWatch = new StopWatch();
+        stopWatch.start();
+
         wish.setMemberId(member.getId());
         if(service.checkWish(wish) == 0){
-            service.addWish(wish);
+            stopWatch.stop();
+            System.out.println(stopWatch.prettyPrint());
             return "add";
         }else {
-            service.deleteWish(wish);
+            stopWatch.stop();
+            System.out.println(stopWatch.prettyPrint());
             return "delete";
         }
     }

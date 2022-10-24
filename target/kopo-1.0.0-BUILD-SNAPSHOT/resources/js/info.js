@@ -84,7 +84,7 @@ $('.like_button').click(function (){
             if(data == "add"){
                 $('.like_button').removeClass("btn-secondary");
                 $('.like_button').addClass("btn-danger");
-            }else {
+            }else if(data == "delete") {
                 $('.like_button').removeClass("btn-danger");
                 $('.like_button').addClass("btn-secondary");
             }
