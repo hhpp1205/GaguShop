@@ -22,6 +22,7 @@ public class OrdersController {
         orderService.order(orders);
         return "index";
     }
+
     @ResponseBody
     @PostMapping("/")
     public String addOrders(Orders orders, @SessionAttribute Member member){

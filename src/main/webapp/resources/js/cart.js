@@ -47,7 +47,6 @@ $('.addOrder_button').click(function (){
             if(data == "OK"){
                 alert("주문이 완료 되었습니다");
                 location.href = "/gagu/cart";
-                // location.replace("/gagu/cart");
             }else {
                 alert("주문에 실패 했습니다");
             }
@@ -55,14 +54,63 @@ $('.addOrder_button').click(function (){
     });
 });
 
-// window.onpageshow = function (event) {
-//     if (event.persisted){
-//         console.log("event.persisted = " + event.persisted );
-//         location.reload();
-//     }
-// }
+//전체주문 버튼 눌렀을 때
+$('.orderButton_wrapper .allOrder_button').click(function (){
 
-// $("li.item-a").closest("ul").css("background-color", "red");
+    $('input:checkbox[name="chbox"]').each(function (){
+        const tr = $(this).closest("tr");
+        const gaguId = tr.find('.addOrder_button').data("gaguid");
+        const count = tr.find('.addOrder_button').data("count");
+        const price = tr.find('.addOrder_button').data("price");
+        const total = price * count;
+
+        $.ajax({
+           url:"/order/",
+           method:"POST",
+           data: {
+               "gaguId" : gaguId,
+               "count" : count,
+               "price" : price,
+               "total" : total
+           },
+            success: data => {
+                console.log(data);
+            }
+        });
+    });
+        alert("주문이 완료 되었습니다");
+        location.href = "/gagu/cart";
+});
+
+//선택상품 주문 눌렀을 때
+$('.orderButton_wrapper .selectOrder_button').click(function (){
+
+    $('input:checkbox[name="chbox"]').each(function (){
+        if( this.checked ==true){
+            const tr = $(this).closest("tr");
+            const gaguId = tr.find('.addOrder_button').data("gaguid");
+            const count = tr.find('.addOrder_button').data("count");
+            const price = tr.find('.addOrder_button').data("price");
+            const total = price * count;
+
+            $.ajax({
+                url:"/order/",
+                method:"POST",
+                data: {
+                    "gaguId" : gaguId,
+                    "count" : count,
+                    "price" : price,
+                    "total" : total
+                },
+                success: data => {
+                    console.log(data);
+                }
+            });
+        }
+    });
+    alert("주문이 완료 되었습니다");
+    location.href = "/gagu/cart";
+});
 
 
 
