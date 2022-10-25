@@ -143,7 +143,6 @@
 <%--    <strong>2</strong>--%>
     <a href="?page=${pager.last}&keyword=${keyword}" class="direction"><span>&rsaquo;</span></a>
 </div>
-<!-- 상품목록 불러오기 끝-->
 <!-- Footer-->
 <footer class="py-5" style="background-color: #EBE1D7;">
     <div class="container"><p class="m-0 text-center" style="color: #525252;">Daejeon Polytechnic &reg; HongSeongMin</p></div>

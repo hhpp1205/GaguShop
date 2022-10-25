@@ -2,7 +2,7 @@ package kr.ac.kopo.controller;
 
 import kr.ac.kopo.model.Gagu;
 import kr.ac.kopo.model.Member;
-import kr.ac.kopo.service.GaguService;
+import kr.ac.kopo.pager.Pager;
 import kr.ac.kopo.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -10,8 +10,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 @Controller
@@ -44,8 +42,13 @@ public class RootController {
     @PostMapping("/login")
     public String login(Member member, HttpSession session){
         if(service.login(member)){
-
             session.setAttribute("member", member);
+
+            //어드민으로 로그인했을 때
+            String memberId = member.getId();
+            if(memberId.equals("admin"))
+                return "admin";
+
             return "OK";
         }else {
             return "NO";
@@ -135,5 +138,17 @@ public class RootController {
         return "login";
     }
 
+    @GetMapping("/admin")
+    public String admin(){
+        return "admin/admin";
+    }
+
+    @GetMapping("/admin/gagumanager")
+    public String gagumanager(Pager pager, Model model){
+        List<Gagu> list = service.adminGagu(pager);
+        model.addAttribute("list", list);
+        model.addAttribute("pager", pager);
+        return "/admin/gagumanager";
+    }
 
 }

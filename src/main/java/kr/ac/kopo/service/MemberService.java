@@ -2,6 +2,7 @@ package kr.ac.kopo.service;
 
 import kr.ac.kopo.model.Gagu;
 import kr.ac.kopo.model.Member;
+import kr.ac.kopo.pager.Pager;
 
 import java.util.List;
 
@@ -25,4 +26,6 @@ public interface MemberService {
     int findIdCheck(Member member);
 
     int findPwdCheck(Member member);
+
+    List<Gagu> adminGagu(Pager pager);
 }

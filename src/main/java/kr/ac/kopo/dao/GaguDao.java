@@ -21,4 +21,6 @@ public interface GaguDao {
     int total(Pager pager, String keyword);
 
     int searchCount(String keyword);
+
+    int setAdminTotal(Pager pager);
 }

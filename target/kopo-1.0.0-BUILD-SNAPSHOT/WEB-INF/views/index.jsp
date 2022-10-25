@@ -34,6 +34,10 @@
         <li class="nav-item"><a class="nav-link active" aria-current="page" href="/gagu/wish"><i class="bi bi-suit-heart-fill fs-4"></i></a></li>
         <%--돋보기--%>
         <li class="nav-item"><a class="nav-link" href="#!" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="bi bi-search fs-4"></i></a></li>
+          <c:if test="${sessionScope.member.id == 'admin'}">
+        <%--어드민--%>
+        <li class="nav-item"><a class="nav-link active" aria-current="page" href="/admin"><i class="bi bi-person-square fs-3"></i></a></li>
+          </c:if>
         <%--검색 모달창--%>
           <!-- Modal -->
           <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -63,8 +67,6 @@
           </div>
       </ul>
     </div>
-
-
 <%--        <li class="nav-item dropdown">--%>
 <%--          <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Shop</a>--%>
 <%--          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">--%>

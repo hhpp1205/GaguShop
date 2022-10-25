@@ -38,6 +38,11 @@
 	
 	<interceptors>
 		<interceptor>
+			<mapping path="/admin" />
+			<beans:bean class="kr.ac.kopo.interceptor.AdminInterceptor"></beans:bean>
+		</interceptor>
+
+		<interceptor>
 			<mapping path="/gagu/cart"/>
 			<mapping path="/login"/>
 			<beans:bean class="kr.ac.kopo.interceptor.bfcacheInterceptor"></beans:bean>

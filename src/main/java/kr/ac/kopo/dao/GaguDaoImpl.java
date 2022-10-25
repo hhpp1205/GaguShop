@@ -59,4 +59,9 @@ public class GaguDaoImpl implements GaguDao{
     public int searchCount(String keyword) {
         return sql.selectOne("gagu.searchCount", keyword);
     }
+
+    @Override
+    public int setAdminTotal(Pager pager) {
+        return sql.selectOne("gagu.setAdminTotal", pager);
+    }
 }

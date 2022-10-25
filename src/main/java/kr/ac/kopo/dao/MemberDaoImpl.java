@@ -2,6 +2,7 @@ package kr.ac.kopo.dao;
 
 import kr.ac.kopo.model.Gagu;
 import kr.ac.kopo.model.Member;
+import kr.ac.kopo.pager.Pager;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -62,6 +63,13 @@ public class MemberDaoImpl implements MemberDao{
     public int findPwdCheck(Member member) {
         return sql.selectOne("member.findPwdCheck", member);
     }
+
+    @Override
+    public List<Gagu> adminGagu(Pager pager) {
+        return sql.selectList("gagu.adminGagu", pager);
+    }
+
+
 
 
 }

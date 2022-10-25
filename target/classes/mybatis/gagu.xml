@@ -76,4 +76,13 @@
         WHERE name LIKE CONCAT(CONCAT("%", #{keyword}), "%")
     </select>
 
+    <select id="setAdminTotal" resultType="Integer">
+        SELECT COUNT(*) FROM gagu
+    </select>
+
+    <select id="adminGagu" resultType="Gagu">
+        SELECT * FROM gagu
+        LIMIT ${offset}, ${perPage}
+    </select>
+
 </mapper>

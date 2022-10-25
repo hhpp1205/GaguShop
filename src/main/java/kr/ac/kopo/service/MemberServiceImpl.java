@@ -1,10 +1,13 @@
 package kr.ac.kopo.service;
 
+import kr.ac.kopo.dao.GaguDao;
 import kr.ac.kopo.dao.MemberDao;
 import kr.ac.kopo.model.Gagu;
 import kr.ac.kopo.model.Member;
+import kr.ac.kopo.pager.Pager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -13,6 +16,8 @@ public class MemberServiceImpl implements MemberService{
 
     @Autowired
     MemberDao dao;
+    @Autowired
+    GaguDao gaguDao;
 
     @Override
     public boolean login(Member member) {
@@ -76,6 +81,12 @@ public class MemberServiceImpl implements MemberService{
     @Override
     public int findPwdCheck(Member member) {
         return dao.findPwdCheck(member);
+    }
+    @Transactional
+    @Override
+    public List<Gagu> adminGagu(Pager pager) {
+        pager.setTotal(gaguDao.setAdminTotal(pager));
+        return dao.adminGagu(pager);
     }
 
 

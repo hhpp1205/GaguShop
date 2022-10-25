@@ -65,7 +65,7 @@ public class GaguServiceImpl implements GaguService{
     public List<String> keywordList() {
         return dao.keywordList();
     }
-
+    @Transactional
     @Override
     public List<Gagu> search(String keyword, Pager pager, int changeSort) {
         pager.setTotal(dao.total(pager, keyword));
