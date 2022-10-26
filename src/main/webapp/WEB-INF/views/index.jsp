@@ -105,7 +105,7 @@
 </nav>
 <!-- Header-->
 <%--style="background-color: #EBE1D7;--%>
-<header class="py-5" style="background-image:url('loadImg/headerImg.png'); background-position: 0% 75%;">
+<header class="py-5" style="background-image:url('/loadImg/headerImg.png'); background-position: 0% 75%;">
   <div class="container px-4 px-lg-5 my-5">
     <div class="text-center">
       <h1 class="display-4 fw-bolder"style="color:white;" >J FurnitureStore In Your Life</h1>

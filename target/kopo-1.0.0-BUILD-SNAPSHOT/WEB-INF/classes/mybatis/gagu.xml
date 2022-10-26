@@ -41,7 +41,7 @@
 
     <update id="update">
         UPDATE gagu
-        SET name = #{name}, price = #{price}, kind = #{kind}
+        SET name = #{name}, price = #{price}, kind = #{kind}, gagu_img = #{gaguImg}
         WHERE id = #{id} AND member_id = #{memberId}
     </update>
 

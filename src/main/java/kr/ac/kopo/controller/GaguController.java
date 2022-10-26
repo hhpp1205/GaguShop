@@ -105,16 +105,40 @@ public class GaguController {
     @GetMapping("/update/{id}")
     public String update(@PathVariable int id, Model model){
         Gagu item = service.info(id);
+        List<String> keywordList = service.keywordList();
+        model.addAttribute("keywordList", keywordList);
         model.addAttribute("item", item);
 
         return path + "update";
     }
 
-    @PostMapping("/update/{id}")
-    public String update(@PathVariable int id, Gagu item, @SessionAttribute Member member){
+    @PostMapping("/update")
+    public String update(Gagu item, @RequestParam(value = "file", required = false)MultipartFile file, @SessionAttribute Member member){
         item.setMemberId(member.getId());
-        service.update(item);
+        try {
+            if(!file.isEmpty()){
+                String filename = file.getOriginalFilename();
+                file.transferTo(new File("C:/img\\" + filename));
+                item.setGaguImg(filename);
 
+                List<Attach> list = new ArrayList<Attach>();
+
+                for(MultipartFile attach : item.getAttach()){
+                    if(attach != null && !attach.isEmpty()){
+                        attach.transferTo(new File("C:/img\\" + attach.getOriginalFilename()));
+
+                        Attach attachItem = new Attach();
+                        attachItem.setFilename(attach.getOriginalFilename());
+                        list.add(attachItem);
+
+                    }
+                }
+                item.setAttachs(list);
+                service.update(item);
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
         return "redirect:/";
     }
 

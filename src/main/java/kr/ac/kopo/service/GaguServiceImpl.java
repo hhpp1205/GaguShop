@@ -45,6 +45,14 @@ public class GaguServiceImpl implements GaguService{
     @Override
     public void update(Gagu item) {
         dao.update(item);
+
+        int gaguId = item.getId();
+        attachDao.deleteAttachByGaguId(gaguId);
+
+        for(Attach attach : item.getAttachs()){
+            attach.setGaguId(item.getId());
+            attachDao.add(attach);
+        }
     }
     @Transactional
     @Override

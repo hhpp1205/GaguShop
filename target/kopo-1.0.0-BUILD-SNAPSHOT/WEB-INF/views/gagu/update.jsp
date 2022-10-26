@@ -19,7 +19,7 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
   <!-- Core theme CSS (includes Bootstrap)-->
   <link href="/css/styles.css" rel="stylesheet" />
-  <link href="/css/index.css" rel="stylesheet">
+  <link href="/css/update.css" rel="stylesheet">
 </head>
 <body>
 <!-- Navigation-->
@@ -96,9 +96,10 @@
   </div>
 
   <div>
-    <form method="post">
+    <form method="post" action="/gagu/update" enctype="multipart/form-data">
       <div class="form-group">
-        <label class="form-label">제품코드: ${item.id}</label>
+        <label class="form-label">제품코드:</label>
+        <input type="text" name="id" value="${item.id}" class="form-control" readonly>
       </div>
 
       <div class="form-group">
@@ -112,19 +113,41 @@
       </div>
 
       <div>
-        <select name="kind">
-          <option value="bed">침대</option>
-          <option value="sofa">쇼파</option>
-          <option value="shelf">선반</option>
+        <select name="keyword">
+          <c:forEach var="item" items="${keywordList}">
+            <option value="${item.keyword}">${item.keyword}</option>
+          </c:forEach>
         </select>
+      </div>
+      <%-- 메인 사진--%>
+      <div class="form-group">
+        <img src="/loadImg/${item.gaguImg}">
+        <label class="form-label">대표이미지:</label>
+        <input class="form-control" type="file" id="file" name="file" accept="image/*">
+      </div>
+      <%--서브이미지--%>
+      <c:forEach var="attach" items="${item.attachs}">
+      <div class="form-group">
+        <img class="product_img_etc" src="/loadImg/${attach.filename}">
+        <label class="form-label">서브이미지:</label>
+        <input type="file" name="attach" class="form-control form-control-sm" accept="image/*">
+      </div>
+      </c:forEach>
+      <%--사진추가 버튼--%>
+      <div>
+        <button class="btn btn-sm btn-primary" id="add" type="button">추가</button>
+      </div>
+      <div id="attachs">
+
       </div>
 
       <div class="form-group mt-3">
-        <button class="btn btn-sm btn-primary">변경</button>
+        <button type="submit" class="btn btn-sm btn-primary">변경</button>
         <a href="/"><button type="button" class="btn btn-sm btn-secondary">취소</button></a>
       </div>
     </form>
   </div>
 </div>
+<script src="/js/update.js"></script>
 </body>
 </html>
