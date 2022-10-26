@@ -146,6 +146,11 @@ public class GaguServiceImpl implements GaguService{
     }
 
     @Override
+    public void init(Member member) {
+        dao.init(member);
+    }
+
+    @Override
     public List<Gagu> allCheckWishByMemberId(Member member) {
          return wishDao.allCheckWishByMemberId(member);
     }
@@ -159,5 +164,7 @@ public class GaguServiceImpl implements GaguService{
     public void deleteCartByCartId(int cartId) {
         cartDao.deleteCartByCartId(cartId);
     }
+
+
 
 }

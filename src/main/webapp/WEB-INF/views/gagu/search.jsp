@@ -101,10 +101,10 @@
 <!-- 상품목록 불러오기 -->
 <section class="py-5">
     <div class="sort_product">
-        <a class="${changeSort==0 ? 'selected' : ''}" href="/gagu/search?page=1&keyword=${keyword}&changeSort=0">인기순</a>
+        <a class="${changeSort==0 ? 'selected' : ''}" href="/gagu/search?page=1&keyword=${keyword}&changeSort=0">좋아요순</a>
         <a class="${changeSort==1 ? 'selected' : ''}" href="/gagu/search?page=1&keyword=${keyword}&changeSort=1">높은가격순</a>
         <a class="${changeSort==2 ? 'selected' : ''}" href="/gagu/search?page=1&keyword=${keyword}&changeSort=2">낮은가격순</a>
-        <a class="${changeSort==3 ? 'selected' : ''}" href="/gagu/search?page=1&keyword=${keyword}&changeSort=3">상품평순</a>
+        <a class="${changeSort==3 ? 'selected' : ''}" href="/gagu/search?page=1&keyword=${keyword}&changeSort=3">주문순</a>
     </div>
     <div class="container px-4 px-lg-5 mt-5">
 <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 "> <%-- justify-content-center--%>

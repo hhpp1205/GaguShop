@@ -43,4 +43,6 @@ public interface GaguService {
     void deleteWishById(int wishId);
 
     void deleteCartByCartId(int cartId);
+
+    void init(Member member);
 }

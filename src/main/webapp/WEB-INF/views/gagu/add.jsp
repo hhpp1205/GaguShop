@@ -90,7 +90,7 @@
     </div>
 </nav>
 <%--제품등록 폼--%>
-    <form method="post" enctype="multipart/form-data">
+    <form id="add_form" method="post" enctype="multipart/form-data">
     <div>
         <label>제품명: </label>
         <input type="text"name="name">
@@ -116,7 +116,7 @@
     <div id="attachs">
 
     </div>
-        <button>등록</button>
+        <button type="button" class="add_button">등록</button>
     </form>
         <button><a href="../">취소</a> </button>
 <script src="/js/add.js"></script>

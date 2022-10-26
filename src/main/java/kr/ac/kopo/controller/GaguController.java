@@ -71,9 +71,22 @@ public class GaguController {
 
     @GetMapping("/dummy")
     public String dummy(@SessionAttribute Member member){
-        service.dummy(member);
+        if(member.getId().equals("admin")){
+            service.dummy(member);
 
-        return "redirect:../";
+            return "redirect:/admin/gagumanager";
+        }
+        return "redirect:/";
+    }
+
+    @GetMapping("init")
+    public String init(@SessionAttribute Member member){
+        if(member.getId().equals("admin")){
+            service.init(member);
+
+            return "redirect:/admin/gagumanager";
+        }
+        return "redirect:/";
     }
 
     @GetMapping("/info/{id}")
@@ -146,7 +159,7 @@ public class GaguController {
     public String delete(@PathVariable int id, @SessionAttribute Member member){
         service.delete(id);
 
-        return "redirect:/";
+        return "redirect:/admin/gagumanager";
     }
 
     @ResponseBody

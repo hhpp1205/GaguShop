@@ -96,7 +96,7 @@
   </div>
 
   <div>
-    <form method="post" action="/gagu/update" enctype="multipart/form-data">
+    <form id="update_form" method="post" action="/gagu/update" enctype="multipart/form-data">
       <div class="form-group">
         <label class="form-label">제품코드:</label>
         <input type="text" name="id" value="${item.id}" class="form-control" readonly>
@@ -126,23 +126,23 @@
         <input class="form-control" type="file" id="file" name="file" accept="image/*">
       </div>
       <%--서브이미지--%>
-      <c:forEach var="attach" items="${item.attachs}">
-      <div class="form-group">
-        <img class="product_img_etc" src="/loadImg/${attach.filename}">
-        <label class="form-label">서브이미지:</label>
-        <input type="file" name="attach" class="form-control form-control-sm" accept="image/*">
-      </div>
-      </c:forEach>
-      <%--사진추가 버튼--%>
-      <div>
-        <button class="btn btn-sm btn-primary" id="add" type="button">추가</button>
-      </div>
       <div id="attachs">
+        <c:forEach var="attach" items="${item.attachs}">
+        <div class="form-group">
+          <img class="product_img_etc" src="/loadImg/${attach.filename}">
+          <label class="form-label">서브이미지:</label>
+          <input type="file" name="attach" class="form-control form-control-sm attach" accept="image/*">
+        </div>
+        </c:forEach>
+      <%--사진추가 버튼--%>
+        <div>
+          <button class="btn btn-sm btn-primary" id="add" type="button">추가</button>
+        </div>
 
       </div>
 
       <div class="form-group mt-3">
-        <button type="submit" class="btn btn-sm btn-primary">변경</button>
+        <button type="button" class="btn btn-sm btn-primary update_button">변경</button>
         <a href="/"><button type="button" class="btn btn-sm btn-secondary">취소</button></a>
       </div>
     </form>

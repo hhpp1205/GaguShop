@@ -1,6 +1,7 @@
 package kr.ac.kopo.dao;
 
 import kr.ac.kopo.model.Gagu;
+import kr.ac.kopo.model.Member;
 import kr.ac.kopo.pager.Pager;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -63,5 +64,10 @@ public class GaguDaoImpl implements GaguDao{
     @Override
     public int setAdminTotal(Pager pager) {
         return sql.selectOne("gagu.setAdminTotal", pager);
+    }
+
+    @Override
+    public void init(Member member) {
+        sql.delete("gagu.init", member);
     }
 }

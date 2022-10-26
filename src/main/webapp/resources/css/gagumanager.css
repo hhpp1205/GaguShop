@@ -75,3 +75,11 @@ h1{
 .menu{
     text-align: center;
 }
+.menu ul{
+    list-style: none;
+}
+
+.delete_button{
+    text-decoration: none;
+    color: red;
+}

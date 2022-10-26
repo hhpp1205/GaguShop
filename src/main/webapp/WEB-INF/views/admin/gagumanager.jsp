@@ -16,10 +16,9 @@
   <div class="menu">
     <ul>
       <li><a href="/gagu/add">추가</a></li>
-      <li><a>더미추가</a></li>
-      <li><a>더미삭제</a></li>
+      <li><a href="/gagu/dummy">더미추가</a></li>
+      <li><a href="/gagu/init">더미삭제</a></li>
     </ul>
-
   </div>
 
   <div class="container px-4 px-lg-5 mt-5">
@@ -28,7 +27,7 @@
         <div class="col mb-5">
           <div class="card h-100">
             <!-- Sale badge-->
-              <%--<div id="add_delete_button" class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">♥</div>--%>
+              <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem"><a class="delete_button" href="/gagu/delete/${item.id}">삭제</a></div>
             <!-- Product image-->
             <img class="card-img-top h-75" src="/loadImg/${item.gaguImg}" alt="..." />
             <!-- Product details-->
@@ -42,7 +41,7 @@
             </div>
             <!-- Product actions-->
             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-              <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="/gagu/update/${item.id}">Product details</a></div>
+              <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="/gagu/update/${item.id}">제품정보 변경</a></div>
             </div>
           </div>
         </div>

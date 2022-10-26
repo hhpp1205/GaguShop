@@ -18,7 +18,7 @@
             <a href="/admin/gagumanager">가구관리</a>
         </li>
         <li>
-            <a href="/admin/membermanager">회원관리</a>
+            <a href="/admin/ordersmanager">주문관리</a>
         </li>
     </ul>
 </div>
