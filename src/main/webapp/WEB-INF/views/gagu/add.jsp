@@ -20,6 +20,7 @@
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="/css/styles.css" rel="stylesheet" />
     <link href="/css/index.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
 </head>
 <body>
 <!-- Navigation-->
@@ -30,9 +31,16 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
                 <%--하트--%>
-                <li class="nav-item"><a class="nav-link active" aria-current="page" href="/like"><i class="bi bi-suit-heart-fill fs-4"></i></a></li>
+                <li class="nav-item"><a class="nav-link active" aria-current="page" href="/gagu/wish"><i class="bi bi-suit-heart-fill fs-4"></i></a></li>
                 <%--돋보기--%>
                 <li class="nav-item"><a class="nav-link" href="#!" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="bi bi-search fs-4"></i></a></li>
+                <%--어드민--%>
+                <c:if test="${sessionScope.member.id == 'admin'}">
+                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="/admin"><i class="bi bi-person-square fs-3"></i></a></li>
+                </c:if>
+                <c:if test="${sessionScope.member.id != 'admin'}">
+                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="/order/"><i class="bi bi-person-square fs-3"></i></a></li>
+                </c:if>
                 <%--검색 모달창--%>
                 <!-- Modal -->
                 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -43,7 +51,7 @@
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                                <form method="post" action="gagu/search">
+                                <form method="get" action="gagu/search">
                                     <div class="col-auto">
                                         <label class="visually-hidden" for="autoSizingInputGroup">Username</label>
                                         <div class="input-group">

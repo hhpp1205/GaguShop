@@ -1,7 +1,8 @@
 package kr.ac.kopo.controller;
 
 import kr.ac.kopo.model.*;
-import kr.ac.kopo.pager.Pager;
+import kr.ac.kopo.util.MultipartBinder;
+import kr.ac.kopo.util.Pager;
 import kr.ac.kopo.service.GaguService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -34,27 +35,63 @@ public class GaguController {
         return path + "add";
     }
 
+//    @PostMapping("/add")
+//    public String add(Gagu item, @RequestParam(value = "file", required = false)MultipartFile file, @SessionAttribute Member member) throws IOException {
+//
+//             item.setMemberId(member.getId());
+//        try{
+//
+//
+//            if(!file.isEmpty()){
+//                String filename = file.getOriginalFilename();
+//                file.transferTo(new File("C:/img\\" + filename));
+//                item.setGaguImg(filename);
+//            }
+//
+//
+//            List<Attach> list = new ArrayList<Attach>();
+//
+//            for(MultipartFile attach : item.getAttach()){
+//                if(attach != null && !attach.isEmpty()){
+//                    attach.transferTo(new File("C:/img\\" + attach.getOriginalFilename()));
+//
+//                    Attach attachItem = new Attach();
+//
+//                    attachItem.setFilename(attach.getOriginalFilename());
+//                    list.add(attachItem);
+//                }
+//            }
+//            item.setAttachs(list);
+//
+//            service.add(item);
+//
+//        }catch (Exception e){
+//            e.printStackTrace();
+//        }
+//
+//        return "redirect:../";
+//    }
+
+
     @PostMapping("/add")
     public String add(Gagu item, @RequestParam(value = "file", required = false)MultipartFile file, @SessionAttribute Member member) throws IOException {
 
-             item.setMemberId(member.getId());
+        MultipartBinder binder = new MultipartBinder();
+
+        item.setMemberId(member.getId());
         try{
             if(!file.isEmpty()){
-                String filename = file.getOriginalFilename();
-                file.transferTo(new File("C:/img\\" + filename));
+                String filename = binder.saveReturnName(file);
                 item.setGaguImg(filename);
             }
-
 
             List<Attach> list = new ArrayList<Attach>();
 
             for(MultipartFile attach : item.getAttach()){
                 if(attach != null && !attach.isEmpty()){
-                    attach.transferTo(new File("C:/img\\" + attach.getOriginalFilename()));
-
                     Attach attachItem = new Attach();
 
-                    attachItem.setFilename(attach.getOriginalFilename());
+                    attachItem.setFilename(binder.saveReturnName(attach));
                     list.add(attachItem);
                 }
             }
@@ -68,6 +105,9 @@ public class GaguController {
 
         return "redirect:../";
     }
+
+
+
 
     @GetMapping("/dummy")
     public String dummy(@SessionAttribute Member member){
@@ -127,23 +167,22 @@ public class GaguController {
 
     @PostMapping("/update")
     public String update(Gagu item, @RequestParam(value = "file", required = false)MultipartFile file, @SessionAttribute Member member){
+        MultipartBinder binder = new MultipartBinder();
+
         item.setMemberId(member.getId());
         try {
             if(!file.isEmpty()){
-                String filename = file.getOriginalFilename();
-                file.transferTo(new File("C:/img\\" + filename));
+                String filename = binder.saveReturnName(file);
                 item.setGaguImg(filename);
 
                 List<Attach> list = new ArrayList<Attach>();
 
                 for(MultipartFile attach : item.getAttach()){
                     if(attach != null && !attach.isEmpty()){
-                        attach.transferTo(new File("C:/img\\" + attach.getOriginalFilename()));
-
                         Attach attachItem = new Attach();
-                        attachItem.setFilename(attach.getOriginalFilename());
-                        list.add(attachItem);
 
+                        attachItem.setFilename(binder.saveReturnName(attach));
+                        list.add(attachItem);
                     }
                 }
                 item.setAttachs(list);

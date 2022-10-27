@@ -2,7 +2,7 @@ package kr.ac.kopo.controller;
 
 import kr.ac.kopo.model.Gagu;
 import kr.ac.kopo.model.Member;
-import kr.ac.kopo.pager.Pager;
+import kr.ac.kopo.util.Pager;
 import kr.ac.kopo.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

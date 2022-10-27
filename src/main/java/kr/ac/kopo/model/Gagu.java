@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.sql.Date;
 import java.util.List;
 
 @Getter
@@ -30,4 +31,9 @@ public class Gagu {
 
     //상품 정렬
     private int  changeSort;
+
+    //Orders
+    private Date saleDate;
+    private int count;
+    private int total;
 }

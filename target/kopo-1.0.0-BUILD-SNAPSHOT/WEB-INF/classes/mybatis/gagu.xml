@@ -4,7 +4,13 @@
 <mapper namespace="gagu">
 
     <select id="beforeLoginList" resultType="Gagu">
-        SELECT * FROM gagu
+        SELECT g.*, orders_count.* FROM
+           (SELECT orders.gagu_id, COUNT(*) cnt FROM gagu, orders
+              WHERE gagu.id = orders.gagu_id
+              GROUP BY orders.gagu_id
+              ORDER BY cnt DESC) orders_count RIGHT OUTER JOIN gagu g
+              ON(orders_count.gagu_id = g.id)
+        ORDER BY cnt DESC
         LIMIT 8
     </select>
 
@@ -41,7 +47,7 @@
 
     <update id="update">
         UPDATE gagu
-        SET name = #{name}, price = #{price}, kind = #{kind}, gagu_img = #{gaguImg}
+        SET name = #{name}, price = #{price}, keyword = #{keyword}, gagu_img = #{gaguImg}
         WHERE id = #{id} AND member_id = #{memberId}
     </update>
 
@@ -51,15 +57,40 @@
     </delete>
 
     <select id="search" resultType="Gagu">
-        SELECT * FROM gagu
-        WHERE name LIKE CONCAT(CONCAT("%", #{keyword}), "%")
         <choose>
-            <when test='changeSort == 0'> ORDER BY name </when>
-            <when test='changeSort == 1'> ORDER BY price DESC </when>
-            <when test='changeSort == 2'> ORDER BY price </when>
-            <when test='changeSort == 3'> ORDER BY name DESC </when>
+            <when test='changeSort == 0'>
+                SELECT g.*FROM  (SELECT wish.gagu_id, COUNT(*) cnt FROM gagu, wish
+                WHERE gagu.id = wish.gagu_id
+                GROUP BY wish.gagu_id
+                ORDER BY cnt DESC) wish_count RIGHT OUTER JOIN gagu g
+                ON(wish_count.gagu_id = g.id)
+                WHERE name LIKE CONCAT(CONCAT("%", #{keyword}), "%")
+                ORDER BY cnt DESC
+                LIMIT ${pager.offset}, ${pager.perPage}
+            </when>
+            <when test='changeSort == 1'>
+                SELECT * FROM gagu
+                WHERE name LIKE CONCAT(CONCAT("%", #{keyword}), "%")
+                ORDER BY price DESC
+                LIMIT ${pager.offset}, ${pager.perPage}
+                </when>
+            <when test='changeSort == 2'>
+                SELECT * FROM gagu
+                WHERE name LIKE CONCAT(CONCAT("%", #{keyword}), "%")
+                ORDER BY price
+                LIMIT ${pager.offset}, ${pager.perPage}
+            </when>
+            <when test='changeSort == 3'>
+                SELECT g.*, orders_count.* FROM  (SELECT orders.gagu_id, COUNT(*) cnt FROM gagu, orders
+                WHERE gagu.id = orders.gagu_id
+                GROUP BY orders.gagu_id
+                ORDER BY cnt DESC) orders_count RIGHT OUTER JOIN gagu g
+                ON(orders_count.gagu_id = g.id)
+                WHERE name LIKE CONCAT(CONCAT("%", #{keyword}), "%")
+                ORDER BY cnt DESC
+                LIMIT ${pager.offset}, ${pager.perPage}
+             </when>
         </choose>
-        LIMIT ${pager.offset}, ${pager.perPage}
     </select>
 
     <select id="searchCount" resultType="Integer">
@@ -85,4 +116,8 @@
         LIMIT ${offset}, ${perPage}
     </select>
 
+    <delete id="init">
+        DELETE FROM gagu
+        WHERE name LIKE CONCAT(CONCAT("%", '테스트'), "%")
+    </delete>
 </mapper>

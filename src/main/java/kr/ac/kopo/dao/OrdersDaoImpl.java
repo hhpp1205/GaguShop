@@ -1,9 +1,12 @@
 package kr.ac.kopo.dao;
 
+import kr.ac.kopo.model.Gagu;
 import kr.ac.kopo.model.Orders;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 @Repository
 public class OrdersDaoImpl implements OrdersDao {
@@ -11,10 +14,7 @@ public class OrdersDaoImpl implements OrdersDao {
     @Autowired
     SqlSession sql;
 
-    @Override
-    public void order(Orders orders) {
-        sql.insert("orders.createOrder",orders);
-    }
+
 
     @Override
     public void deleteOrdersByGaguId(int id) {
@@ -24,5 +24,10 @@ public class OrdersDaoImpl implements OrdersDao {
     @Override
     public void addOrders(Orders orders) {
         sql.insert("orders.addOrders", orders);
+    }
+
+    @Override
+    public List<Gagu> list(String memberId) {
+        return sql.selectList("orders.list", memberId);
     }
 }

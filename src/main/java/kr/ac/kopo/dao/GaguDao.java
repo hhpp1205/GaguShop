@@ -2,7 +2,7 @@ package kr.ac.kopo.dao;
 
 import kr.ac.kopo.model.Gagu;
 import kr.ac.kopo.model.Member;
-import kr.ac.kopo.pager.Pager;
+import kr.ac.kopo.util.Pager;
 
 import java.util.List;
 

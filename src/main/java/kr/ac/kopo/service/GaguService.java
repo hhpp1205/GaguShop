@@ -1,7 +1,7 @@
 package kr.ac.kopo.service;
 
 import kr.ac.kopo.model.*;
-import kr.ac.kopo.pager.Pager;
+import kr.ac.kopo.util.Pager;
 
 import java.util.List;
 

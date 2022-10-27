@@ -20,6 +20,7 @@
   <!-- Core theme CSS (includes Bootstrap)-->
   <link href="/css/styles.css" rel="stylesheet" />
   <link href="/css/update.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
 </head>
 <body>
 <!-- Navigation-->
@@ -30,9 +31,16 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
         <%--하트--%>
-        <li class="nav-item"><a class="nav-link active" aria-current="page" href="/like"><i class="bi bi-suit-heart-fill fs-4"></i></a></li>
+        <li class="nav-item"><a class="nav-link active" aria-current="page" href="/gagu/wish"><i class="bi bi-suit-heart-fill fs-4"></i></a></li>
         <%--돋보기--%>
         <li class="nav-item"><a class="nav-link" href="#!" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="bi bi-search fs-4"></i></a></li>
+        <%--어드민--%>
+        <c:if test="${sessionScope.member.id == 'admin'}">
+          <li class="nav-item"><a class="nav-link active" aria-current="page" href="/admin"><i class="bi bi-person-square fs-3"></i></a></li>
+        </c:if>
+        <c:if test="${sessionScope.member.id != 'admin'}">
+          <li class="nav-item"><a class="nav-link active" aria-current="page" href="/order/"><i class="bi bi-person-square fs-3"></i></a></li>
+        </c:if>
         <%--검색 모달창--%>
         <!-- Modal -->
         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -43,7 +51,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
               <div class="modal-body">
-                <form method="post" action="gagu/search">
+                <form method="get" action="gagu/search">
                   <div class="col-auto">
                     <label class="visually-hidden" for="autoSizingInputGroup">Username</label>
                     <div class="input-group">
@@ -62,7 +70,7 @@
         </div>
       </ul>
     </div>
-<%--    </ul>--%>
+    </ul>
     <c:if test="${sessionScope.member == null}">
       <form class="d-flex" method="get" action="/login">
         <button class="btn btn-outline-dark" style="margin-right: 5px;" type="submit">
@@ -96,7 +104,7 @@
   </div>
 
   <div>
-    <form method="post" action="/gagu/update" enctype="multipart/form-data">
+    <form id="update_form" method="post" action="/gagu/update" enctype="multipart/form-data">
       <div class="form-group">
         <label class="form-label">제품코드:</label>
         <input type="text" name="id" value="${item.id}" class="form-control" readonly>
@@ -126,23 +134,23 @@
         <input class="form-control" type="file" id="file" name="file" accept="image/*">
       </div>
       <%--서브이미지--%>
-      <c:forEach var="attach" items="${item.attachs}">
-      <div class="form-group">
-        <img class="product_img_etc" src="/loadImg/${attach.filename}">
-        <label class="form-label">서브이미지:</label>
-        <input type="file" name="attach" class="form-control form-control-sm" accept="image/*">
-      </div>
-      </c:forEach>
-      <%--사진추가 버튼--%>
-      <div>
-        <button class="btn btn-sm btn-primary" id="add" type="button">추가</button>
-      </div>
       <div id="attachs">
+        <c:forEach var="attach" items="${item.attachs}">
+        <div class="form-group">
+          <img class="product_img_etc" src="/loadImg/${attach.filename}">
+          <label class="form-label">서브이미지:</label>
+          <input type="file" name="attach" class="form-control form-control-sm attach" accept="image/*">
+        </div>
+        </c:forEach>
+      <%--사진추가 버튼--%>
+        <div>
+          <button class="btn btn-sm btn-primary" id="add" type="button">추가</button>
+        </div>
 
       </div>
 
       <div class="form-group mt-3">
-        <button type="submit" class="btn btn-sm btn-primary">변경</button>
+        <button type="button" class="btn btn-sm btn-primary update_button">변경</button>
         <a href="/"><button type="button" class="btn btn-sm btn-secondary">취소</button></a>
       </div>
     </form>

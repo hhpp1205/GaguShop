@@ -48,13 +48,16 @@ h1{
 tr>td:nth-child(1){
     width: 5%;
     text-align: center;
-    padding: 113px 0;
+    padding: 27px 0;
 }
 tr>td:nth-child(2){
     width: 25%;
+    text-align: center;
+    padding: 113px 0;
 }
 tr>td:nth-child(3){
     padding: 113px 0;
+    text-align: center;
 }
 tr>td:nth-child(4){
     padding: 215px 0px 0px 0px;
@@ -78,7 +81,7 @@ tr td img{
 }
 .orderButton_wrapper{
     text-align: center;
-    margin: 122px 0 445px 0;
+    margin: 122px 0 399px 0;
 }
 .selectOrder_button{
     width: 240px;

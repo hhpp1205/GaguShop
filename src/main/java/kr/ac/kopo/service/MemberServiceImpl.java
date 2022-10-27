@@ -4,7 +4,7 @@ import kr.ac.kopo.dao.GaguDao;
 import kr.ac.kopo.dao.MemberDao;
 import kr.ac.kopo.model.Gagu;
 import kr.ac.kopo.model.Member;
-import kr.ac.kopo.pager.Pager;
+import kr.ac.kopo.util.Pager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

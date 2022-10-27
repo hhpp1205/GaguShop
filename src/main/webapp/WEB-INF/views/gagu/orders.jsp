@@ -19,7 +19,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="/css/styles.css" rel="stylesheet" />
-    <link href="/css/search.css" rel="stylesheet">
+    <link href="/css/orders.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -97,60 +97,38 @@
     </div>
     </div>
 </nav>
-<%--검색결과--%>
-<div class="keyword_wrapper">
-    <span class="keyword">'${keyword}' </span><span>검색결과</span>
-</div>
-<%--상품 검색 결과 갯수--%>
-<div class="select_count">
-    <p>${searchCount}개의 상품이 검색되었습니다.</p>
+
+<%--주문 목록--%>
+<div class="container h-auto mb-5">
+    <h1>주문목록</h1>
+    <table class="table">
+        <thead>
+        <tr>
+            <th colspan="2" scope="col">상품정보</th>
+            <th scope="col">단가</th>  <%--1개당가격--%>
+            <th scope="col">수량</th>
+            <th scope="col">구매 일</th> <%--총 가격--%>
+            <th scope="col">총 가격</th>
+        </tr>
+        </thead>
+        <tbody>
+        <c:forEach var="item" items="${list}">
+            <tr>
+                <td><img  src="/loadImg/${item.gaguImg}" /></td>
+                <td>${item.name}</td>
+                <td>₩ ${item.price}</td>
+                <td>${item.count}</td>
+                <td>${item.saleDate}</td>
+                <td class="product_td">${item.total}</td>
+            </tr>
+        </c:forEach>
+        </tbody>
+    </table>
 </div>
 
-<!-- 상품목록 불러오기 -->
-<section class="py-5">
-    <div class="sort_product">
-        <a class="${changeSort==0 ? 'selected' : ''}" href="/gagu/search?page=1&keyword=${keyword}&changeSort=0">좋아요순</a>
-        <a class="${changeSort==1 ? 'selected' : ''}" href="/gagu/search?page=1&keyword=${keyword}&changeSort=1">높은가격순</a>
-        <a class="${changeSort==2 ? 'selected' : ''}" href="/gagu/search?page=1&keyword=${keyword}&changeSort=2">낮은가격순</a>
-        <a class="${changeSort==3 ? 'selected' : ''}" href="/gagu/search?page=1&keyword=${keyword}&changeSort=3">주문순</a>
-    </div>
-    <div class="container px-4 px-lg-5 mt-5">
-<div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 "> <%-- justify-content-center--%>
-        <c:forEach var="item" items="${list}">
-            <div class="col mb-5">
-                <div class="card h-100">
-                    <!-- Sale badge-->
-                    <%--<div id="add_delete_button" class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">♥</div>--%>
-                    <!-- Product image-->
-                    <img class="card-img-top h-75" src="/loadImg/${item.gaguImg}" alt="..." />
-                    <!-- Product details-->
-                    <div class="card-body p-4">
-                        <div class="text-center">
-                            <!-- Product name-->
-                            <h5 class="fw-bolder">${item.name}</h5>
-                            <!-- Product price-->
-                            ₩ ${item.price}
-                        </div>
-                    </div>
-                        <!-- Product actions-->
-                    <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                        <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="/gagu/info/${item.id}">Product details</a></div>
-                    </div>
-                </div>
-            </div>
-        </c:forEach>
-    </div>
-    </div>
-</section>
-<%--페이지네이션--%>
-<div class="ssmc-pagenation">
-    <a href="?page=1&keyword=${keyword}" class="direction"><span>&lsaquo;</span></a>
-    <c:forEach var="pager" items="${pager.list}">
-        <a href="/gagu/search?page=${pager}&keyword=${keyword}">${pager}</a>
-    </c:forEach>
-<%--    <strong>2</strong>--%>
-    <a href="?page=${pager.last}&keyword=${keyword}" class="direction"><span>&rsaquo;</span></a>
-</div>
+
+
+
 <!-- Footer-->
 <footer class="py-5" style="background-color: #EBE1D7;">
     <div class="container"><p class="m-0 text-center" style="color: #525252;">Daejeon Polytechnic &reg; HongSeongMin</p></div>

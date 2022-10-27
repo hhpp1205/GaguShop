@@ -1,4 +1,4 @@
-package kr.ac.kopo.pager;
+package kr.ac.kopo.util;
 
 import lombok.Getter;
 import lombok.Setter;
