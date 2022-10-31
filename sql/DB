@@ -1,6 +1,6 @@
 -- --------------------------------------------------------
 -- 호스트:                          127.0.0.1
--- 서버 버전:                        10.9.2-MariaDB - mariadb.org binary distribution
+-- 서버 버전:                        10.8.4-MariaDB - mariadb.org binary distribution
 -- 서버 OS:                        Win64
 -- HeidiSQL 버전:                  11.3.0.6295
 -- --------------------------------------------------------
@@ -29,27 +29,7 @@ CREATE TABLE IF NOT EXISTS `attach` (
   CONSTRAINT `FK_attach_gagu` FOREIGN KEY (`gagu_id`) REFERENCES `gagu` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8mb4 COMMENT='이미지';
 
--- 테이블 데이터 gagushop.attach:~17 rows (대략적) 내보내기
-/*!40000 ALTER TABLE `attach` DISABLE KEYS */;
-INSERT IGNORE INTO `attach` (`id`, `gagu_id`, `filename`) VALUES
-	(10, 47, 'ghgh.jpg'),
-	(11, 47, 'S600_ebf27610-105a-4261-b7b9-cf9f8aec62a4.png'),
-	(12, 48, '11992340234270.jpg'),
-	(13, 49, 'ghgh.jpg'),
-	(14, 50, 'S600_ebf27610-105a-4261-b7b9-cf9f8aec62a4.png'),
-	(15, 51, '11992340234270.jpg'),
-	(16, 52, 'ghgh.jpg'),
-	(17, 53, '11992340234270.jpg'),
-	(18, 54, 'ghgh.jpg'),
-	(19, 55, '222.jpg'),
-	(20, 55, '333.jpg'),
-	(21, 56, '222.jpg'),
-	(22, 56, '111.jpg'),
-	(23, 56, '11992340234270.jpg'),
-	(24, 57, '333.jpg'),
-	(25, 57, '222.jpg'),
-	(26, 57, 'S600_ebf27610-105a-4261-b7b9-cf9f8aec62a4.png');
-/*!40000 ALTER TABLE `attach` ENABLE KEYS */;
+-- 내보낼 데이터가 선택되어 있지 않습니다.
 
 -- 테이블 gagushop.cart 구조 내보내기
 DROP TABLE IF EXISTS `cart`;
@@ -65,9 +45,7 @@ CREATE TABLE IF NOT EXISTS `cart` (
   CONSTRAINT `FK_cart_member` FOREIGN KEY (`member_id`) REFERENCES `member` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB AUTO_INCREMENT=107 DEFAULT CHARSET=utf8mb4 COMMENT='장바구니';
 
--- 테이블 데이터 gagushop.cart:~0 rows (대략적) 내보내기
-/*!40000 ALTER TABLE `cart` DISABLE KEYS */;
-/*!40000 ALTER TABLE `cart` ENABLE KEYS */;
+-- 내보낼 데이터가 선택되어 있지 않습니다.
 
 -- 테이블 gagushop.comment 구조 내보내기
 DROP TABLE IF EXISTS `comment`;
@@ -85,9 +63,7 @@ CREATE TABLE IF NOT EXISTS `comment` (
   CONSTRAINT `FK__member` FOREIGN KEY (`member_id`) REFERENCES `member` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='댓글(평점)';
 
--- 테이블 데이터 gagushop.comment:~0 rows (대략적) 내보내기
-/*!40000 ALTER TABLE `comment` DISABLE KEYS */;
-/*!40000 ALTER TABLE `comment` ENABLE KEYS */;
+-- 내보낼 데이터가 선택되어 있지 않습니다.
 
 -- 테이블 gagushop.gagu 구조 내보내기
 DROP TABLE IF EXISTS `gagu`;
@@ -106,117 +82,7 @@ CREATE TABLE IF NOT EXISTS `gagu` (
   CONSTRAINT `FK_gagu_member` FOREIGN KEY (`member_id`) REFERENCES `member` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB AUTO_INCREMENT=158 DEFAULT CHARSET=utf8mb4 COMMENT='가구';
 
--- 테이블 데이터 gagushop.gagu:~111 rows (대략적) 내보내기
-/*!40000 ALTER TABLE `gagu` DISABLE KEYS */;
-INSERT IGNORE INTO `gagu` (`id`, `name`, `price`, `gagu_img`, `keyword`, `member_id`) VALUES
-	(47, '침대이미지323', 323232, '11992340234270.jpg', '매트리스', 'kopo'),
-	(48, '침대이미지', 3231, '11992340234270.jpg', '거실장', 'kopo'),
-	(49, '침대이미지323', 3232, 'ghgh.jpg', '거실장', 'kopo'),
-	(50, '침대이미지', 3213, 'S600_ebf27610-105a-4261-b7b9-cf9f8aec62a4.png', '수납장', 'kopo'),
-	(51, '홍성민', 3123, 'ghgh.jpg', '거실장', 'kopo'),
-	(52, '침대이미지6556', 323, '11992340234270.jpg', '거실장', 'kopo'),
-	(53, '3123', 213, 'S600_ebf27610-105a-4261-b7b9-cf9f8aec62a4.png', '거실장', 'kopo'),
-	(54, '침대이미지3', 32, 'ghgh.jpg', '거실장', 'kopo'),
-	(55, '침대이미지666', 423421, '111.jpg', '거실장', 'kopo'),
-	(56, '침대대대대', 6464, '333.jpg', '거실장', 'kopo'),
-	(57, '침대침대침대', 6566, '11992340234270.jpg', '거실장', 'kopo'),
-	(58, '테스트0', 0, NULL, '거실장', 'kopo'),
-	(59, '테스트1', 1000, NULL, '거실장', 'kopo'),
-	(60, '테스트2', 2000, NULL, '거실장', 'kopo'),
-	(61, '테스트3', 3000, NULL, '거실장', 'kopo'),
-	(62, '테스트4', 4000, NULL, '거실장', 'kopo'),
-	(63, '테스트5', 5000, NULL, '거실장', 'kopo'),
-	(64, '테스트6', 6000, NULL, '거실장', 'kopo'),
-	(65, '테스트7', 7000, NULL, '거실장', 'kopo'),
-	(66, '테스트8', 8000, NULL, '거실장', 'kopo'),
-	(67, '테스트9', 9000, NULL, '거실장', 'kopo'),
-	(68, '테스트10', 10000, NULL, '거실장', 'kopo'),
-	(69, '테스트11', 11000, NULL, '거실장', 'kopo'),
-	(70, '테스트12', 12000, NULL, '거실장', 'kopo'),
-	(71, '테스트13', 13000, NULL, '거실장', 'kopo'),
-	(72, '테스트14', 14000, NULL, '거실장', 'kopo'),
-	(73, '테스트15', 15000, NULL, '거실장', 'kopo'),
-	(74, '테스트16', 16000, NULL, '거실장', 'kopo'),
-	(75, '테스트17', 17000, NULL, '거실장', 'kopo'),
-	(76, '테스트18', 18000, NULL, '거실장', 'kopo'),
-	(77, '테스트19', 19000, NULL, '거실장', 'kopo'),
-	(78, '테스트20', 20000, NULL, '거실장', 'kopo'),
-	(79, '테스트21', 21000, NULL, '거실장', 'kopo'),
-	(80, '테스트22', 22000, NULL, '거실장', 'kopo'),
-	(81, '테스트23', 23000, NULL, '거실장', 'kopo'),
-	(82, '테스트24', 24000, NULL, '거실장', 'kopo'),
-	(83, '테스트25', 25000, NULL, '거실장', 'kopo'),
-	(84, '테스트26', 26000, NULL, '거실장', 'kopo'),
-	(85, '테스트27', 27000, NULL, '거실장', 'kopo'),
-	(86, '테스트28', 28000, NULL, '거실장', 'kopo'),
-	(87, '테스트29', 29000, NULL, '거실장', 'kopo'),
-	(88, '테스트30', 30000, NULL, '거실장', 'kopo'),
-	(89, '테스트31', 31000, NULL, '거실장', 'kopo'),
-	(90, '테스트32', 32000, NULL, '거실장', 'kopo'),
-	(91, '테스트33', 33000, NULL, '거실장', 'kopo'),
-	(92, '테스트34', 34000, NULL, '거실장', 'kopo'),
-	(93, '테스트35', 35000, NULL, '거실장', 'kopo'),
-	(94, '테스트36', 36000, NULL, '거실장', 'kopo'),
-	(95, '테스트37', 37000, NULL, '거실장', 'kopo'),
-	(96, '테스트38', 38000, NULL, '거실장', 'kopo'),
-	(97, '테스트39', 39000, NULL, '거실장', 'kopo'),
-	(98, '테스트40', 40000, NULL, '거실장', 'kopo'),
-	(99, '테스트41', 41000, NULL, '거실장', 'kopo'),
-	(100, '테스트42', 42000, NULL, '거실장', 'kopo'),
-	(101, '테스트43', 43000, NULL, '거실장', 'kopo'),
-	(102, '테스트44', 44000, NULL, '거실장', 'kopo'),
-	(103, '테스트45', 45000, NULL, '거실장', 'kopo'),
-	(104, '테스트46', 46000, NULL, '거실장', 'kopo'),
-	(105, '테스트47', 47000, NULL, '거실장', 'kopo'),
-	(106, '테스트48', 48000, NULL, '거실장', 'kopo'),
-	(107, '테스트49', 49000, NULL, '거실장', 'kopo'),
-	(108, '테스트50', 50000, NULL, '거실장', 'kopo'),
-	(109, '테스트51', 51000, NULL, '거실장', 'kopo'),
-	(110, '테스트52', 52000, NULL, '거실장', 'kopo'),
-	(111, '테스트53', 53000, NULL, '거실장', 'kopo'),
-	(112, '테스트54', 54000, NULL, '거실장', 'kopo'),
-	(113, '테스트55', 55000, NULL, '거실장', 'kopo'),
-	(114, '테스트56', 56000, NULL, '거실장', 'kopo'),
-	(115, '테스트57', 57000, NULL, '거실장', 'kopo'),
-	(116, '테스트58', 58000, NULL, '거실장', 'kopo'),
-	(117, '테스트59', 59000, NULL, '거실장', 'kopo'),
-	(118, '테스트60', 60000, NULL, '거실장', 'kopo'),
-	(119, '테스트61', 61000, NULL, '거실장', 'kopo'),
-	(120, '테스트62', 62000, NULL, '거실장', 'kopo'),
-	(121, '테스트63', 63000, NULL, '거실장', 'kopo'),
-	(122, '테스트64', 64000, NULL, '거실장', 'kopo'),
-	(123, '테스트65', 65000, NULL, '거실장', 'kopo'),
-	(124, '테스트66', 66000, NULL, '거실장', 'kopo'),
-	(125, '테스트67', 67000, NULL, '거실장', 'kopo'),
-	(126, '테스트68', 68000, NULL, '거실장', 'kopo'),
-	(127, '테스트69', 69000, NULL, '거실장', 'kopo'),
-	(128, '테스트70', 70000, NULL, '거실장', 'kopo'),
-	(129, '테스트71', 71000, NULL, '거실장', 'kopo'),
-	(130, '테스트72', 72000, NULL, '거실장', 'kopo'),
-	(131, '테스트73', 73000, NULL, '거실장', 'kopo'),
-	(132, '테스트74', 74000, NULL, '거실장', 'kopo'),
-	(133, '테스트75', 75000, NULL, '거실장', 'kopo'),
-	(134, '테스트76', 76000, NULL, '거실장', 'kopo'),
-	(135, '테스트77', 77000, NULL, '거실장', 'kopo'),
-	(136, '테스트78', 78000, NULL, '거실장', 'kopo'),
-	(137, '테스트79', 79000, NULL, '거실장', 'kopo'),
-	(138, '테스트80', 80000, NULL, '거실장', 'kopo'),
-	(139, '테스트81', 81000, NULL, '거실장', 'kopo'),
-	(140, '테스트82', 82000, NULL, '거실장', 'kopo'),
-	(141, '테스트83', 83000, NULL, '거실장', 'kopo'),
-	(142, '테스트84', 84000, NULL, '거실장', 'kopo'),
-	(143, '테스트85', 85000, NULL, '거실장', 'kopo'),
-	(144, '테스트86', 86000, NULL, '거실장', 'kopo'),
-	(145, '테스트87', 87000, NULL, '거실장', 'kopo'),
-	(146, '테스트88', 88000, NULL, '거실장', 'kopo'),
-	(147, '테스트89', 89000, NULL, '거실장', 'kopo'),
-	(148, '테스트90', 90000, NULL, '거실장', 'kopo'),
-	(149, '테스트91', 91000, NULL, '거실장', 'kopo'),
-	(150, '테스트92', 92000, NULL, '거실장', 'kopo'),
-	(151, '테스트93', 93000, NULL, '거실장', 'kopo'),
-	(152, '테스트94', 94000, NULL, '거실장', 'kopo'),
-	(153, '테스트95', 95000, NULL, '거실장', 'kopo');
-/*!40000 ALTER TABLE `gagu` ENABLE KEYS */;
+-- 내보낼 데이터가 선택되어 있지 않습니다.
 
 -- 테이블 gagushop.gagu_keyword 구조 내보내기
 DROP TABLE IF EXISTS `gagu_keyword`;
@@ -227,21 +93,7 @@ CREATE TABLE IF NOT EXISTS `gagu_keyword` (
   KEY `keyword` (`keyword`)
 ) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COMMENT='가구 2차메뉴';
 
--- 테이블 데이터 gagushop.gagu_keyword:~11 rows (대략적) 내보내기
-/*!40000 ALTER TABLE `gagu_keyword` DISABLE KEYS */;
-INSERT IGNORE INTO `gagu_keyword` (`id`, `keyword`) VALUES
-	(6, '거실장'),
-	(2, '매트리스'),
-	(7, '소파'),
-	(10, '수납장'),
-	(9, '식탁'),
-	(8, '악세서리'),
-	(3, '옷장'),
-	(11, '의자'),
-	(1, '침대'),
-	(5, '테이블'),
-	(4, '화장대');
-/*!40000 ALTER TABLE `gagu_keyword` ENABLE KEYS */;
+-- 내보낼 데이터가 선택되어 있지 않습니다.
 
 -- 테이블 gagushop.member 구조 내보내기
 DROP TABLE IF EXISTS `member`;
@@ -254,12 +106,7 @@ CREATE TABLE IF NOT EXISTS `member` (
   KEY `id` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='사용자';
 
--- 테이블 데이터 gagushop.member:~3 rows (대략적) 내보내기
-/*!40000 ALTER TABLE `member` DISABLE KEYS */;
-INSERT IGNORE INTO `member` (`id`, `pwd`, `name`, `phone_number`) VALUES
-	('admin', '*A4B6157319038724E3560894F7F932C8886EBFCF', '홍성민', '01087426723'),
-	('kopo', '*A4B6157319038724E3560894F7F932C8886EBFCF', '홍성민', '01087426723');
-/*!40000 ALTER TABLE `member` ENABLE KEYS */;
+-- 내보낼 데이터가 선택되어 있지 않습니다.
 
 -- 테이블 gagushop.orders 구조 내보내기
 DROP TABLE IF EXISTS `orders`;
@@ -278,34 +125,21 @@ CREATE TABLE IF NOT EXISTS `orders` (
   CONSTRAINT `FK_sales_list_gagu` FOREIGN KEY (`gagu_id`) REFERENCES `gagu` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB AUTO_INCREMENT=58 DEFAULT CHARSET=utf8mb4 COMMENT='주문\r\n';
 
--- 테이블 데이터 gagushop.orders:~3 rows (대략적) 내보내기
-/*!40000 ALTER TABLE `orders` DISABLE KEYS */;
-INSERT IGNORE INTO `orders` (`id`, `count`, `price`, `total`, `sale_date`, `gagu_id`, `member_id`) VALUES
-	(55, 1, 213, 213, '2022-10-25', 53, 'kopo'),
-	(56, 1, 3213, 3213, '2022-10-25', 50, 'kopo'),
-	(57, 1, 3123, 3123, '2022-10-25', 51, 'kopo');
-/*!40000 ALTER TABLE `orders` ENABLE KEYS */;
+-- 내보낼 데이터가 선택되어 있지 않습니다.
 
 -- 테이블 gagushop.wish 구조 내보내기
 DROP TABLE IF EXISTS `wish`;
 CREATE TABLE IF NOT EXISTS `wish` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `gagu_id` int(11) DEFAULT NULL,
-  `member_id` varchar(50) DEFAULT NULL,
-  PRIMARY KEY (`id`),
+  `gagu_id` int(11) NOT NULL,
+  `member_id` varchar(50) NOT NULL,
+  PRIMARY KEY (`gagu_id`,`member_id`),
   KEY `gagu_id` (`gagu_id`),
   KEY `member_id` (`member_id`),
   CONSTRAINT `FK_wish_gagu` FOREIGN KEY (`gagu_id`) REFERENCES `gagu` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `FK_wish_member` FOREIGN KEY (`member_id`) REFERENCES `member` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=52 DEFAULT CHARSET=utf8mb4 COMMENT='클라이언트가 좋아요를 누른 상품';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='클라이언트가 좋아요를 누른 상품';
 
--- 테이블 데이터 gagushop.wish:~4 rows (대략적) 내보내기
-/*!40000 ALTER TABLE `wish` DISABLE KEYS */;
-INSERT IGNORE INTO `wish` (`id`, `gagu_id`, `member_id`) VALUES
-	(47, 48, 'kopo'),
-	(48, 47, 'kopo'),
-	(51, 47, 'admin');
-/*!40000 ALTER TABLE `wish` ENABLE KEYS */;
+-- 내보낼 데이터가 선택되어 있지 않습니다.
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
 /*!40014 SET FOREIGN_KEY_CHECKS=IFNULL(@OLD_FOREIGN_KEY_CHECKS, 1) */;
