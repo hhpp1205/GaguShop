@@ -27,9 +27,9 @@
     </delete>
 
     <select id="allCheckWishByMemberId" resultType="Gagu">
-        SELECT gagu.*, wish.id wish_id FROM gagu, wish
+        SELECT gagu.*, wish.gagu_id wish_gagu_id, wish.member_id wish_member_id FROM gagu, wish
         WHERE gagu.id = wish.gagu_id
-        AND wish.member_id = 'kopo'
+        AND wish.member_id = #{id};
     </select>
 
     <delete id="deleteWishById">

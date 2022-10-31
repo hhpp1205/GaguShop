@@ -119,7 +119,7 @@
       <td>₩ ${item.price}</td>
       <td class="product_td">
         <a href="/gagu/info/${item.id}" class="product_td_a">상세정보</a>
-        <a href="/gagu/wishDelete/${item.wishId}" class="product_td_a">삭제</a>
+        <a href="/gagu/wishDelete/${item.wishGaguId}/${item.wishMemberId}" class="product_td_a">삭제</a>
       </td>
     </tr>
     </c:forEach>

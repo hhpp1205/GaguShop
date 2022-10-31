@@ -28,6 +28,9 @@ public class Gagu {
     //Wish
     //wish가 이미 존재하면 return값이 1 존재하지 않으면 0
     private int wishId;
+    private int wishGaguId;
+    private String wishMemberId;
+
 
     //상품 정렬
     private int  changeSort;

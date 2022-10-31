@@ -238,9 +238,13 @@ public class GaguController {
         return path + "/wish";
     }
 
-    @GetMapping("/wishDelete/{wishId}")
-    public String wishDelete(@PathVariable int wishId, @SessionAttribute Member member){
-        service.deleteWishById(wishId);
+    @GetMapping("/wishDelete/{gaguId}/{memberId}")
+    public String wishDelete(@PathVariable int gaguId, @PathVariable String memberId){
+        Wish wish = new Wish();
+        wish.setGaguId(gaguId);
+        wish.setMemberId(memberId);
+
+        service.deleteWish(wish);
 
 
         return "redirect:/gagu/wish";

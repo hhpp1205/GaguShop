@@ -40,8 +40,4 @@ public class WishDaoImpl implements WishDao {
         return sql.selectList("wish.allCheckWishByMemberId", member);
     }
 
-    @Override
-    public void deleteWishById(int wishId) {
-        sql.delete("wish.deleteWishById", wishId);
-    }
 }

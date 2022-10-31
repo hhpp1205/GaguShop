@@ -16,6 +16,4 @@ public interface WishDao {
     void deleteWishByGaguId(int id);
 
     List<Gagu> allCheckWishByMemberId(Member member);
-
-    void deleteWishById(int wishId);
 }

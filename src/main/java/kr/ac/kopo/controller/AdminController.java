@@ -19,12 +19,12 @@ public class AdminController {
     MemberService memberService;
 
 
-    @GetMapping("/admin")
+    @GetMapping
     public String admin(){
         return "admin/admin";
     }
 
-    @GetMapping("/admin/gagumanager")
+    @GetMapping("/gagumanager")
     public String gagumanager(Pager pager, Model model){
         List<Gagu> list = memberService.adminGagu(pager);
         model.addAttribute("list", list);
