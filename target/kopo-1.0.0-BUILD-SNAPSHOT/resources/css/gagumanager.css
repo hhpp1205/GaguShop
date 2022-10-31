@@ -1,0 +1,85 @@
+.keyword_wrapper{
+    text-align: center;
+    margin-top: 48px;
+    font-size: 20px;
+}
+.keyword{
+    color: #c80a1e;
+}
+.select_count{
+    text-align: center;
+    margin-top: 30px;
+    margin-bottom: -45px;
+}
+.sort_product{
+    width: 1140px;
+    margin: 20px auto 0 auto;
+    padding: 0 48px;
+    text-align: right;
+    font-size: 14px;
+}
+.selected{
+    color: red !important;
+}
+.sort_product a{
+    padding: 0 7px;
+    text-decoration: none;
+    color: black;
+}
+/*페이지 네이션*/
+.ssmc-pagenation {
+    padding: 15px 0;
+    text-align: center;
+    line-height: normal;
+    margin-bottom: 45px;
+}
+.ssmc-pagenation a,
+.ssmc-pagenation strong {
+    display: inline-block;
+    position: relative;
+    margin: 0 -2px;
+    padding: 2px 8px;
+    font-weight: bold;
+    font-size: 16px;
+    color: #333;
+    line-height: normal;
+    text-decoration: none;
+    vertical-align: middle;
+}
+.ssmc-pagenation a:hover,
+.ssmc-pagenation a:active,
+.ssmc-pagenation a:focus {
+    background-color: #f8f8f8;
+}
+.ssmc-pagenation strong {
+    color: #f60;
+}
+.ssmc-pagenation .direction {
+    font-weight: normal;
+    color: #767676;
+    white-space: nowrap;
+}
+.ssmc-pagenation .direction span {
+    font-weight: bold;
+    font-size: 16px;
+}
+.ssmc-pagenation .direction:hover,
+.ssmc-pagenation .direction:active,
+.ssmc-pagenation .direction:focus {
+    background-color: #fff;
+    color: #333;
+}
+h1{
+    text-align: center;
+}
+.menu{
+    text-align: center;
+}
+.menu ul{
+    list-style: none;
+}
+
+.delete_button{
+    text-decoration: none;
+    color: red;
+}

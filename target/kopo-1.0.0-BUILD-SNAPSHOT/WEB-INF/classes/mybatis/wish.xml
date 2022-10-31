@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="wish">
+
+    <select id="checkWish" parameterType="Wish" resultType="Integer">
+        SELECT COUNT(*) FROM wish
+        WHERE gagu_id = #{gaguId}
+        AND member_id = #{memberId}
+    </select>
+
+    <insert id="addWish">
+        INSERT INTO wish
+        VALUES (#{gaguId}, #{memberId})
+    </insert>
+
+
+    <delete id="deleteWish">
+        DELETE FROM wish
+        WHERE gagu_id = #{gaguId}
+        AND member_id = #{memberId}
+    </delete>
+
+    <delete id="deleteWishByGaguId">
+        DELETE FROM wish
+        WHERE gagu_id = #{id}
+    </delete>
+
+    <select id="allCheckWishByMemberId" resultType="Gagu">
+        SELECT gagu.*, wish.gagu_id wish_gagu_id, wish.member_id wish_member_id FROM gagu, wish
+        WHERE gagu.id = wish.gagu_id
+        AND wish.member_id = #{id};
+    </select>
+
+    <delete id="deleteWishById">
+        DELETE FROM wish
+        WHERE id = #{wishId}
+    </delete>
+</mapper>
