@@ -138,11 +138,11 @@
         </div>
         <div class="etc_button">
             <%--좋아요(하트)버튼--%>
-            <button class="btn ${item.wishId == 0 ? "btn-secondary" : "btn-danger"} ${sessionScope.member == null ? "beforeLogin" : ""} like_button">
+            <button type="button" class="btn ${item.wishId == 0 ? "add_like_button btn-secondary" : "delete_like_button btn-danger"}">
                 <i class="bi bi-suit-heart fs-3"></i>
             </button>
             <%--공유하기버튼--%>
-            <button class="btn btn-secondary share_button">
+            <button type="button" class="btn btn-secondary share_button">
                 <i class="bi bi-share-fill fs-3"></i>
             </button>
         </div>

@@ -145,8 +145,8 @@
 <%--페이지네이션--%>
 <div class="ssmc-pagenation">
     <a href="?page=1&keyword=${keyword}" class="direction"><span>&lsaquo;</span></a>
-    <c:forEach var="pager" items="${pager.list}">
-        <a href="/gagu/search?page=${pager}&keyword=${keyword}">${pager}</a>
+    <c:forEach var="pagers" items="${pager.list}">
+        <a class="${pager.page == pagers ? 'selected' : ''}" href="/gagu/search?page=${pagers}&keyword=${keyword}">${pagers}</a>
     </c:forEach>
 <%--    <strong>2</strong>--%>
     <a href="?page=${pager.last}&keyword=${keyword}" class="direction"><span>&rsaquo;</span></a>

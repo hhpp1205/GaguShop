@@ -78,23 +78,48 @@ $('.cart_button').click(function (){
     });
 });
 
-//좋아요 버튼 기능
-$('.like_button').click(function (){
+//좋아요add 버튼 기능
+$('.etc_button').on('click', '.add_like_button', function (e){
+    const button = $(e.target).closest('.etc_button').find('.add_like_button');
+    console.log(button);
+
     $.ajax({
         type : "POST",
-        url : "/gagu/wish",
+        url : "/gagu/addWish",
         data : {
             "gaguId" : $('#gaguId').val()
         },
         success : function (data) {
-            console.log(data);
+            // console.log(data);
 
-            if(data == "add"){
-                $('.like_button').removeClass("btn-secondary");
-                $('.like_button').addClass("btn-danger");
-            }else if(data == "delete") {
-                $('.like_button').removeClass("btn-danger");
-                $('.like_button').addClass("btn-secondary");
+            if (data == "add") {
+                $(button).removeClass("btn-secondary");
+                $(button).addClass("btn-danger");
+                $(button).removeClass("add_like_button");
+                $(button).addClass("delete_like_button");
+            }
+        }
+    });
+});
+//좋아요delete 버튼 기능
+$('.etc_button').on('click', '.delete_like_button', function (e){
+    const button = $(e.target).closest('.etc_button').find('.delete_like_button');
+    console.log(button);
+
+    $.ajax({
+        type : "POST",
+        url : "/gagu/deleteWish",
+        data : {
+            "gaguId" : $('#gaguId').val()
+        },
+        success : function (data) {
+            // console.log(data);
+
+            if(data == "delete") {
+                $(button).removeClass("btn-danger");
+                $(button).addClass("btn-secondary");
+                $(button).removeClass("delete_like_button");
+                $(button).addClass("add_like_button");
             }
         }
     });
