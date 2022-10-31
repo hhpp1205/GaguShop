@@ -26,4 +26,6 @@ public interface GaguDao {
     int setAdminTotal(Pager pager);
 
     void init(Member member);
+
+    List<Gagu> list();
 }

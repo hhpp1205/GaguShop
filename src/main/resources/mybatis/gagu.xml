@@ -3,7 +3,7 @@
 
 <mapper namespace="gagu">
 
-    <select id="beforeLoginList" resultType="Gagu">
+    <select id="list" resultType="Gagu">
         SELECT g.*, orders_count.* FROM
            (SELECT orders.gagu_id, COUNT(*) cnt FROM gagu, orders
               WHERE gagu.id = orders.gagu_id

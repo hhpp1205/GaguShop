@@ -17,6 +17,11 @@ public class GaguDaoImpl implements GaguDao{
     SqlSession sql;
 
     @Override
+    public List<Gagu> list() {
+        return sql.selectList("gagu.list");
+    }
+
+    @Override
     public void add(Gagu item) {
         sql.insert("gagu.add", item);
     }
@@ -70,4 +75,6 @@ public class GaguDaoImpl implements GaguDao{
     public void init(Member member) {
         sql.delete("gagu.init", member);
     }
+
+
 }

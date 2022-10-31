@@ -29,11 +29,6 @@ public class MemberServiceImpl implements MemberService{
             return false;
     }
 
-    @Override
-    public List<Gagu> beforeLoginList() {
-        return dao.beforeLoginList();
-    }
-
 
     @Override
     public void signup(Member member) {
@@ -65,12 +60,6 @@ public class MemberServiceImpl implements MemberService{
     @Override
     public List<Member> findId(Member member) {
         return dao.findId(member);
-    }
-
-
-    @Override
-    public List<Gagu> afterLoginList(String memberId) {
-        return dao.afterLoginList(memberId);
     }
 
     @Override

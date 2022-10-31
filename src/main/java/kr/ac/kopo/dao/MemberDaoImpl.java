@@ -20,11 +20,6 @@ public class MemberDaoImpl implements MemberDao{
     }
 
     @Override
-    public List<Gagu> beforeLoginList() {
-        return sql.selectList("gagu.beforeLoginList");
-    }
-
-    @Override
     public void signup(Member member) {
         sql.insert("member.signup", member);
     }
@@ -47,11 +42,6 @@ public class MemberDaoImpl implements MemberDao{
     @Override
     public List<Member> findId(Member member) {
         return sql.selectList("member.findId", member);
-    }
-
-    @Override
-    public List<Gagu> afterLoginList(String memberId) {
-        return sql.selectList("gagu.afterLoginList", memberId);
     }
 
     @Override

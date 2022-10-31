@@ -2,6 +2,7 @@ package kr.ac.kopo.controller;
 
 import kr.ac.kopo.model.Gagu;
 import kr.ac.kopo.model.Member;
+import kr.ac.kopo.service.GaguService;
 import kr.ac.kopo.util.Pager;
 import kr.ac.kopo.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,19 +19,14 @@ public class RootController {
 
     @Autowired
     MemberService service;
+    @Autowired
+    GaguService gaguService;
 
     @GetMapping("/")
-    public String index(Model model, HttpSession session){
-        Member member = (Member) session.getAttribute("member");
-//        if(member == null){
-            List<Gagu> list = service.beforeLoginList();
+    public String index(Model model){
+            List<Gagu> list = gaguService.list();
             model.addAttribute("list", list);
             return "index";
-//        }
-//        String memberId = member.getId();
-//        List<Gagu> list = service.afterLoginList(memberId);
-//        model.addAttribute("list", list);
-//        return "index";
     }
 
     @GetMapping("/login")
@@ -138,17 +134,6 @@ public class RootController {
         return "login";
     }
 
-    @GetMapping("/admin")
-    public String admin(){
-        return "admin/admin";
-    }
 
-    @GetMapping("/admin/gagumanager")
-    public String gagumanager(Pager pager, Model model){
-        List<Gagu> list = service.adminGagu(pager);
-        model.addAttribute("list", list);
-        model.addAttribute("pager", pager);
-        return "/admin/gagumanager";
-    }
 
 }

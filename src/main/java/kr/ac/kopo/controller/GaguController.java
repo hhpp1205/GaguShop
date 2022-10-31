@@ -35,44 +35,6 @@ public class GaguController {
         return path + "add";
     }
 
-//    @PostMapping("/add")
-//    public String add(Gagu item, @RequestParam(value = "file", required = false)MultipartFile file, @SessionAttribute Member member) throws IOException {
-//
-//             item.setMemberId(member.getId());
-//        try{
-//
-//
-//            if(!file.isEmpty()){
-//                String filename = file.getOriginalFilename();
-//                file.transferTo(new File("C:/img\\" + filename));
-//                item.setGaguImg(filename);
-//            }
-//
-//
-//            List<Attach> list = new ArrayList<Attach>();
-//
-//            for(MultipartFile attach : item.getAttach()){
-//                if(attach != null && !attach.isEmpty()){
-//                    attach.transferTo(new File("C:/img\\" + attach.getOriginalFilename()));
-//
-//                    Attach attachItem = new Attach();
-//
-//                    attachItem.setFilename(attach.getOriginalFilename());
-//                    list.add(attachItem);
-//                }
-//            }
-//            item.setAttachs(list);
-//
-//            service.add(item);
-//
-//        }catch (Exception e){
-//            e.printStackTrace();
-//        }
-//
-//        return "redirect:../";
-//    }
-
-
     @PostMapping("/add")
     public String add(Gagu item, @RequestParam(value = "file", required = false)MultipartFile file, @SessionAttribute Member member) throws IOException {
 
@@ -119,7 +81,7 @@ public class GaguController {
         return "redirect:/";
     }
 
-    @GetMapping("init")
+    @GetMapping("/init")
     public String init(@SessionAttribute Member member){
         if(member.getId().equals("admin")){
             service.init(member);
@@ -134,12 +96,13 @@ public class GaguController {
         Wish wish = new Wish();
         wish.setGaguId(id);
         Member member = (Member) session.getAttribute("member");
-        if(member == null){ // 로그인 전
+        // 로그인 전
+        if(member == null){
             Gagu item = service.info(id);
             model.addAttribute("item", item);
-
             return path + "info";
-        }else{ // 로그인 후
+        // 로그인 후
+        }else{
             wish.setMemberId(member.getId());
             if(service.checkWish(wish) == 0){
                 Gagu item = service.info(id);
@@ -196,9 +159,12 @@ public class GaguController {
 
     @RequestMapping("/delete/{id}")
     public String delete(@PathVariable int id, @SessionAttribute Member member){
-        service.delete(id);
+        if(member.getId().equals("admin")){
+            service.delete(id);
 
-        return "redirect:/admin/gagumanager";
+            return "redirect:/admin/gagumanager";
+        }
+        return "redirect:/";
     }
 
     @ResponseBody
@@ -248,44 +214,20 @@ public class GaguController {
         return "gagu/search";
     }
 
-//    @ResponseBody
-//    @PostMapping("/wish")
-//    public String addDeleteWish(Wish wish, @SessionAttribute Member member){
-//
-//        StopWatch stopWatch = new StopWatch();
-//        stopWatch.start();
-//
-//        wish.setMemberId(member.getId());
-//        if(service.checkWish(wish) == 0){
-//            service.addWish(wish);
-//            stopWatch.stop();
-//            System.out.println(stopWatch.prettyPrint());
-//            return "add";
-//        }else {
-//            service.deleteWish(wish);
-//            stopWatch.stop();
-//            System.out.println(stopWatch.prettyPrint());
-//            return "delete";
-//        }
-//    }
+    @ResponseBody
+    @PostMapping("/addWish")
+    public String addWish(Wish wish, @SessionAttribute Member member){
+        wish.setMemberId(member.getId());
+        service.addWish(wish);
+        return "add";
+    }
 
     @ResponseBody
-    @PostMapping("/wish")
-    public String addDeleteWish(Wish wish, @SessionAttribute Member member){
-
-        StopWatch stopWatch = new StopWatch();
-        stopWatch.start();
-
-        wish.setMemberId(member.getId());
-        if(service.checkWish(wish) == 0){
-            stopWatch.stop();
-            System.out.println(stopWatch.prettyPrint());
-            return "add";
-        }else {
-            stopWatch.stop();
-            System.out.println(stopWatch.prettyPrint());
+    @PostMapping("/deleteWish")
+    public String deleteWish(Wish wish, @SessionAttribute Member member){
+            wish.setMemberId(member.getId());
+            service.deleteWish(wish);
             return "delete";
-        }
     }
 
     @GetMapping("/wish")

@@ -10,8 +10,6 @@ public interface MemberDao {
 
     Member login(Member member);
 
-    List<Gagu> beforeLoginList();
-
     void signup(Member member);
 
     int checkId(String id);
@@ -22,7 +20,6 @@ public interface MemberDao {
 
     List<Member> findId(Member member);
 
-    List<Gagu> afterLoginList(String memberId);
 
     int findIdCheck(Member member);
 

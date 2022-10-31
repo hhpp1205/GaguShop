@@ -9,8 +9,6 @@ import java.util.List;
 public interface MemberService {
     boolean login(Member member);
 
-    List<Gagu> beforeLoginList();
-
     void signup(Member member);
 
     boolean checkId(String id);
@@ -21,11 +19,10 @@ public interface MemberService {
 
     List<Member> findId(Member member);
 
-    List<Gagu> afterLoginList(String memberId);
-
     int findIdCheck(Member member);
 
     int findPwdCheck(Member member);
 
     List<Gagu> adminGagu(Pager pager);
+
 }

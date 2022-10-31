@@ -2,7 +2,8 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="wish">
-    <select id="checkWish" resultType="Integer">
+
+    <select id="checkWish" parameterType="Wish" resultType="Integer">
         SELECT COUNT(*) FROM wish
         WHERE gagu_id = #{gaguId}
         AND member_id = #{memberId}
@@ -10,7 +11,7 @@
 
     <insert id="addWish">
         INSERT INTO wish
-        VALUES (NULL, #{gaguId}, #{memberId})
+        VALUES (#{gaguId}, #{memberId})
     </insert>
 
 

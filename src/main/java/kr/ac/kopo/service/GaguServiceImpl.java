@@ -100,20 +100,15 @@ public class GaguServiceImpl implements GaguService{
         wishDao.addWish(wish);
     }
 
-//    @Override
-//    public int checkWish(Wish wish) {
-//        return  wishDao.checkWish(wish);
-//    }
-
     @Override
     public int checkWish(Wish wish) {
         int result = wishDao.checkWish(wish);
 
-        if(result == 0){
-            wishDao.addWish(wish);
-        }else {
-            wishDao.deleteWish(wish);
-        }
+//        if(result == 0){
+//            wishDao.addWish(wish);
+//        }else {
+//            wishDao.deleteWish(wish);
+//        }
         return result;
     }
 
@@ -148,6 +143,11 @@ public class GaguServiceImpl implements GaguService{
     @Override
     public void init(Member member) {
         dao.init(member);
+    }
+
+    @Override
+    public List<Gagu> list() {
+        return dao.list();
     }
 
     @Override
