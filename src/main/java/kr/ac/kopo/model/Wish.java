@@ -10,4 +10,12 @@ public class Wish {
     private String memberId;
     private int gaguId;
 
+    @Override
+    public String toString() {
+        return "Wish{" +
+                "id=" + id +
+                ", memberId='" + memberId + '\'' +
+                ", gaguId=" + gaguId +
+                '}';
+    }
 }

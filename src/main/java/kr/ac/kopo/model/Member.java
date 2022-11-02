@@ -12,5 +12,14 @@ public class Member {
     private String signupOk;
     private String phoneNumber;
 
-
+    @Override
+    public String toString() {
+        return "Member{" +
+                "id='" + id + '\'' +
+                ", pwd='" + pwd + '\'' +
+                ", name='" + name + '\'' +
+                ", signupOk='" + signupOk + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                '}';
+    }
 }

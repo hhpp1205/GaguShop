@@ -15,7 +15,9 @@ import javax.servlet.http.HttpSession;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 @RequestMapping("/gagu")
@@ -216,9 +218,12 @@ public class GaguController {
 
     @ResponseBody
     @PostMapping("/addWish")
-    public String addWish(Wish wish, @SessionAttribute Member member){
+    public String addWish(Wish wish, @SessionAttribute Member member, HttpSession session){
+        String gaguId = Integer.toString(wish.getGaguId());
+
         wish.setMemberId(member.getId());
-        service.addWish(wish);
+        session.setAttribute(gaguId, wish);
+
         return "add";
     }
 
