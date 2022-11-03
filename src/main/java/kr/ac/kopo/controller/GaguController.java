@@ -4,10 +4,14 @@ import kr.ac.kopo.model.*;
 import kr.ac.kopo.util.MultipartBinder;
 import kr.ac.kopo.util.Pager;
 import kr.ac.kopo.service.GaguService;
+import kr.ac.kopo.validation.Gaguvalidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.StopWatch;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -25,6 +29,12 @@ public class GaguController {
 
     @Autowired
     GaguService service;
+    @Autowired
+    Gaguvalidator gaguvalidator;
+    @InitBinder
+    public void init(WebDataBinder dataBinder){
+        dataBinder.addValidators(gaguvalidator);
+    }
 
     final String path = "gagu/";
 
@@ -38,7 +48,12 @@ public class GaguController {
     }
 
     @PostMapping("/add")
-    public String add(Gagu item, @RequestParam(value = "file", required = false)MultipartFile file, @SessionAttribute Member member) throws IOException {
+    public String add(@Validated @ModelAttribute Gagu item, BindingResult bindingResult, @RequestParam(value = "file", required = false)MultipartFile file, @SessionAttribute Member member, Model model) throws IOException {
+
+        if(bindingResult.hasErrors()){
+            model.addAttribute("message", "상품 등록에 실패 하였습니다.");
+            return path + "add";
+        }
 
         MultipartBinder binder = new MultipartBinder();
 
@@ -66,6 +81,7 @@ public class GaguController {
         }catch (Exception e){
             e.printStackTrace();
         }
+
 
         return "redirect:../";
     }
@@ -219,11 +235,12 @@ public class GaguController {
     @ResponseBody
     @PostMapping("/addWish")
     public String addWish(Wish wish, @SessionAttribute Member member, HttpSession session){
-        String gaguId = Integer.toString(wish.getGaguId());
+//        String gaguId = Integer.toString(wish.getGaguId());
+//
+//        wish.setMemberId(member.getId());
+//        session.setAttribute(gaguId, wish);
 
-        wish.setMemberId(member.getId());
-        session.setAttribute(gaguId, wish);
-
+        service.addWish(wish);
         return "add";
     }
 

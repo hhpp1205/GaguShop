@@ -14,9 +14,9 @@
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
     </listener>
 <!--    세션이벤트 리스너-->
-    <listener>
-        <listener-class>kr.ac.kopo.util.SessionDestroyedEvent</listener-class>
-    </listener>
+<!--    <listener>-->
+<!--        <listener-class>kr.ac.kopo.util.SessionDestroyedEvent</listener-class>-->
+<!--    </listener>-->
 
     <!-- Processes application requests -->
     <servlet>
