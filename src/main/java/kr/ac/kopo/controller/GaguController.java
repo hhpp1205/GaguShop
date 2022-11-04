@@ -31,7 +31,7 @@ public class GaguController {
     GaguService service;
     @Autowired
     Gaguvalidator gaguvalidator;
-    @InitBinder
+    @InitBinder("Gagu")
     public void init(WebDataBinder dataBinder){
         dataBinder.addValidators(gaguvalidator);
     }
