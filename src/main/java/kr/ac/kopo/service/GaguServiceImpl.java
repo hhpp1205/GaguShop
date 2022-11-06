@@ -29,11 +29,14 @@ public class GaguServiceImpl implements GaguService{
     public void add(Gagu item) {
         dao.add(item);
 
-        for(Attach attach : item.getAttachs()){
-            attach.setGaguId(item.getId());
+        if (item.getAttachs() != null) {
+            for(Attach attach : item.getAttachs()){
+                attach.setGaguId(item.getId());
 
-            attachDao.add(attach);
+                attachDao.add(attach);
+            }
         }
+
     }
 
     @Override

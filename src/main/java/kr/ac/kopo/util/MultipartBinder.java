@@ -3,6 +3,8 @@ package kr.ac.kopo.util;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
+import java.io.IOException;
+import java.util.Optional;
 import java.util.UUID;
 
 public class MultipartBinder {
@@ -24,6 +26,8 @@ public class MultipartBinder {
         }catch (Exception e){
             e.printStackTrace();
         }
+
+
 
 
         return filename;

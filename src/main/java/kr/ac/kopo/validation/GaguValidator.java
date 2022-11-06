@@ -8,7 +8,7 @@ import org.springframework.validation.Validator;
 
 
 @Component
-public class Gaguvalidator implements Validator {
+public class GaguValidator implements Validator {
 
 
     @Override

@@ -4,11 +4,10 @@ import kr.ac.kopo.model.*;
 import kr.ac.kopo.util.MultipartBinder;
 import kr.ac.kopo.util.Pager;
 import kr.ac.kopo.service.GaguService;
-import kr.ac.kopo.validation.Gaguvalidator;
+import kr.ac.kopo.validation.GaguValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.util.StopWatch;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.WebDataBinder;
@@ -16,12 +15,11 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpSession;
-import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.Arrays;
 import java.util.List;
-import java.util.Map;
+import java.util.Optional;
 
 @Controller
 @RequestMapping("/gagu")
@@ -29,12 +27,13 @@ public class GaguController {
 
     @Autowired
     GaguService service;
-    @Autowired
-    Gaguvalidator gaguvalidator;
-    @InitBinder("Gagu")
-    public void init(WebDataBinder dataBinder){
-        dataBinder.addValidators(gaguvalidator);
-    }
+
+//    @Autowired
+//    GaguValidator gaguvalidator;
+//    @InitBinder("Gagu")
+//    public void init(WebDataBinder dataBinder){
+//        dataBinder.addValidators(gaguvalidator);
+//    }
 
     final String path = "gagu/";
 
@@ -48,12 +47,7 @@ public class GaguController {
     }
 
     @PostMapping("/add")
-    public String add(@Validated @ModelAttribute Gagu item, BindingResult bindingResult, @RequestParam(value = "file", required = false)MultipartFile file, @SessionAttribute Member member, Model model) throws IOException {
-
-        if(bindingResult.hasErrors()){
-            model.addAttribute("message", "상품 등록에 실패 하였습니다.");
-            return path + "add";
-        }
+    public String add(Gagu item, @RequestParam(value = "file", required = false)MultipartFile file, @SessionAttribute Member member, Model model) throws IOException {
 
         MultipartBinder binder = new MultipartBinder();
 
@@ -66,23 +60,23 @@ public class GaguController {
 
             List<Attach> list = new ArrayList<Attach>();
 
-            for(MultipartFile attach : item.getAttach()){
-                if(attach != null && !attach.isEmpty()){
-                    Attach attachItem = new Attach();
 
-                    attachItem.setFilename(binder.saveReturnName(attach));
-                    list.add(attachItem);
+            if (item.getAttach() != null) {
+                for(MultipartFile attach : item.getAttach()){
+                    if(attach != null && !attach.isEmpty()){
+                        Attach attachItem = new Attach();
+
+                        attachItem.setFilename(binder.saveReturnName(attach));
+                        list.add(attachItem);
+                    }
                 }
+                item.setAttachs(list);
             }
-            item.setAttachs(list);
-
             service.add(item);
 
         }catch (Exception e){
             e.printStackTrace();
         }
-
-
         return "redirect:../";
     }
 
