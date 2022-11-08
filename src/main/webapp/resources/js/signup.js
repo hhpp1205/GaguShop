@@ -27,7 +27,11 @@ function checkValue(){
 }
 
     $('#checkId').click(function (){
-        console.log("click");
+        if ($('#id').val() == null || $('#id').val() == '') {
+            alert("아이디를 입력하세요.");
+            return;
+        }
+
         $.ajax({
             type : "POST",
             url : "/checkId",
