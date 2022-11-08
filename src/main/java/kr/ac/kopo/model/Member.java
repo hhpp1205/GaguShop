@@ -8,9 +8,10 @@ import lombok.Setter;
 public class Member {
     private String id;
     private String pwd;
+    private String pwdCheck;
     private String name;
-    private String signupOk;
     private String phoneNumber;
+    private String signupOk;
 
     @Override
     public String toString() {

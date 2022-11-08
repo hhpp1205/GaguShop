@@ -1,5 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <!-- CSS only -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
 <!-- JavaScript Bundle with Popper -->
@@ -101,25 +103,35 @@
 
 <div class="loginbox">
   <h2>회원가입</h2>
-  <form class="signup-form" method="post" name="signup_form">
+  <form:form modelAttribute="member" class="signup-form" method="post" name="signup_form">
     <div>
       <label for="id">아이디</label>
-      <input type="text" id="id" name="id" placeholder="아이디를 입력해 주세요">
+      <form:input cssErrorClass="error_filed" path="id" type="text" id="id" name="id" placeholder="아이디를 입력해 주세요"/>
       <button type="button" id="checkId">중복확인</button>
+      <form:errors path="id" class="error_filed" element="div"/>
     </div>
       <label for="pwd">비밀번호</label>
-      <input type="password" id="pwd" name="pwd" placeholder="비밀번호를 입력해 주세요">
+      <form:input cssErrorClass="error_filed"  path="pwd" type="password" id="pwd" name="pwd" placeholder="비밀번호를 입력해 주세요"/>
+      <form:errors path="pwd" class="error_filed" element="div"/>
       <label>비밀번호확인:</label>
-      <input type="password" id="pwdCheck" name="pwdCheck" placeholder="비밀번호확인을 입력해 주세요">
+      <form:input cssErrorClass="error_filed" path="pwdCheck" type="password" id="pwdCheck" name="pwdCheck" placeholder="비밀번호확인을 입력해 주세요"/>
+      <form:errors path="pwdCheck" class="error_filed" element="div"/>
+        <spring:hasBindErrors name="member">
+          <c:forEach items="${errors.globalErrors}" var="error">
+            <div class="error_filed">${error.defaultMessage}</div>
+          </c:forEach>
+        </spring:hasBindErrors>
       <label>이름:</label>
-      <input type="text" id="name" name="name" placeholder="이름을 입력해 주세요">
+      <form:input cssErrorClass="error_filed" path="name" type="text" id="name" name="name" placeholder="이름을 입력해 주세요"/>
+      <form:errors path="name" class="error_filed" element="div" />
       <label>전화번호:</label>
-      <input type="number" id="phoneNumber" name="phoneNumber" placeholder="- 없이 입력하세요">
+      <form:input cssErrorClass="error_filed" path="phoneNumber" type="number" id="phoneNumber" name="phoneNumber" placeholder="- 없이 입력하세요"/>
+     <form:errors path="phoneNumber" class="error_filed" element="div"/>
     <div class="button_wrapper">
       <button class="signup_button" type="button" onclick="checkValue()">가입하기</button>
       <button class="cancel_button" type="button">취소</button>
     </div>
-  </form>
+  </form:form>
 </div>
 <!-- Footer-->
 <footer class="py-5" style="background-color: #EBE1D7;">

@@ -5,9 +5,13 @@ import kr.ac.kopo.model.Member;
 import kr.ac.kopo.service.GaguService;
 import kr.ac.kopo.util.Pager;
 import kr.ac.kopo.service.MemberService;
+import kr.ac.kopo.validation.MemberAddForm;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.SystemEnvironmentPropertySource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
@@ -34,6 +38,8 @@ public class RootController {
         return "login";
     }
 
+
+
     @ResponseBody
     @PostMapping("/login")
     public String login(Member member, HttpSession session){
@@ -50,6 +56,7 @@ public class RootController {
             return "NO";
         }
     }
+
     @RequestMapping("/logout")
     public String logout(HttpSession session){
         session.invalidate();
@@ -58,12 +65,32 @@ public class RootController {
     }
 
     @GetMapping("/signup")
-    public String signup(){
+    public String signupForm(Model model){
+        model.addAttribute("member", new Member());
         return "signup";
     }
 
     @PostMapping("/signup")
-    public String signup(Member member){
+    public String signup(@Validated @ModelAttribute("member") MemberAddForm form, BindingResult bindingResult, Model model){
+
+        //비밀번호 비밀번호확인 검증
+        if (!form.getPwd().equals(form.getPwdCheck())) {
+            bindingResult.reject("pwdNotMatch", "비밀번호와 비밀번호 확인이 일치하지 않습니다.");
+        }
+
+        //오류 발생
+        if (bindingResult.hasErrors()) {
+            System.out.println(bindingResult.getAllErrors());
+            return "/signup";
+        }
+
+        //성공로직
+        Member member = new Member();
+        member.setId(form.getId());
+        member.setPwd(form.getPwd());
+        member.setName(form.getName());
+        member.setPhoneNumber(form.getPhoneNumber());
+
             service.signup(member);
             return "redirect:login";
     }

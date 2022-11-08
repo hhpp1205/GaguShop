@@ -94,3 +94,10 @@ body{ background-color: #ededed; }
 .button_wrapper button{
     margin: 0 20px;
 }
+.error_filed{
+    font-size: 10px;
+    color: red;
+    margin-bottom: 20px;
+    /*margin-top: -17px;*/
+    /*border: 1px solid;*/
+}

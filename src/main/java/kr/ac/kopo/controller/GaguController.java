@@ -4,22 +4,19 @@ import kr.ac.kopo.model.*;
 import kr.ac.kopo.util.MultipartBinder;
 import kr.ac.kopo.util.Pager;
 import kr.ac.kopo.service.GaguService;
-import kr.ac.kopo.validation.GaguValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
-import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.WebDataBinder;
+
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
+
 import java.util.List;
-import java.util.Optional;
+
 
 @Controller
 @RequestMapping("/gagu")
