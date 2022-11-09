@@ -25,12 +25,6 @@ public class GaguController {
     @Autowired
     GaguService service;
 
-//    @Autowired
-//    GaguValidator gaguvalidator;
-//    @InitBinder("Gagu")
-//    public void init(WebDataBinder dataBinder){
-//        dataBinder.addValidators(gaguvalidator);
-//    }
 
     final String path = "gagu/";
 
@@ -199,11 +193,14 @@ public class GaguController {
         return path + "/cart";
     }
 
-    @GetMapping("/deleteCart/{cartId}")
-    public String deleteCart(@PathVariable int cartId){
-        service.deleteCartByCartId(cartId);
-
-        return "redirect:/gagu/cart";
+    @ResponseBody
+    @PostMapping("/deleteCart")
+    public String deleteCart(@RequestParam int cartId){
+        if (service.deleteCartByCartId(cartId) == 1) {
+            return "OK";
+        } else {
+            return "FAIL";
+        }
     }
 
     @GetMapping("/search")
@@ -226,10 +223,7 @@ public class GaguController {
     @ResponseBody
     @PostMapping("/addWish")
     public String addWish(Wish wish, @SessionAttribute Member member, HttpSession session){
-//        String gaguId = Integer.toString(wish.getGaguId());
-//
-//        wish.setMemberId(member.getId());
-//        session.setAttribute(gaguId, wish);
+        wish.setMemberId(member.getId());
 
         service.addWish(wish);
         return "add";
@@ -239,8 +233,10 @@ public class GaguController {
     @PostMapping("/deleteWish")
     public String deleteWish(Wish wish, @SessionAttribute Member member){
             wish.setMemberId(member.getId());
-            service.deleteWish(wish);
+        if (service.deleteWish(wish) == 1) {
             return "delete";
+        }
+            return "FAIL";
     }
 
     @GetMapping("/wish")
@@ -249,18 +245,6 @@ public class GaguController {
 
         model.addAttribute("list", list);
         return path + "/wish";
-    }
-
-    @GetMapping("/wishDelete/{gaguId}/{memberId}")
-    public String wishDelete(@PathVariable int gaguId, @PathVariable String memberId){
-        Wish wish = new Wish();
-        wish.setGaguId(gaguId);
-        wish.setMemberId(memberId);
-
-        service.deleteWish(wish);
-
-
-        return "redirect:/gagu/wish";
     }
 
 }

@@ -116,8 +116,8 @@ public class GaguServiceImpl implements GaguService{
     }
 
     @Override
-    public void deleteWish(Wish wish) {
-        wishDao.deleteWish(wish);
+    public int deleteWish(Wish wish) {
+        return wishDao.deleteWish(wish);
     }
 
     @Override
@@ -159,8 +159,8 @@ public class GaguServiceImpl implements GaguService{
     }
 
     @Override
-    public void deleteCartByCartId(int cartId) {
-        cartDao.deleteCartByCartId(cartId);
+    public int deleteCartByCartId(int cartId) {
+        return cartDao.deleteCartByCartId(cartId);
     }
 
 

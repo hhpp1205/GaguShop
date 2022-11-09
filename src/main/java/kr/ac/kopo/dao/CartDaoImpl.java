@@ -40,8 +40,8 @@ public class CartDaoImpl implements CartDao{
     }
 
     @Override
-    public void deleteCartByCartId(int cartId) {
-        sql.delete("cart.deleteCartByCartId", cartId);
+    public int deleteCartByCartId(int cartId) {
+        return sql.delete("cart.deleteCartByCartId", cartId);
     }
 
     @Override

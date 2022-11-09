@@ -18,7 +18,7 @@ public interface CartDao {
 
     void deleteCartByGaguId(int id);
 
-    void deleteCartByCartId(int cartId);
+    int deleteCartByCartId(int cartId);
 
     void deleteCart(Orders orders);
 }

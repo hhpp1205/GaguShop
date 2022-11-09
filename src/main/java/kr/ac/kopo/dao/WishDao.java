@@ -11,7 +11,7 @@ public interface WishDao {
 
     void addWish(Wish wish);
 
-    void deleteWish(Wish wish);
+    int deleteWish(Wish wish);
 
     void deleteWishByGaguId(int id);
 

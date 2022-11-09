@@ -30,7 +30,7 @@ public interface GaguService {
 
     int checkWish(Wish wish);
 
-    void deleteWish(Wish wish);
+    int deleteWish(Wish wish);
 
     int total(Pager pager, String keyword);
 
@@ -40,7 +40,7 @@ public interface GaguService {
 
     List<Gagu> allCheckWishByMemberId(Member member);
 
-    void deleteCartByCartId(int cartId);
+    int deleteCartByCartId(int cartId);
 
     void init(Member member);
 

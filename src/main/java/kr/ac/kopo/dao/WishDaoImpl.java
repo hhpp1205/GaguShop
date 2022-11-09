@@ -26,8 +26,8 @@ public class WishDaoImpl implements WishDao {
     }
 
     @Override
-    public void deleteWish(Wish wish) {
-        sql.delete("wish.deleteWish", wish);
+    public int deleteWish(Wish wish) {
+        return sql.delete("wish.deleteWish", wish);
     }
 
     @Override

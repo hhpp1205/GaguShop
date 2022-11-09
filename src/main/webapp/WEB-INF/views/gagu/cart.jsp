@@ -126,7 +126,7 @@
              data-price="${item.price}"
              data-total="${item.price * item.cartCount}"
              data-gaguid="${item.id}" >주문하기</a>
-          <a href="/gagu/deleteCart/${item.cartId}" class="product_td_a">삭제</a>
+          <a data-cartid="${item.cartId}" class="product_td_a delete_cart">삭제</a>
         </td>
       </tr>
     </c:forEach>
