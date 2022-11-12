@@ -23,6 +23,9 @@ public class GaguServiceImpl implements GaguService{
     @Autowired
     OrdersDao ordersDao;
 
+    @Autowired
+    ReviewDao reviewDao;
+
 
     @Override
     @Transactional
@@ -151,6 +154,11 @@ public class GaguServiceImpl implements GaguService{
     @Override
     public List<Gagu> list() {
         return dao.list();
+    }
+
+    @Override
+    public void addReview(Review review) {
+        reviewDao.addReview(review);
     }
 
     @Override

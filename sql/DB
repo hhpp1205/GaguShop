@@ -1,6 +1,6 @@
 -- --------------------------------------------------------
 -- 호스트:                          127.0.0.1
--- 서버 버전:                        10.8.4-MariaDB - mariadb.org binary distribution
+-- 서버 버전:                        10.9.2-MariaDB - mariadb.org binary distribution
 -- 서버 OS:                        Win64
 -- HeidiSQL 버전:                  11.3.0.6295
 -- --------------------------------------------------------
@@ -14,12 +14,10 @@
 
 
 -- gagushop 데이터베이스 구조 내보내기
-DROP DATABASE IF EXISTS `gagushop`;
 CREATE DATABASE IF NOT EXISTS `gagushop` /*!40100 DEFAULT CHARACTER SET utf8mb4 */;
 USE `gagushop`;
 
 -- 테이블 gagushop.attach 구조 내보내기
-DROP TABLE IF EXISTS `attach`;
 CREATE TABLE IF NOT EXISTS `attach` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `gagu_id` int(11) NOT NULL,
@@ -32,7 +30,6 @@ CREATE TABLE IF NOT EXISTS `attach` (
 -- 내보낼 데이터가 선택되어 있지 않습니다.
 
 -- 테이블 gagushop.cart 구조 내보내기
-DROP TABLE IF EXISTS `cart`;
 CREATE TABLE IF NOT EXISTS `cart` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `count` int(11) DEFAULT NULL COMMENT '주문갯수',
@@ -43,30 +40,11 @@ CREATE TABLE IF NOT EXISTS `cart` (
   KEY `gagu_id` (`gagu_id`),
   CONSTRAINT `FK_cart_gagu` FOREIGN KEY (`gagu_id`) REFERENCES `gagu` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `FK_cart_member` FOREIGN KEY (`member_id`) REFERENCES `member` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=107 DEFAULT CHARSET=utf8mb4 COMMENT='장바구니';
-
--- 내보낼 데이터가 선택되어 있지 않습니다.
-
--- 테이블 gagushop.comment 구조 내보내기
-DROP TABLE IF EXISTS `comment`;
-CREATE TABLE IF NOT EXISTS `comment` (
-  `comment_no` int(11) NOT NULL AUTO_INCREMENT,
-  `gagu_id` int(11) NOT NULL,
-  `member_id` varchar(50) NOT NULL DEFAULT '',
-  `reg_date` datetime NOT NULL,
-  `comment_star` int(11) NOT NULL,
-  `comment` varchar(1024) DEFAULT NULL,
-  PRIMARY KEY (`comment_no`),
-  KEY `gagu_id` (`gagu_id`),
-  KEY `member_id` (`member_id`),
-  CONSTRAINT `FK__gagu` FOREIGN KEY (`gagu_id`) REFERENCES `gagu` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `FK__member` FOREIGN KEY (`member_id`) REFERENCES `member` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='댓글(평점)';
+) ENGINE=InnoDB AUTO_INCREMENT=108 DEFAULT CHARSET=utf8mb4 COMMENT='장바구니';
 
 -- 내보낼 데이터가 선택되어 있지 않습니다.
 
 -- 테이블 gagushop.gagu 구조 내보내기
-DROP TABLE IF EXISTS `gagu`;
 CREATE TABLE IF NOT EXISTS `gagu` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(100) NOT NULL,
@@ -80,12 +58,11 @@ CREATE TABLE IF NOT EXISTS `gagu` (
   KEY `id` (`id`),
   CONSTRAINT `FK_gagu_gagu_keyword` FOREIGN KEY (`keyword`) REFERENCES `gagu_keyword` (`keyword`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `FK_gagu_member` FOREIGN KEY (`member_id`) REFERENCES `member` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=158 DEFAULT CHARSET=utf8mb4 COMMENT='가구';
+) ENGINE=InnoDB AUTO_INCREMENT=262 DEFAULT CHARSET=utf8mb4 COMMENT='가구';
 
 -- 내보낼 데이터가 선택되어 있지 않습니다.
 
 -- 테이블 gagushop.gagu_keyword 구조 내보내기
-DROP TABLE IF EXISTS `gagu_keyword`;
 CREATE TABLE IF NOT EXISTS `gagu_keyword` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `keyword` varchar(50) DEFAULT NULL,
@@ -96,7 +73,6 @@ CREATE TABLE IF NOT EXISTS `gagu_keyword` (
 -- 내보낼 데이터가 선택되어 있지 않습니다.
 
 -- 테이블 gagushop.member 구조 내보내기
-DROP TABLE IF EXISTS `member`;
 CREATE TABLE IF NOT EXISTS `member` (
   `id` varchar(50) NOT NULL,
   `pwd` varchar(128) NOT NULL,
@@ -109,7 +85,6 @@ CREATE TABLE IF NOT EXISTS `member` (
 -- 내보낼 데이터가 선택되어 있지 않습니다.
 
 -- 테이블 gagushop.orders 구조 내보내기
-DROP TABLE IF EXISTS `orders`;
 CREATE TABLE IF NOT EXISTS `orders` (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '주문번호',
   `count` int(11) DEFAULT NULL COMMENT '제품 주문 갯수',
@@ -123,12 +98,29 @@ CREATE TABLE IF NOT EXISTS `orders` (
   KEY `gagu_id` (`gagu_id`),
   CONSTRAINT `FK_order_member` FOREIGN KEY (`member_id`) REFERENCES `member` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `FK_sales_list_gagu` FOREIGN KEY (`gagu_id`) REFERENCES `gagu` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=58 DEFAULT CHARSET=utf8mb4 COMMENT='주문\r\n';
+) ENGINE=InnoDB AUTO_INCREMENT=60 DEFAULT CHARSET=utf8mb4 COMMENT='주문\r\n';
+
+-- 내보낼 데이터가 선택되어 있지 않습니다.
+
+-- 테이블 gagushop.review 구조 내보내기
+CREATE TABLE IF NOT EXISTS `review` (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '댓글 번호',
+  `review_img` varchar(50) NOT NULL DEFAULT '' COMMENT '댓글 사진',
+  `review_star` int(11) NOT NULL COMMENT '별점',
+  `comment` varchar(1024) NOT NULL COMMENT '댓글내용',
+  `reg_date` date NOT NULL COMMENT '작성일자',
+  `gagu_id` int(11) NOT NULL COMMENT '가구아이디',
+  `member_id` varchar(50) NOT NULL COMMENT '작성자 아이디',
+  PRIMARY KEY (`id`) USING BTREE,
+  KEY `gagu_id` (`gagu_id`),
+  KEY `member_id` (`member_id`),
+  CONSTRAINT `FK__gagu` FOREIGN KEY (`gagu_id`) REFERENCES `gagu` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `FK__member` FOREIGN KEY (`member_id`) REFERENCES `member` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COMMENT='리뷰';
 
 -- 내보낼 데이터가 선택되어 있지 않습니다.
 
 -- 테이블 gagushop.wish 구조 내보내기
-DROP TABLE IF EXISTS `wish`;
 CREATE TABLE IF NOT EXISTS `wish` (
   `gagu_id` int(11) NOT NULL,
   `member_id` varchar(50) NOT NULL,

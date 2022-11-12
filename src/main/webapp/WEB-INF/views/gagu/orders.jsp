@@ -119,7 +119,12 @@
                 <td>₩ ${item.price}</td>
                 <td>${item.count}</td>
                 <td>${item.saleDate}</td>
-                <td class="product_td">${item.total}</td>
+                <td class="product_td">
+                    ₩${item.total}
+                    <div>
+                        <a href="/gagu/reviewForm/${item.id}" class="review_button">리뷰작성</a>
+                    </div>
+                </td>
             </tr>
         </c:forEach>
         </tbody>
@@ -137,5 +142,6 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 <!-- Core theme JS-->
 <script src="/js/scripts.js"></script>
+<script src="/js/orders.js"></script>
 </body>
 </html>

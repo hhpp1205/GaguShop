@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
@@ -245,6 +246,30 @@ public class GaguController {
 
         model.addAttribute("list", list);
         return path + "/wish";
+    }
+
+    @GetMapping("/reviewForm/{gaguId}")
+    public String reviewForm(@PathVariable int gaguId, Model model){
+        model.addAttribute("gaguId", gaguId);
+        return path + "reviewform";
+    }
+
+    @PostMapping("/review")
+    public String addReview(@RequestParam MultipartFile file, Review review,
+                            @SessionAttribute Member member, RedirectAttributes redirectAttributes){
+        MultipartBinder binder = new MultipartBinder();
+
+        if (!file.isEmpty()) {
+            String fileName = binder.saveReturnName(file);
+            review.setReviewImg(fileName);
+        }
+
+        review.setMemberId(member.getId());
+
+        service.addReview(review);
+
+//        redirectAttributes.addAttribute("gaguId", review.getGaguId());
+        return "redirect:/";
     }
 
 }

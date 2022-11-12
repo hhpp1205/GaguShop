@@ -19,7 +19,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="/css/styles.css" rel="stylesheet" />
-    <link href="/css/orders.css" rel="stylesheet">
+    <link href="/css/reviewform.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -97,43 +97,30 @@
     </div>
     </div>
 </nav>
-
-<%--주문 목록--%>
-<div class="container h-auto mb-5">
-    <h1>주문목록</h1>
-    <table class="table">
-        <thead>
-        <tr>
-            <th colspan="2" scope="col">상품정보</th>
-            <th scope="col">단가</th>  <%--1개당가격--%>
-            <th scope="col">수량</th>
-            <th scope="col">구매 일</th> <%--총 가격--%>
-            <th scope="col">총 가격</th>
-        </tr>
-        </thead>
-        <tbody>
-        <c:forEach var="item" items="${list}">
-            <tr>
-                <td><img  src="/loadImg/${item.gaguImg}" /></td>
-                <td>${item.name}</td>
-                <td>₩ ${item.price}</td>
-                <td>${item.count}</td>
-                <td>${item.saleDate}</td>
-                <td class="product_td">
-                    ₩${item.total}
-                    <div>
-                        <a href="/gagu/reviewForm/${item.id}" class="review_button">리뷰작성</a>
-                    </div>
-                </td>
-            </tr>
-        </c:forEach>
-        </tbody>
-    </table>
+<!-- Header-->
+<div class="container">
+    <form method="post" id="review-form" action="/gagu/review" enctype="multipart/form-data">
+        <input type="hidden" name="gaguId" value="${gaguId}">
+        <fieldset>
+            <legend>별점</legend>
+            <input type="radio" name="reviewStar" value="5" id="rate1"><label for="rate1">⭐</label>
+            <input type="radio" name="reviewStar" value="4" id="rate2"><label for="rate2">⭐</label>
+            <input type="radio" name="reviewStar" value="3" id="rate3"><label for="rate3">⭐</label>
+            <input type="radio" name="reviewStar" value="2" id="rate4"><label for="rate4">⭐</label>
+            <input type="radio" name="reviewStar" value="1" id="rate5"><label for="rate5">⭐</label>
+        </fieldset>
+        <div class="mb-3">
+            <input class="form-control" name="file" type="file" id="formFile">
+        </div>
+        <div class="form-floating mb-3">
+            <textarea class="form-control" id="floatingTextarea2" name="comment" style="height: 500px"></textarea>
+            <label for="floatingTextarea2">리뷰를 작성해주세요</label>
+        </div>
+        <div>
+            <button type="submit">완료</button>
+        </div>
+    </form>
 </div>
-
-
-
-
 <!-- Footer-->
 <footer class="py-5" style="background-color: #EBE1D7;">
     <div class="container"><p class="m-0 text-center" style="color: #525252;">Daejeon Polytechnic &reg; HongSeongMin</p></div>
@@ -142,6 +129,5 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 <!-- Core theme JS-->
 <script src="/js/scripts.js"></script>
-<script src="/js/orders.js"></script>
 </body>
 </html>

@@ -45,4 +45,7 @@ public interface GaguService {
     void init(Member member);
 
     List<Gagu> list();
+
+
+    void addReview(Review review);
 }

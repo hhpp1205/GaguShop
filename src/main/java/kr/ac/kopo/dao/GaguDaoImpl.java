@@ -2,6 +2,7 @@ package kr.ac.kopo.dao;
 
 import kr.ac.kopo.model.Gagu;
 import kr.ac.kopo.model.Member;
+import kr.ac.kopo.model.Review;
 import kr.ac.kopo.util.Pager;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +21,7 @@ public class GaguDaoImpl implements GaguDao{
     public List<Gagu> list() {
         return sql.selectList("gagu.list");
     }
+
 
     @Override
     public void add(Gagu item) {

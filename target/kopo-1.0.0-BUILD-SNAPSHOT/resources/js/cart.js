@@ -112,6 +112,26 @@ $('.orderButton_wrapper .selectOrder_button').click(function (){
     location.href = "/gagu/cart";
 });
 
+$('.delete_cart').click(function (){
+    const cartId = $(this).data('cartid');
+
+    $.ajax({
+        type: 'POST',
+        url : '/gagu/deleteCart',
+        data : {
+            'cartId' : cartId
+        },
+        success : data =>{
+            if (data == 'OK') {
+                $(this).closest('tr').remove();
+            } else {
+                alert("삭제실패");
+            }
+        }
+    })
+
+})
+
 
 
 

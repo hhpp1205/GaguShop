@@ -147,7 +147,20 @@
             </button>
         </div>
     </div>
+    <%--댓글--%>
+    <div>
+        댓글영역
+    </div>
+    <div>
+        <div class="row">
+            <div class="col">
+                댓글카드
+            </div>
+        </div>
+    </div>
 </div>
+
+
 
 <!-- Footer-->
 <footer class="py-5" style="background-color: #EBE1D7;">
