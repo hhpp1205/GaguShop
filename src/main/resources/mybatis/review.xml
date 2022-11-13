@@ -7,4 +7,10 @@
        INSERT INTO review
        VALUES (null, #{reviewImg}, #{reviewStar}, #{comment}, NOW(), #{gaguId}, #{memberId})
    </insert>
+
+   <select id="list" resultType="Review">
+       SELECT * FROM review
+       WHERE gagu_id = #{id}
+   </select>
+
 </mapper>

@@ -100,23 +100,29 @@ public class GaguController {
         Wish wish = new Wish();
         wish.setGaguId(id);
         Member member = (Member) session.getAttribute("member");
+
+        //가구
+        Gagu item = service.info(id);
+        //리뷰
+        List<Review> reviewList = service.getReviewByGaguId(id);
+
         // 로그인 전
         if(member == null){
-            Gagu item = service.info(id);
             model.addAttribute("item", item);
+            model.addAttribute("reviewList", reviewList);
             return path + "info";
         // 로그인 후
         }else{
             wish.setMemberId(member.getId());
             if(service.checkWish(wish) == 0){
-                Gagu item = service.info(id);
                 item.setWishId(0);
                 model.addAttribute("item", item);
+                model.addAttribute("reviewList", reviewList);
                 return path + "info";
             }else {
-                Gagu item = service.info(id);
                 item.setWishId(1);
                 model.addAttribute("item", item);
+                model.addAttribute("reviewList", reviewList);
                 return path + "info";
             }
         }
@@ -268,8 +274,8 @@ public class GaguController {
 
         service.addReview(review);
 
-//        redirectAttributes.addAttribute("gaguId", review.getGaguId());
-        return "redirect:/";
+        redirectAttributes.addAttribute("gaguId", review.getGaguId());
+        return "redirect:/gagu/info/{gaguId}";
     }
 
 }

@@ -48,4 +48,8 @@ public interface GaguService {
 
 
     void addReview(Review review);
+
+
+
+    List<Review> getReviewByGaguId(int id);
 }

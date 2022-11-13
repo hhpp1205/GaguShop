@@ -99,6 +99,7 @@
 </nav>
 <!-- Header-->
 <div class="container">
+    <h1 class="main-title">리뷰 작성</h1>
     <form method="post" id="review-form" action="/gagu/review" enctype="multipart/form-data">
         <input type="hidden" name="gaguId" value="${gaguId}">
         <fieldset>
@@ -113,11 +114,11 @@
             <input class="form-control" name="file" type="file" id="formFile">
         </div>
         <div class="form-floating mb-3">
-            <textarea class="form-control" id="floatingTextarea2" name="comment" style="height: 500px"></textarea>
-            <label for="floatingTextarea2">리뷰를 작성해주세요</label>
+            <textarea class="form-control" placeholder="리뷰를 작성해주세요" id="floatingTextarea" name="comment" style="height: 500px; resize: none;"></textarea>
+            <label for="floatingTextarea">최대 370자까지 가능</label>
         </div>
-        <div>
-            <button type="submit">완료</button>
+        <div class="submit-button">
+            <button class="btn btn-primary" type="submit">작성완료</button>
         </div>
     </form>
 </div>

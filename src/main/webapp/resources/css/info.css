@@ -99,3 +99,18 @@
     position: absolute;
     right: 70px;
 }
+.review-box > div{
+    height: 200px;
+}
+.review-box img{
+    width: 200px;
+    margin: 0 0 0 30px;
+    height: 180px;
+}
+.review-date span{
+    font-size: 14px;
+    color: #525252;
+}
+.star-wrapper{
+    margin-bottom: 10px;
+}

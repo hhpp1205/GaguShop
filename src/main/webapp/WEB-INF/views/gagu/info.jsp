@@ -1,5 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!-- CSS only -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
 <!-- JavaScript Bundle with Popper -->
@@ -151,13 +152,36 @@
     <div>
         댓글영역
     </div>
-    <div>
-        <div class="row">
-            <div class="col">
-                댓글카드
+    <c:forEach var="review" items="${reviewList}">
+    <hr>
+        <div class="row review-box">
+            <div class="col-3">
+                <img class="review-img" src="/loadImg/${review.reviewImg}">
+            </div>
+            <div class="col review-comment">
+                <div class="star-wrapper">
+                  <c:choose>
+                      <c:when test="${review.reviewStar == 1}"><span>⭐</span></c:when>
+                      <c:when test="${review.reviewStar == 2}"><span>⭐⭐</span></c:when>
+                      <c:when test="${review.reviewStar == 3}"><span>⭐⭐⭐</span></c:when>
+                      <c:when test="${review.reviewStar == 4}"><span>⭐⭐⭐⭐</span></c:when>
+                      <c:when test="${review.reviewStar == 5}"><span>⭐⭐⭐⭐⭐</span></c:when>
+                  </c:choose>
+                </div>
+                <div style="width: 530px;">
+                    ${review.comment} 최대 370자;
+                </div>
+
+            </div>
+            <div class="col col-lg-3 review-date">
+                <span>
+                ${review.memberId} |
+                <fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${review.regDate}" />
+                </span>
             </div>
         </div>
-    </div>
+        <hr>
+    </c:forEach>
 </div>
 
 

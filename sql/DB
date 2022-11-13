@@ -1,6 +1,6 @@
 -- --------------------------------------------------------
 -- 호스트:                          127.0.0.1
--- 서버 버전:                        10.9.2-MariaDB - mariadb.org binary distribution
+-- 서버 버전:                        10.9.3-MariaDB - mariadb.org binary distribution
 -- 서버 OS:                        Win64
 -- HeidiSQL 버전:                  11.3.0.6295
 -- --------------------------------------------------------
@@ -14,10 +14,12 @@
 
 
 -- gagushop 데이터베이스 구조 내보내기
+DROP DATABASE IF EXISTS `gagushop`;
 CREATE DATABASE IF NOT EXISTS `gagushop` /*!40100 DEFAULT CHARACTER SET utf8mb4 */;
 USE `gagushop`;
 
 -- 테이블 gagushop.attach 구조 내보내기
+DROP TABLE IF EXISTS `attach`;
 CREATE TABLE IF NOT EXISTS `attach` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `gagu_id` int(11) NOT NULL,
@@ -25,11 +27,28 @@ CREATE TABLE IF NOT EXISTS `attach` (
   PRIMARY KEY (`id`),
   KEY `gagu_id` (`gagu_id`),
   CONSTRAINT `FK_attach_gagu` FOREIGN KEY (`gagu_id`) REFERENCES `gagu` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8mb4 COMMENT='이미지';
+) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8mb4 COMMENT='이미지';
 
--- 내보낼 데이터가 선택되어 있지 않습니다.
+-- 테이블 데이터 gagushop.attach:~13 rows (대략적) 내보내기
+/*!40000 ALTER TABLE `attach` DISABLE KEYS */;
+INSERT IGNORE INTO `attach` (`id`, `gagu_id`, `filename`) VALUES
+	(12, 48, '11992340234270.jpg'),
+	(13, 49, 'ghgh.jpg'),
+	(16, 52, 'ghgh.jpg'),
+	(18, 54, 'ghgh.jpg'),
+	(19, 55, '222.jpg'),
+	(20, 55, '333.jpg'),
+	(21, 56, '222.jpg'),
+	(22, 56, '111.jpg'),
+	(23, 56, '11992340234270.jpg'),
+	(24, 57, '333.jpg'),
+	(25, 57, '222.jpg'),
+	(26, 57, 'S600_ebf27610-105a-4261-b7b9-cf9f8aec62a4.png'),
+	(31, 159, '99589660-3e78-4d51-821f-5b2c13afab7d.jpg');
+/*!40000 ALTER TABLE `attach` ENABLE KEYS */;
 
 -- 테이블 gagushop.cart 구조 내보내기
+DROP TABLE IF EXISTS `cart`;
 CREATE TABLE IF NOT EXISTS `cart` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `count` int(11) DEFAULT NULL COMMENT '주문갯수',
@@ -40,11 +59,14 @@ CREATE TABLE IF NOT EXISTS `cart` (
   KEY `gagu_id` (`gagu_id`),
   CONSTRAINT `FK_cart_gagu` FOREIGN KEY (`gagu_id`) REFERENCES `gagu` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `FK_cart_member` FOREIGN KEY (`member_id`) REFERENCES `member` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=108 DEFAULT CHARSET=utf8mb4 COMMENT='장바구니';
+) ENGINE=InnoDB AUTO_INCREMENT=113 DEFAULT CHARSET=utf8mb4 COMMENT='장바구니';
 
--- 내보낼 데이터가 선택되어 있지 않습니다.
+-- 테이블 데이터 gagushop.cart:~0 rows (대략적) 내보내기
+/*!40000 ALTER TABLE `cart` DISABLE KEYS */;
+/*!40000 ALTER TABLE `cart` ENABLE KEYS */;
 
 -- 테이블 gagushop.gagu 구조 내보내기
+DROP TABLE IF EXISTS `gagu`;
 CREATE TABLE IF NOT EXISTS `gagu` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(100) NOT NULL,
@@ -58,11 +80,28 @@ CREATE TABLE IF NOT EXISTS `gagu` (
   KEY `id` (`id`),
   CONSTRAINT `FK_gagu_gagu_keyword` FOREIGN KEY (`keyword`) REFERENCES `gagu_keyword` (`keyword`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `FK_gagu_member` FOREIGN KEY (`member_id`) REFERENCES `member` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=262 DEFAULT CHARSET=utf8mb4 COMMENT='가구';
+) ENGINE=InnoDB AUTO_INCREMENT=166 DEFAULT CHARSET=utf8mb4 COMMENT='가구';
 
--- 내보낼 데이터가 선택되어 있지 않습니다.
+-- 테이블 데이터 gagushop.gagu:~13 rows (대략적) 내보내기
+/*!40000 ALTER TABLE `gagu` DISABLE KEYS */;
+INSERT IGNORE INTO `gagu` (`id`, `name`, `price`, `gagu_img`, `keyword`, `member_id`) VALUES
+	(47, '침대이미지323', 323232, '11992340234270.jpg', '매트리스', 'kopo'),
+	(48, '침대이미지', 3231, '11992340234270.jpg', '거실장', 'kopo'),
+	(49, '침대이미지323', 3232, 'ghgh.jpg', '거실장', 'kopo'),
+	(51, '홍성민', 3123, 'ghgh.jpg', '거실장', 'kopo'),
+	(52, '침대이미지6556', 323, '11992340234270.jpg', '거실장', 'kopo'),
+	(54, '침대이미지3', 32, 'ghgh.jpg', '거실장', 'kopo'),
+	(55, '침대이미지666', 423421, '111.jpg', '거실장', 'kopo'),
+	(56, '침대대대대', 6464, '333.jpg', '거실장', 'kopo'),
+	(57, '침대침대침대', 6566, '11992340234270.jpg', '거실장', 'kopo'),
+	(159, '김김김', 321, '2897012b-6587-4d67-ac71-8e4cd5dcded0.jpg', '거실장', 'admin'),
+	(163, 'Test', 123, '9af406aa-9acb-4802-9080-dbe28ac4f0b2.jpg', '거실장', 'admin'),
+	(164, '벨벨', 321321, '4fc39609-abcf-40ad-a3f4-0e548af0ae02.jpg', '거실장', 'admin'),
+	(165, 'Test의자', 9999, '906bc4ea-7e14-4d45-81da-5c141be8de64.jpg', '의자', 'admin');
+/*!40000 ALTER TABLE `gagu` ENABLE KEYS */;
 
 -- 테이블 gagushop.gagu_keyword 구조 내보내기
+DROP TABLE IF EXISTS `gagu_keyword`;
 CREATE TABLE IF NOT EXISTS `gagu_keyword` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `keyword` varchar(50) DEFAULT NULL,
@@ -70,9 +109,24 @@ CREATE TABLE IF NOT EXISTS `gagu_keyword` (
   KEY `keyword` (`keyword`)
 ) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COMMENT='가구 2차메뉴';
 
--- 내보낼 데이터가 선택되어 있지 않습니다.
+-- 테이블 데이터 gagushop.gagu_keyword:~11 rows (대략적) 내보내기
+/*!40000 ALTER TABLE `gagu_keyword` DISABLE KEYS */;
+INSERT IGNORE INTO `gagu_keyword` (`id`, `keyword`) VALUES
+	(6, '거실장'),
+	(2, '매트리스'),
+	(7, '소파'),
+	(10, '수납장'),
+	(9, '식탁'),
+	(8, '악세서리'),
+	(3, '옷장'),
+	(11, '의자'),
+	(1, '침대'),
+	(5, '테이블'),
+	(4, '화장대');
+/*!40000 ALTER TABLE `gagu_keyword` ENABLE KEYS */;
 
 -- 테이블 gagushop.member 구조 내보내기
+DROP TABLE IF EXISTS `member`;
 CREATE TABLE IF NOT EXISTS `member` (
   `id` varchar(50) NOT NULL,
   `pwd` varchar(128) NOT NULL,
@@ -82,9 +136,16 @@ CREATE TABLE IF NOT EXISTS `member` (
   KEY `id` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='사용자';
 
--- 내보낼 데이터가 선택되어 있지 않습니다.
+-- 테이블 데이터 gagushop.member:~3 rows (대략적) 내보내기
+/*!40000 ALTER TABLE `member` DISABLE KEYS */;
+INSERT IGNORE INTO `member` (`id`, `pwd`, `name`, `phone_number`) VALUES
+	('admin', '*A4B6157319038724E3560894F7F932C8886EBFCF', '홍성민', '01087426723'),
+	('kopo', '*A4B6157319038724E3560894F7F932C8886EBFCF', '홍성민', '01087426723'),
+	('TestId', '*7297C3E22DEB91303FC493303A8158AD4231F486', '321', '321');
+/*!40000 ALTER TABLE `member` ENABLE KEYS */;
 
 -- 테이블 gagushop.orders 구조 내보내기
+DROP TABLE IF EXISTS `orders`;
 CREATE TABLE IF NOT EXISTS `orders` (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '주문번호',
   `count` int(11) DEFAULT NULL COMMENT '제품 주문 갯수',
@@ -98,11 +159,16 @@ CREATE TABLE IF NOT EXISTS `orders` (
   KEY `gagu_id` (`gagu_id`),
   CONSTRAINT `FK_order_member` FOREIGN KEY (`member_id`) REFERENCES `member` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `FK_sales_list_gagu` FOREIGN KEY (`gagu_id`) REFERENCES `gagu` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=60 DEFAULT CHARSET=utf8mb4 COMMENT='주문\r\n';
+) ENGINE=InnoDB AUTO_INCREMENT=58 DEFAULT CHARSET=utf8mb4 COMMENT='주문\r\n';
 
--- 내보낼 데이터가 선택되어 있지 않습니다.
+-- 테이블 데이터 gagushop.orders:~1 rows (대략적) 내보내기
+/*!40000 ALTER TABLE `orders` DISABLE KEYS */;
+INSERT IGNORE INTO `orders` (`id`, `count`, `price`, `total`, `sale_date`, `gagu_id`, `member_id`) VALUES
+	(57, 1, 3123, 3123, '2022-10-25', 51, 'kopo');
+/*!40000 ALTER TABLE `orders` ENABLE KEYS */;
 
 -- 테이블 gagushop.review 구조 내보내기
+DROP TABLE IF EXISTS `review`;
 CREATE TABLE IF NOT EXISTS `review` (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '댓글 번호',
   `review_img` varchar(50) NOT NULL DEFAULT '' COMMENT '댓글 사진',
@@ -118,9 +184,12 @@ CREATE TABLE IF NOT EXISTS `review` (
   CONSTRAINT `FK__member` FOREIGN KEY (`member_id`) REFERENCES `member` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COMMENT='리뷰';
 
--- 내보낼 데이터가 선택되어 있지 않습니다.
+-- 테이블 데이터 gagushop.review:~0 rows (대략적) 내보내기
+/*!40000 ALTER TABLE `review` DISABLE KEYS */;
+/*!40000 ALTER TABLE `review` ENABLE KEYS */;
 
 -- 테이블 gagushop.wish 구조 내보내기
+DROP TABLE IF EXISTS `wish`;
 CREATE TABLE IF NOT EXISTS `wish` (
   `gagu_id` int(11) NOT NULL,
   `member_id` varchar(50) NOT NULL,
@@ -131,7 +200,11 @@ CREATE TABLE IF NOT EXISTS `wish` (
   CONSTRAINT `FK_wish_member` FOREIGN KEY (`member_id`) REFERENCES `member` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='클라이언트가 좋아요를 누른 상품';
 
--- 내보낼 데이터가 선택되어 있지 않습니다.
+-- 테이블 데이터 gagushop.wish:~1 rows (대략적) 내보내기
+/*!40000 ALTER TABLE `wish` DISABLE KEYS */;
+INSERT IGNORE INTO `wish` (`gagu_id`, `member_id`) VALUES
+	(51, 'admin');
+/*!40000 ALTER TABLE `wish` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
 /*!40014 SET FOREIGN_KEY_CHECKS=IFNULL(@OLD_FOREIGN_KEY_CHECKS, 1) */;

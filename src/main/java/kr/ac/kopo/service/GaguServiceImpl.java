@@ -162,6 +162,11 @@ public class GaguServiceImpl implements GaguService{
     }
 
     @Override
+    public List<Review> getReviewByGaguId(int id) {
+        return reviewDao.getReviewByGaguId(id);
+    }
+
+    @Override
     public List<Gagu> allCheckWishByMemberId(Member member) {
          return wishDao.allCheckWishByMemberId(member);
     }
