@@ -13,7 +13,8 @@ import java.util.UUID;
 
 public class MultipartBinder {
 
-    public String saveAndReturnName(MultipartFile multipartFile){
+
+    public String saveImgAndReturnName(MultipartFile multipartFile){
         String fileRealName = multipartFile.getOriginalFilename();
         String filenameExtension = fileRealName.substring(fileRealName.lastIndexOf("."), fileRealName.length());
         String uploadPath = "C:/img\\";
@@ -39,7 +40,7 @@ public class MultipartBinder {
                 if(attach != null && !attach.isEmpty()){
                     Attach attachItem = new Attach();
 
-                    attachItem.setFilename(saveAndReturnName(attach));
+                    attachItem.setFilename(saveImgAndReturnName(attach));
                     list.add(attachItem);
                 }
             }
