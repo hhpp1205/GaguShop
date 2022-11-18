@@ -6,6 +6,7 @@ import kr.ac.kopo.service.GaguService;
 import kr.ac.kopo.util.Pager;
 import kr.ac.kopo.service.MemberService;
 import kr.ac.kopo.validation.MemberAddForm;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.SystemEnvironmentPropertySource;
 import org.springframework.stereotype.Controller;
@@ -18,13 +19,14 @@ import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @Controller
+@RequiredArgsConstructor
 @RequestMapping("/")
 public class RootController {
 
-    @Autowired
-    MemberService service;
-    @Autowired
-    GaguService gaguService;
+
+    private final MemberService service;
+
+    private final GaguService gaguService;
 
     @GetMapping("/")
     public String index(Model model){

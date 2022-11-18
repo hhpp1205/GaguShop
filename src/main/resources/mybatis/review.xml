@@ -3,14 +3,24 @@
 
 <mapper namespace="review">
 
-   <insert id="add">
+    <insert id="add">
        INSERT INTO review
        VALUES (null, #{reviewImg}, #{reviewStar}, #{comment}, NOW(), #{gaguId}, #{memberId})
-   </insert>
+    </insert>
 
-   <select id="list" resultType="Review">
+    <select id="list" resultType="Review">
        SELECT * FROM review
        WHERE gagu_id = #{id}
-   </select>
+    </select>
+
+    <delete id="deleteReviewByGaguId">
+       DELETE FROM review
+       WHERE gagu_id = #{id}
+    </delete>
+
+    <delete id="deleteReviewById">
+        DELETE FROM review
+        WHERE id = #{id}
+    </delete>
 
 </mapper>

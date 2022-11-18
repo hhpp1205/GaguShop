@@ -4,6 +4,7 @@ import kr.ac.kopo.dao.CartDao;
 import kr.ac.kopo.dao.OrdersDao;
 import kr.ac.kopo.model.Gagu;
 import kr.ac.kopo.model.Orders;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -12,12 +13,13 @@ import java.util.List;
 
 
 @Service
+@RequiredArgsConstructor
 public class OrdersServiceImpl implements OrdersService {
 
-    @Autowired
-    OrdersDao orderDao;
-    @Autowired
-    CartDao cartDao;
+
+    private final OrdersDao orderDao;
+
+    private final CartDao cartDao;
 
 
     @Transactional

@@ -4,6 +4,7 @@ import kr.ac.kopo.model.*;
 import kr.ac.kopo.util.MultipartBinder;
 import kr.ac.kopo.util.Pager;
 import kr.ac.kopo.service.GaguService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,13 +19,20 @@ import java.util.ArrayList;
 
 import java.util.List;
 
+/**
+ * TODO
+ * 1. ReviewUpdate 구현
+ * 1-1. ReviewUpdate 페이지 구성
+ * 1-2. Ajax로 처리
+ */
 
 @Controller
+@RequiredArgsConstructor
 @RequestMapping("/gagu")
 public class GaguController {
 
-    @Autowired
-    GaguService service;
+
+    private final GaguService service;
 
 
     final String path = "gagu/";
@@ -46,26 +54,13 @@ public class GaguController {
         item.setMemberId(member.getId());
         try{
             if(!file.isEmpty()){
-                String filename = binder.saveReturnName(file);
+                String filename = binder.saveAndReturnName(file);
                 item.setGaguImg(filename);
             }
 
-            List<Attach> list = new ArrayList<Attach>();
+            binder.saveItemSubImg(item);
 
-
-            if (item.getAttach() != null) {
-                for(MultipartFile attach : item.getAttach()){
-                    if(attach != null && !attach.isEmpty()){
-                        Attach attachItem = new Attach();
-
-                        attachItem.setFilename(binder.saveReturnName(attach));
-                        list.add(attachItem);
-                    }
-                }
-                item.setAttachs(list);
-            }
             service.add(item);
-
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -106,23 +101,20 @@ public class GaguController {
         //리뷰
         List<Review> reviewList = service.getReviewByGaguId(id);
 
+        model.addAttribute("item", item);
+        model.addAttribute("reviewList", reviewList);
+
         // 로그인 전
         if(member == null){
-            model.addAttribute("item", item);
-            model.addAttribute("reviewList", reviewList);
             return path + "info";
         // 로그인 후
         }else{
             wish.setMemberId(member.getId());
             if(service.checkWish(wish) == 0){
                 item.setWishId(0);
-                model.addAttribute("item", item);
-                model.addAttribute("reviewList", reviewList);
                 return path + "info";
             }else {
                 item.setWishId(1);
-                model.addAttribute("item", item);
-                model.addAttribute("reviewList", reviewList);
                 return path + "info";
             }
         }
@@ -145,20 +137,11 @@ public class GaguController {
         item.setMemberId(member.getId());
         try {
             if(!file.isEmpty()){
-                String filename = binder.saveReturnName(file);
+                String filename = binder.saveAndReturnName(file);
                 item.setGaguImg(filename);
 
-                List<Attach> list = new ArrayList<Attach>();
+                binder.saveItemSubImg(item);
 
-                for(MultipartFile attach : item.getAttach()){
-                    if(attach != null && !attach.isEmpty()){
-                        Attach attachItem = new Attach();
-
-                        attachItem.setFilename(binder.saveReturnName(attach));
-                        list.add(attachItem);
-                    }
-                }
-                item.setAttachs(list);
                 service.update(item);
             }
         }catch (Exception e){
@@ -167,7 +150,7 @@ public class GaguController {
         return "redirect:/";
     }
 
-    @RequestMapping("/delete/{id}")
+    @GetMapping("/delete/{id}")
     public String delete(@PathVariable int id, @SessionAttribute Member member){
         if(member.getId().equals("admin")){
             service.delete(id);
@@ -266,7 +249,7 @@ public class GaguController {
         MultipartBinder binder = new MultipartBinder();
 
         if (!file.isEmpty()) {
-            String fileName = binder.saveReturnName(file);
+            String fileName = binder.saveAndReturnName(file);
             review.setReviewImg(fileName);
         }
 
@@ -276,6 +259,29 @@ public class GaguController {
 
         redirectAttributes.addAttribute("gaguId", review.getGaguId());
         return "redirect:/gagu/info/{gaguId}";
+    }
+
+    @GetMapping("updateReview/{id}/{memberId}")
+    public String updateReview(@PathVariable int id, @PathVariable int memberId, @SessionAttribute Member member){
+        if (member.getId().equals(member)) {
+
+        }
+        return "aa";
+    }
+
+    @GetMapping("deleteReview/{id}/{memberId}/{gaguId}")
+    public String deleteReview(@PathVariable int id, @PathVariable String memberId,
+                               @PathVariable int gaguId, @SessionAttribute Member member,
+                               RedirectAttributes redirectAttributes){
+
+        if (member.getId().equals(memberId)) {
+            service.deleteReviewById(id);
+
+            redirectAttributes.addAttribute("gaguId", gaguId);
+
+            return "redirect:/gagu/info/{gaguId}";
+        }
+        return "list";
     }
 
 }

@@ -52,4 +52,8 @@ public interface GaguService {
 
 
     List<Review> getReviewByGaguId(int id);
+
+
+
+    void deleteReviewById(int id);
 }

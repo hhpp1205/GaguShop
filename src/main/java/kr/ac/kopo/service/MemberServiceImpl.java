@@ -5,6 +5,7 @@ import kr.ac.kopo.dao.MemberDao;
 import kr.ac.kopo.model.Gagu;
 import kr.ac.kopo.model.Member;
 import kr.ac.kopo.util.Pager;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -12,12 +13,13 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @Service
+@RequiredArgsConstructor
 public class MemberServiceImpl implements MemberService{
 
-    @Autowired
-    MemberDao dao;
-    @Autowired
-    GaguDao gaguDao;
+
+    private final MemberDao dao;
+
+    private final GaguDao gaguDao;
 
     @Override
     public boolean login(Member member) {

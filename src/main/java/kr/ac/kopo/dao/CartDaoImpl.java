@@ -3,6 +3,7 @@ package kr.ac.kopo.dao;
 import kr.ac.kopo.model.Cart;
 import kr.ac.kopo.model.Gagu;
 import kr.ac.kopo.model.Orders;
+import lombok.RequiredArgsConstructor;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -11,9 +12,10 @@ import java.util.HashMap;
 import java.util.List;
 
 @Repository
+@RequiredArgsConstructor
 public class CartDaoImpl implements CartDao{
-    @Autowired
-    SqlSession sql;
+
+    private final SqlSession sql;
     @Override
     public void addCart(Cart cart) {
         sql.insert("cart.addCart", cart);

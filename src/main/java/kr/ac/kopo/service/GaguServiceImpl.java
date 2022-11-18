@@ -3,6 +3,7 @@ package kr.ac.kopo.service;
 import kr.ac.kopo.dao.*;
 import kr.ac.kopo.model.*;
 import kr.ac.kopo.util.Pager;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -10,21 +11,22 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @Service
+@RequiredArgsConstructor
 public class GaguServiceImpl implements GaguService{
 
-    @Autowired
-    GaguDao dao;
-    @Autowired
-    CartDao cartDao;
-    @Autowired
-    AttachDao attachDao;
-    @Autowired
-    WishDao wishDao;
-    @Autowired
-    OrdersDao ordersDao;
 
-    @Autowired
-    ReviewDao reviewDao;
+    private final GaguDao dao;
+
+    private final CartDao cartDao;
+
+    private final AttachDao attachDao;
+
+    private final WishDao wishDao;
+
+    private final OrdersDao ordersDao;
+
+
+    private final ReviewDao reviewDao;
 
 
     @Override
@@ -67,6 +69,7 @@ public class GaguServiceImpl implements GaguService{
         cartDao.deleteCartByGaguId(id);
         ordersDao.deleteOrdersByGaguId(id);
         wishDao.deleteWishByGaguId(id);
+        reviewDao.deleteReviewByGaguId(id);
         dao.delete(id);
     }
 
@@ -109,12 +112,6 @@ public class GaguServiceImpl implements GaguService{
     @Override
     public int checkWish(Wish wish) {
         int result = wishDao.checkWish(wish);
-
-//        if(result == 0){
-//            wishDao.addWish(wish);
-//        }else {
-//            wishDao.deleteWish(wish);
-//        }
         return result;
     }
 
@@ -164,6 +161,11 @@ public class GaguServiceImpl implements GaguService{
     @Override
     public List<Review> getReviewByGaguId(int id) {
         return reviewDao.getReviewByGaguId(id);
+    }
+
+    @Override
+    public void deleteReviewById(int id) {
+        reviewDao.deleteReviewById(id);
     }
 
     @Override

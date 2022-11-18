@@ -149,9 +149,6 @@
         </div>
     </div>
     <%--댓글--%>
-    <div>
-        댓글영역
-    </div>
     <c:forEach var="review" items="${reviewList}">
     <hr>
         <div class="row review-box">
@@ -173,11 +170,15 @@
                 </div>
 
             </div>
-            <div class="col col-lg-3 review-date">
+            <div class="col col-lg-3 review-detail">
                 <span>
                 ${review.memberId} |
                 <fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${review.regDate}" />
                 </span>
+                <c:if test="${sessionScope.member.id == review.memberId}">
+                    <a href="/gagu/updateReview/${review.id}/${review.memberId}">수정</a>
+                    <a href="/gagu/deleteReview/${review.id}/${review.memberId}/${review.gaguId}">삭제</a>
+                </c:if>
             </div>
         </div>
         <hr>

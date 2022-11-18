@@ -1,16 +1,14 @@
 package kr.ac.kopo.interceptor;
 
 import kr.ac.kopo.model.Member;
-import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import java.util.Optional;
 
 
-public class AdminInterceptor extends HandlerInterceptorAdapter {
+public class AdminLoginInterceptor extends HandlerInterceptorAdapter {
 
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         Member sessionMember = (Member) request.getSession().getAttribute("member");
