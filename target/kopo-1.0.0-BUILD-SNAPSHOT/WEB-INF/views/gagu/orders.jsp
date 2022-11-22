@@ -122,7 +122,7 @@
                 <td class="product_td">
                     ₩${item.total}
                     <div>
-                        <a href="/gagu/reviewForm/${item.id}" class="review_button">리뷰작성</a>
+                        <a href="/gagu/reviewAdd/${item.id}" class="review_button">리뷰작성</a>
                     </div>
                 </td>
             </tr>

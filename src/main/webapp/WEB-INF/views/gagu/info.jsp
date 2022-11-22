@@ -166,7 +166,7 @@
                   </c:choose>
                 </div>
                 <div style="width: 530px;">
-                    ${review.comment} 최대 370자;
+                    ${review.comment}
                 </div>
 
             </div>

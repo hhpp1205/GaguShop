@@ -22,6 +22,7 @@ import java.util.List;
  * 1. ReviewUpdate 구현
  * 1-1. ReviewUpdate 페이지 구성
  * 1-2. Ajax로 처리
+ * 2. Login시 이전에 요청했던 페이지로 이동
  */
 
 @Controller
@@ -234,10 +235,10 @@ public class GaguController {
         return path + "/wish";
     }
 
-    @GetMapping("/reviewForm/{gaguId}")
+    @GetMapping("/reviewAdd/{gaguId}")
     public String reviewForm(@PathVariable int gaguId, Model model){
         model.addAttribute("gaguId", gaguId);
-        return path + "reviewform";
+        return path + "reviewAdd";
     }
 
     @PostMapping("/review")
