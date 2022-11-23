@@ -153,7 +153,9 @@
     <hr>
         <div class="row review-box">
             <div class="col-3">
-                <img class="review-img" src="/loadImg/${review.reviewImg}">
+                <c:if test="${review.reviewImg != null}">
+                    <img class="review-img" src="/loadImg/${review.reviewImg}">
+                </c:if>
             </div>
             <div class="col review-comment">
                 <div class="star-wrapper">
@@ -197,13 +199,13 @@
                             <input type="hidden" name="id" value="${review.id}">
                             <input type="hidden" name="memberId" value="${review.memberId}">
                             <div class="form-floating mb-3">
-                                <textarea class="form-control" id="floatingTextarea" name="comment" style="height: 400px; resize: none;">${review.comment}</textarea>
+                                <textarea class="form-control review_comment" id="floatingTextarea" name="comment" style="height: 400px; resize: none;">${review.comment}</textarea>
                                 <label for="floatingTextarea">최대 370자까지 가능</label>
                             </div>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
-                            <button id="updateReview_button" type="button" class="btn btn-primary">수정</button>
+                            <button type="button" class="btn btn-primary updateReview_button">수정</button>
                         </div>
                     </form>
                 </div>
