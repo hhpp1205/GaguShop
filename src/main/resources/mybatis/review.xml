@@ -4,8 +4,15 @@
 <mapper namespace="review">
 
     <insert id="add">
-       INSERT INTO review
-       VALUES (null, #{reviewImg}, #{reviewStar}, #{comment}, NOW(), #{gaguId}, #{memberId})
+        <if test="reviewImg != null">
+            INSERT INTO review
+            VALUES (null, #{reviewImg}, #{reviewStar}, #{comment}, NOW(), #{gaguId}, #{memberId})
+        </if>
+        <if test="reviewImg == null">
+            INSERT INTO review
+            VALUES (null, null, #{reviewStar}, #{comment}, NOW(), #{gaguId}, #{memberId})
+        </if>
+
     </insert>
 
     <select id="list" resultType="Review">

@@ -143,14 +143,20 @@ $('.share_button').click(function (){
     document.execCommand("copy");
     document.body.removeChild(textarea);
     alert("URL이 복사되었습니다.");
-})
+});
 //ReviewUpdate시 글자 수 검사
-$('#updateReview_button').click(function (){
-    let textCnt = $('#floatingTextarea').val().length;
-    if(textCnt <= 370){
-        $('#reviewUpdate_form').submit();
+$('.updateReview_button').click(function (){
+     const form = $(this).closest("form");
+    const textCnt = $(form).find("textarea").val().length;
+
+    if(textCnt <= 370 && textCnt > 0){
+        form.submit();
     }else {
-        alert("최대 글자 수 370자를 초과 했습니다. 현재 글자수 : " + textCnt + "자");
+        if(textCnt <= 0) {
+            alert("최소 글자 수 1자 이상 입력해 주세요");
+        }else{
+            alert("최대 글자 수 370자를 초과 했습니다 현재 글자수 : " + textCnt + "자");
+        }
     }
 });
 

@@ -19,10 +19,10 @@ import java.util.List;
 
 /**
  * TODO
- * 1. ReviewUpdate 구현
- * 1-1. ReviewUpdate 페이지 구성
- * 1-2. Ajax로 처리
- * 2. Login시 이전에 요청했던 페이지로 이동
+ * 1. Login시 이전에 요청했던 페이지로 이동
+ * 2. Member 비밀번호 변경시 검증
+ * 3. Gagu 등록시 검증 기능
+ * 4. Gagu 변경시 검증 기능
  */
 
 @Controller
@@ -242,7 +242,7 @@ public class GaguController {
     }
 
     @PostMapping("/review")
-    public String addReview(@RequestParam MultipartFile file, Review review,
+    public String addReview(@RequestParam(required = false) MultipartFile file, Review review,
                             @SessionAttribute Member member, RedirectAttributes redirectAttributes){
         MultipartBinder binder = new MultipartBinder();
 
