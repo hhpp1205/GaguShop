@@ -13,6 +13,7 @@ public class Review {
     private int reviewStar;
     private String comment;
     private Date regDate;
+
     private int gaguId;
     private String memberId;
 

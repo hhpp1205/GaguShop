@@ -114,7 +114,7 @@
             <input class="form-control" name="file" type="file" id="formFile">
         </div>
         <div class="form-floating mb-3">
-            <textarea class="form-control" placeholder="리뷰를 작성해주세요" id="floatingTextarea" name="comment" style="height: 500px; resize: none;"></textarea>
+            <textarea class="form-control" id="floatingTextarea" name="comment" style="height: 500px; resize: none;"></textarea>
             <label for="floatingTextarea">최대 370자까지 가능</label>
         </div>
         <div class="submit-button">

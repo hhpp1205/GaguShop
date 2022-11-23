@@ -235,7 +235,7 @@ public class GaguController {
         return path + "/wish";
     }
 
-    @GetMapping("/reviewAdd/{gaguId}")
+    @GetMapping("/addReview/{gaguId}")
     public String reviewForm(@PathVariable int gaguId, Model model){
         model.addAttribute("gaguId", gaguId);
         return path + "reviewAdd";
@@ -259,15 +259,16 @@ public class GaguController {
         return "redirect:/gagu/info/{gaguId}";
     }
 
-    @GetMapping("updateReview/{id}/{memberId}")
-    public String updateReview(@PathVariable int id, @PathVariable int memberId, @SessionAttribute Member member){
-        if (member.getId().equals(member)) {
-
+    @PostMapping("/updateReview")
+    public String updateReview(Review review, @SessionAttribute Member member, RedirectAttributes redirectAttributes){
+        if (member.getId().equals(review.getMemberId())) {
+            redirectAttributes.addAttribute("gaguId", review.getGaguId());
+            service.updateReview(review);
         }
-        return "aa";
+        return "redirect:/gagu/info/{gaguId}";
     }
 
-    @GetMapping("deleteReview/{id}/{memberId}/{gaguId}")
+    @GetMapping("/deleteReview/{id}/{memberId}/{gaguId}")
     public String deleteReview(@PathVariable int id, @PathVariable String memberId,
                                @PathVariable int gaguId, @SessionAttribute Member member,
                                RedirectAttributes redirectAttributes){

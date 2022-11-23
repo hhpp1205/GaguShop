@@ -2,6 +2,7 @@ package kr.ac.kopo.validation;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.validator.constraints.Length;
 import org.springframework.format.annotation.NumberFormat;
 
 import javax.validation.constraints.NotEmpty;
@@ -17,5 +18,6 @@ public class MemberAddForm {
     @NotEmpty
     private String name;
     @NotEmpty
+    @Length(max = 11)
     private String phoneNumber;
 }

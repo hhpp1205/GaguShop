@@ -176,12 +176,40 @@
                 <fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${review.regDate}" />
                 </span>
                 <c:if test="${sessionScope.member.id == review.memberId}">
-                    <a href="/gagu/updateReview/${review.id}/${review.memberId}">수정</a>
+                    <a href="/gagu/updateReview/${review.id}/${review.memberId}" data-bs-toggle="modal" data-bs-target="#staticBackdrop${review.id}">수정</a>
                     <a href="/gagu/deleteReview/${review.id}/${review.memberId}/${review.gaguId}">삭제</a>
                 </c:if>
             </div>
         </div>
         <hr>
+
+        <!-- 댓글 Modal -->
+        <div class="modal fade" id="staticBackdrop${review.id}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel${review.id}">리뷰 수정</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <form id="reviewUpdate_form" method="post" action="/gagu/updateReview">
+                        <div class="modal-body">
+                            <input type="hidden" name="gaguId" value="${review.gaguId}">
+                            <input type="hidden" name="id" value="${review.id}">
+                            <input type="hidden" name="memberId" value="${review.memberId}">
+                            <div class="form-floating mb-3">
+                                <textarea class="form-control" id="floatingTextarea" name="comment" style="height: 400px; resize: none;">${review.comment}</textarea>
+                                <label for="floatingTextarea">최대 370자까지 가능</label>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
+                            <button id="updateReview_button" type="button" class="btn btn-primary">수정</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
     </c:forEach>
 </div>
 

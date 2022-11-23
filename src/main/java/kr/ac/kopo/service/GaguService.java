@@ -56,4 +56,6 @@ public interface GaguService {
 
 
     void deleteReviewById(int id);
+
+    void updateReview(Review review);
 }

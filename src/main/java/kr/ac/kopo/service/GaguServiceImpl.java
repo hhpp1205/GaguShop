@@ -4,7 +4,6 @@ import kr.ac.kopo.dao.*;
 import kr.ac.kopo.model.*;
 import kr.ac.kopo.util.Pager;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -166,6 +165,11 @@ public class GaguServiceImpl implements GaguService{
     @Override
     public void deleteReviewById(int id) {
         reviewDao.deleteReviewById(id);
+    }
+
+    @Override
+    public void updateReview(Review review) {
+        reviewDao.update(review);
     }
 
     @Override

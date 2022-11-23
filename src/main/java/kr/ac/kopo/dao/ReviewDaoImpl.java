@@ -34,4 +34,9 @@ public class ReviewDaoImpl implements ReviewDao{
     public void deleteReviewById(int id) {
         sql.delete("review.deleteReviewById", id);
     }
+
+    @Override
+    public void update(Review review) {
+        sql.update("review.update", review);
+    }
 }
