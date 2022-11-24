@@ -6,15 +6,20 @@ import kr.ac.kopo.service.GaguService;
 import kr.ac.kopo.util.Pager;
 import kr.ac.kopo.service.MemberService;
 import kr.ac.kopo.validation.MemberAddForm;
+import kr.ac.kopo.validation.MemberPwdUpdateForm;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.SystemEnvironmentPropertySource;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.StringUtils;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.List;
 
@@ -44,7 +49,7 @@ public class RootController {
 
     @ResponseBody
     @PostMapping("/login")
-    public String login(Member member, HttpSession session){
+    public String login(Member member, HttpSession session, HttpServletRequest request){
         if(service.login(member)){
             session.setAttribute("member", member);
 
@@ -53,7 +58,12 @@ public class RootController {
             if(memberId.equals("admin"))
                 return "admin";
 
-            return "OK";
+            String targetUrl = (String) session.getAttribute("targetUrl");
+            if (StringUtils.hasText(targetUrl)) {
+                return targetUrl;
+            }else{
+                return "/";
+            }
         }else {
             return "NO";
         }
@@ -156,11 +166,22 @@ public class RootController {
     }
 
     @PostMapping("/newPwd")
-    public String newPwd(Member member){
+    public String newPwd(@Validated @ModelAttribute("member") MemberPwdUpdateForm form, BindingResult bindingResult){
+        if (!form.getPwd().equals(form.getPwdCheck())) {
+            bindingResult.reject("pwdNotMatch", "비밀번호와 비밀번호 확인이 일치하지 않습니다.");
+        }
 
+        if (bindingResult.hasErrors()) {
+            return "redirect:/newpwd";
+        }
+
+        //성공로직
+        Member member = new Member();
+        member.setId(form.getId());
+        member.setPwd(form.getPwd());
         service.newPwd(member);
 
-        return "login";
+        return "redirect:/login";
     }
 
 

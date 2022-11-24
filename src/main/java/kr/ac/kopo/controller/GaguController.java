@@ -19,10 +19,8 @@ import java.util.List;
 
 /**
  * TODO
- * 1. Login시 이전에 요청했던 페이지로 이동
- * 2. Member 비밀번호 변경시 검증
- * 3. Gagu 등록시 검증 기능
- * 4. Gagu 변경시 검증 기능
+ * 1. Gagu 등록시 검증 기능
+ * 2. Gagu 변경시 검증 기능
  */
 
 @Controller
@@ -211,8 +209,11 @@ public class GaguController {
     @ResponseBody
     @PostMapping("/addWish")
     public String addWish(Wish wish, @SessionAttribute Member member, HttpSession session){
-        wish.setMemberId(member.getId());
+        if (member.getId().isEmpty()) {
+            return "FAIL";
+        }
 
+        wish.setMemberId(member.getId());
         service.addWish(wish);
         return "add";
     }

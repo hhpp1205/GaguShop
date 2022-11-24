@@ -1,5 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <!-- CSS only -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
 <!-- JavaScript Bundle with Popper -->
@@ -100,21 +102,23 @@
 <%--아이디/비밀번호 찾기 폼--%>
 <div class="loginBox">
   <h2>아이디/비밀번호찾기</h2>
-  <form method="post" id="contentBox" action="newPwd">
+  <form:form modelAttribute="member" method="post" id="contentBox" action="newPwd">
     <!--작성하지 않아도 문제는 없음-->
     <fieldset>
       <legend>비밀번호찾기 구역</legend>
       <div id="test">
         <label for="id">아이디</label>
-        <input type="text" id="id" name="id" value="${member.id}" readonly>
+        <input type="text" id="id" name="id" value="${member.id}" readonly/>
         <label for="pwd">새 비밀번호</label>
-        <input type="password" id="pwd" name="pwd" placeholder="새 비밀번호를 입력하세요">
-        <label for="pwd_check">새 비밀번호 확인</label>
-        <input type="password" id="pwd_check" name="pwd_check" placeholder="새 비밀번호 확인을 입력하세요">
+        <form:input cssClass="error_filed" path="pwd"  type="password" id="pwd" name="pwd" placeholder="새 비밀번호를 입력하세요"/>
+        <form:errors path="pwd" class="error_filed" element="div"/>
+        <label for="pwdCheck">새 비밀번호 확인</label>
+        <form:input cssClass="error_filed" path="pwdCheck" type="password" id="pwdCheck" name="pwdCheck" placeholder="새 비밀번호 확인을 입력하세요"/>
+        <form:errors path="pwdCheck" class="error_filed" element="div"/>
         <button class="find_pwd" type="button">비밀번호 변경</button>
       </div>
     </fieldset>
-  </form>
+  </form:form>
 </div>
 
 <!-- Footer-->
