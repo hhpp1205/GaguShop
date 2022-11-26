@@ -52,7 +52,7 @@
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                                <form method="get" action="gagu/search">
+                                <form method="get" action="/gagu/search">
                                     <div class="col-auto">
                                         <label class="visually-hidden" for="autoSizingInputGroup">Username</label>
                                         <div class="input-group">
@@ -109,8 +109,8 @@
             <label for="price" class="form-label">가격: </label>
             <input type="number" class="form-control" id="price" name="price">
         </div>
-        <select class="form-select" aria-label="Default select example" name="keyword">
-            <option selected>==카테고리 선택==</option>
+        <select class="form-select" aria-label="Default select example" id="keyword" name="keyword">
+            <option selected value="${null}">==카테고리 선택==</option>
             <c:forEach var="item" items="${list}">
                 <option value="${item.keyword}">${item.keyword}</option>--%>
             </c:forEach>
@@ -125,8 +125,8 @@
         <div class="mb-3" id="attachs">
             <%--보조사진 공간--%>
         </div>
-        <button type="submit" class="btn btn-primary">추가</button>
-        <button class="btn btn-danger"><a href="../">취소</a> </button>
+        <button type="button" class="btn btn-primary add_button">등록</button>
+        <button class="btn btn-danger"><a href="../" style="color: white">취소</a> </button>
     </form>
 </div>
 <script src="/js/add.js"></script>

@@ -51,7 +51,7 @@
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                                <form method="get" action="gagu/search">
+                                <form method="get" action="/gagu/search">
                                     <div class="col-auto">
                                         <label class="visually-hidden" for="autoSizingInputGroup">Username</label>
                                         <div class="input-group">
@@ -148,7 +148,6 @@
     <c:forEach var="pagers" items="${pager.list}">
         <a class="${pager.page == pagers ? 'selected' : ''}" href="/gagu/search?page=${pagers}&keyword=${keyword}">${pagers}</a>
     </c:forEach>
-<%--    <strong>2</strong>--%>
     <a href="?page=${pager.last}&keyword=${keyword}" class="direction"><span>&rsaquo;</span></a>
 </div>
 <!-- Footer-->

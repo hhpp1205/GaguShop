@@ -50,7 +50,7 @@
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                                <form method="get" action="gagu/search">
+                                <form method="get" action="/gagu/search">
                                     <div class="col-auto">
                                         <label class="visually-hidden" for="autoSizingInputGroup">Username</label>
                                         <div class="input-group">
@@ -96,18 +96,20 @@
     </div>
     </div>
 </nav>
-  <h1>어드민 페이지 입니다.</h1>
-<div>
-    <ul>
-        <li>
-            <a href="/admin/gagumanager">가구관리</a>
-        </li>
-        <li>
-            <a href="/admin/ordersmanager">주문관리</a>
-        </li>
-    </ul>
+<div class="container mt-5">
+    <h1 class="mt-5" style="text-align: center;">어드민 페이지 입니다.</h1>
+    <div>
+        <ul style="list-style: none; text-align: center">
+            <li>
+
+                <a href="/admin/gagumanager"><button type="button" class="btn btn-primary mt-5 mb-5">가구관리</button></a>
+            </li>
+            <li>
+                <a href="/admin/ordersmanager"><button type="button" class="btn btn-primary">주문관리</button></a>
+            </li>
+        </ul>
+    </div>
+
 </div>
-
-
 </body>
 </html>

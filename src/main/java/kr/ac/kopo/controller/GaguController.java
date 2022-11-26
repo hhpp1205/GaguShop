@@ -4,10 +4,14 @@ import kr.ac.kopo.model.*;
 import kr.ac.kopo.util.MultipartBinder;
 import kr.ac.kopo.util.Pager;
 import kr.ac.kopo.service.GaguService;
+import kr.ac.kopo.validation.GaguAddForm;
+import kr.ac.kopo.validation.GaguUpdateForm;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -19,8 +23,6 @@ import java.util.List;
 
 /**
  * TODO
- * 1. Gagu 등록시 검증 기능
- * 2. Gagu 변경시 검증 기능
  */
 
 @Controller
@@ -44,7 +46,19 @@ public class GaguController {
     }
 
     @PostMapping("/add")
-    public String add(Gagu item, @RequestParam(value = "file", required = false)MultipartFile file, @SessionAttribute Member member, Model model) throws IOException {
+    public String add(@Validated @ModelAttribute("gagu") GaguAddForm form, BindingResult bindingResult,
+                      @RequestParam(value = "file", required = false)MultipartFile file,
+                      @SessionAttribute Member member,
+                      RedirectAttributes redirectAttributes) throws IOException {
+
+        if (bindingResult.hasErrors()) {
+            return "redirect:/gagu/add";
+        }
+
+        Gagu item = new Gagu();
+        item.setName(form.getName());
+        item.setPrice(form.getPrice());
+        item.setKeyword(form.getKeyword());
 
         MultipartBinder binder = new MultipartBinder();
 
@@ -57,10 +71,12 @@ public class GaguController {
             binder.saveItemSubImg(item);
 
             service.add(item);
+            redirectAttributes.addAttribute("gaguId", item.getId());
+
         }catch (Exception e){
             e.printStackTrace();
         }
-        return "redirect:../";
+        return "redirect:/gagu/info/{gaguId}";
     }
 
 
@@ -119,15 +135,30 @@ public class GaguController {
     @GetMapping("/update/{id}")
     public String update(@PathVariable int id, Model model){
         Gagu item = service.info(id);
+
         List<String> keywordList = service.keywordList();
         model.addAttribute("keywordList", keywordList);
+
         model.addAttribute("item", item);
 
         return path + "update";
     }
 
     @PostMapping("/update")
-    public String update(Gagu item, @RequestParam(value = "file", required = false)MultipartFile file, @SessionAttribute Member member){
+    public String update(@Validated @ModelAttribute("gagu") GaguUpdateForm form, BindingResult bindingResult,
+                         @RequestParam(value = "file", required = false)MultipartFile file,
+                         @SessionAttribute Member member){
+
+        if (bindingResult.hasErrors()) {
+            return "redirect:/gagu/update";
+        }
+
+        Gagu item = new Gagu();
+        item.setId(form.getId());
+        item.setName(form.getName());
+        item.setPrice(form.getPrice());
+        item.setKeyword(form.getKeyword());
+
         MultipartBinder binder = new MultipartBinder();
 
         item.setMemberId(member.getId());

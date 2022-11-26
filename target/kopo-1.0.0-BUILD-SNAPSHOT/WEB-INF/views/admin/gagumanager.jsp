@@ -19,6 +19,7 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
   <!-- Core theme CSS (includes Bootstrap)-->
   <link href="/css/styles.css" rel="stylesheet" />
+  <link href="/css/gagumanager.css" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -50,7 +51,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
               <div class="modal-body">
-                <form method="get" action="gagu/search">
+                <form method="get" action="/gagu/search">
                   <div class="col-auto">
                     <label class="visually-hidden" for="autoSizingInputGroup">Username</label>
                     <div class="input-group">
@@ -96,12 +97,12 @@
   </div>
   </div>
 </nav>
-  <h1>가구관리</h1>
-  <div class="menu">
+  <div class="menu container">
+    <h1>가구관리</h1>
     <ul>
-      <li><a href="/gagu/add">추가</a></li>
-      <li><a href="/gagu/dummy">더미추가</a></li>
-      <li><a href="/gagu/init">더미삭제</a></li>
+      <li><a href="/gagu/add"><button type="button" class="btn btn-primary mt-5 mb-4">추가</button></a></li>
+      <li><a href="/gagu/dummy"><button type="button" class="btn btn-primary mb-4">더미추가</button></a></li>
+      <li><a href="/gagu/init"><button type="button" class="btn btn-primary">더미삭제</button></a></li>
     </ul>
   </div>
 
@@ -134,14 +135,13 @@
   </div>
   </section>
   <%--페이지네이션--%>
-  <div class="ssmc-pagenation">
-    <a href="?page=1" class="direction"><span>&lsaquo;</span></a>
-    <c:forEach var="pager" items="${pager.list}">
-      <a href="/admin/gagumanager?page=${pager}">${pager}</a>
-    </c:forEach>
-    <%--    <strong>2</strong>--%>
-    <a href="?page=${pager.last}" class="direction"><span>&rsaquo;</span></a>
-  </div>
+<div class="ssmc-pagenation">
+  <a href="?page=1" class="direction"><span>&lsaquo;</span></a>
+  <c:forEach var="pagers" items="${pager.list}">
+    <a class="${pager.page == pagers ? 'selected' : ''}" href="/admin/gagumanager?page=${pagers}">${pagers}</a>
+  </c:forEach>
+  <a href="?page=${pager.last}" class="direction"><span>&rsaquo;</span></a>
+</div>
   <!-- Bootstrap core JS-->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
   <!-- Core theme JS-->

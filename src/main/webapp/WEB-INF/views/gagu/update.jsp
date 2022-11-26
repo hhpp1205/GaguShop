@@ -51,7 +51,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
               <div class="modal-body">
-                <form method="get" action="gagu/search">
+                <form method="get" action="/gagu/search">
                   <div class="col-auto">
                     <label class="visually-hidden" for="autoSizingInputGroup">Username</label>
                     <div class="input-group">
@@ -112,21 +112,21 @@
 
       <div class="form-group">
         <label class="form-label">제품명:</label>
-        <input type="text" name="name" value="${item.name}" class="form-control">
+        <input type="text" id="name" name="name" value="${item.name}" class="form-control">
       </div>
 
       <div class="form-group">
         <label class="form-label">가격:</label>
-        <input type="text" name="price" value="${item.price}" class="form-control">
+        <input type="text" id="price" name="price" value="${item.price}" class="form-control">
       </div>
 
-      <div>
-        <select name="keyword">
+        <select class="form-select mb-3 mt-3" aria-label="Default select example" id="keyword" name="keyword">
+          <option selected value="${null}">==카테고리 선택==</option>
           <c:forEach var="item" items="${keywordList}">
-            <option value="${item.keyword}">${item.keyword}</option>
+            <option value="${item.keyword}">${item.keyword}</option>--%>
           </c:forEach>
         </select>
-      </div>
+
       <%-- 메인 사진--%>
       <div class="form-group">
         <img src="/loadImg/${item.gaguImg}">
@@ -151,7 +151,7 @@
 
       <div class="form-group mt-3">
         <button type="button" class="btn btn-sm btn-primary update_button">변경</button>
-        <a href="/"><button type="button" class="btn btn-sm btn-secondary">취소</button></a>
+        <a href="../"><button type="button" class="btn btn-sm btn-secondary">취소</button></a>
       </div>
     </form>
   </div>
