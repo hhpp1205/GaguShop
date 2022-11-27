@@ -16,6 +16,6 @@
 
     <insert id="addOrders">
         INSERT INTO orders
-        VALUES(NULL, #{count}, #{price}, #{total}, NOW(), #{gaguId}, #{memberId})
+        VALUES(NULL, #{count}, #{price}, #{total}, #{address}, NOW(), #{gaguId}, #{memberId})
     </insert>
 </mapper>

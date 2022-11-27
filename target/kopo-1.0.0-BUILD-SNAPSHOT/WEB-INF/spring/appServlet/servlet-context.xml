@@ -38,7 +38,9 @@
 	
 	<interceptors>
 		<interceptor>
-			<mapping path="/admin" />
+			<mapping path="/admin/**" />
+			<mapping path="/gagu/add" />
+			<mapping path="/gagu/update/**" />
 			<beans:bean class="kr.ac.kopo.interceptor.AdminLoginInterceptor"></beans:bean>
 		</interceptor>
 

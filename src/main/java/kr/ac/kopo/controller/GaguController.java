@@ -23,6 +23,10 @@ import java.util.List;
 
 /**
  * TODO
+ * 1. 결제 시 주소 추가
+ * 1-1. Orders Table 주소 추가 (DB 변경함)
+ * 1-2. 결제 클릭시 결제 페이지 이동 (주소 입력)
+ * 2. 어드민 주문관리 페이지 구현
  */
 
 @Controller
@@ -312,7 +316,12 @@ public class GaguController {
 
             return "redirect:/gagu/info/{gaguId}";
         }
-        return "list";
+        return "redirect:/";
+    }
+
+    @GetMapping("/payment")
+    public String payment(){
+        return "/gagu/payment";
     }
 
 }

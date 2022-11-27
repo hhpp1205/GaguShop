@@ -19,7 +19,7 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
   <!-- Core theme CSS (includes Bootstrap)-->
   <link href="/css/styles.css" rel="stylesheet" />
-  <link href="/css/find-account.css" rel="stylesheet">
+  <link href="/css/index.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -97,56 +97,51 @@
   </div>
   </div>
 </nav>
-<%--아이디/비밀번호 찾기 폼--%>
-<div class="loginBox">
-  <h2>아이디/비밀번호찾기</h2>
-  <form method="post" id="find-account" action="findId">
-    <!--작성하지 않아도 문제는 없음-->
-    <fieldset>
-      <ul>
-        <li><a href="#" class="find-id select">아이디찾기</a></li>
-        <li><a href="#" class="find-pwd">비밀번호찾기</a></li>
-      </ul>
-      <legend>로그인 구역</legend>
-      <div id="test">
-        <label for="name">이름</label>
-        <input type="text" id="name" name="name" placeholder="이름을 입력해 주세요">
-        <label for="phoneNumber">전화번호</label>
-        <input type="text" id="phoneNumber" name="phoneNumber" placeholder="전화번호를 입력해 주세요(-없이)">
-        <button type="button" class="findId_button">아이디 찾기</button>
+
+<div class="container">
+  <h1>결제</h1>
+  <form>
+    <div class="mb-3">
+      <label for="name" class="form-label">제품명</label>
+      <input type="text" class="form-control" id="name" name="name">
+    </div>
+    <div class="mb-3">
+      <label for="count" class="form-label">갯수</label>
+      <input type="text" class="form-control" id="count" name="count">
+    </div>
+    <div class="mb-3">
+      <label for="price" class="form-label">총 가격</label>
+      <input type="text" class="form-control" id="price" name="price">
+    </div>
+    <div>
+      <label for="address" class="form-label">주소</label>
+    </div>
+      <div class="input-group mb-2">
+        <input id="address" name="address" type="text" class="form-control" placeholder="주소" aria-label="Recipient's username" aria-describedby="button-addon2">
+        <button class="btn btn-outline-secondary" onclick="addressSearch()" type="button" id="button-addon2">주소찾기</button>
       </div>
-    </fieldset>
+    <div class="mb-3">
+      <label for="addressDetail" class="form-label">상세주소</label>
+      <input type="text" class="form-control" id="addressDetail" name="addressDetail" placeholder="상세주소">
+    </div>
+  <div>
+    <button type="submit" class="btn btn-primary">결제 완료</button>
+  </div>
   </form>
 </div>
 
-<%--<div class="loginbox">--%>
-<%--  <h2>아이디/비밀번호찾기</h2>--%>
-<%--  <form method="post">--%>
-<%--    <!--작성하지 않아도 문제는 없음-->--%>
-<%--    <fieldset>--%>
-<%--      <ul>--%>
-<%--        <li class="find-id"><a href="#">아이디찾기</a></li>--%>
-<%--        <li class="find-pwd select"><a href="#">비밀번호찾기</a></li>--%>
-<%--      </ul>--%>
-<%--      <legend>로그인 구역</legend>--%>
-<%--      <label for="id">아이디</label>--%>
-<%--      <input type="text" id="id" name="id" placeholder="아이디를 입력해 주세요">--%>
-<%--      <label for="name">이름</label>--%>
-<%--      <input type="text" id="name" name="name" placeholder="이름을 입력해 주세요">--%>
-<%--      <label for="phone-number">전화번호</label>--%>
-<%--      <input type="text" id="phone-number" name="phone-number" placeholder="전화번호를 입력해 주세요(-없이)">--%>
-<%--      <!--데이터를 서버로 전송-->--%>
-<%--      <button type="button">비밀번호 찾기</button>--%>
-<%--    </fieldset>--%>
-<%--  </form>--%>
-<%--</div>--%>
 
 
-
-<script
-        src="https://code.jquery.com/jquery-3.6.1.js"
-        integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI="
-        crossorigin="anonymous"></script>
-<script src="/js/find-account.js"></script>
+<!-- Footer-->
+<footer class="py-5" style="background-color: #EBE1D7;">
+  <div class="container"><p class="m-0 text-center" style="color: #525252;">Daejeon Polytechnic &reg; HongSeongMin</p></div>
+</footer>
+<!-- Bootstrap core JS-->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Core theme JS-->
+<script src="/js/scripts.js"></script>
+<script src="/js/payment.js"></script>
+<!--다음 주소 API-->
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 </body>
 </html>
