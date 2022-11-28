@@ -59,7 +59,7 @@ public class RootController {
                 return "admin";
 
             String targetUrl = (String) session.getAttribute("targetUrl");
-            if (StringUtils.hasText(targetUrl)) {
+            if (StringUtils.hasText(targetUrl) && targetUrl != null) {
                 return targetUrl;
             }else{
                 return "/";

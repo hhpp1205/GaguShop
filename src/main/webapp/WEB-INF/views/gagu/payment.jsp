@@ -19,7 +19,7 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
   <!-- Core theme CSS (includes Bootstrap)-->
   <link href="/css/styles.css" rel="stylesheet" />
-  <link href="/css/index.css" rel="stylesheet">
+  <link href="/css/payment.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -100,38 +100,39 @@
 
 <div class="container">
   <h1>결제</h1>
-  <form>
-    <div class="mb-3">
-      <label for="name" class="form-label">제품명</label>
-      <input type="text" class="form-control" id="name" name="name">
-    </div>
-    <div class="mb-3">
-      <label for="count" class="form-label">갯수</label>
-      <input type="text" class="form-control" id="count" name="count">
-    </div>
-    <div class="mb-3">
-      <label for="price" class="form-label">총 가격</label>
-      <input type="text" class="form-control" id="price" name="price">
-    </div>
-    <div>
-      <label for="address" class="form-label">주소</label>
-    </div>
-      <div class="input-group mb-2">
-        <input id="address" name="address" type="text" class="form-control" placeholder="주소" aria-label="Recipient's username" aria-describedby="button-addon2">
-        <button class="btn btn-outline-secondary" onclick="addressSearch()" type="button" id="button-addon2">주소찾기</button>
-      </div>
-    <div class="mb-3">
-      <label for="addressDetail" class="form-label">상세주소</label>
-      <input type="text" class="form-control" id="addressDetail" name="addressDetail" placeholder="상세주소">
-    </div>
+  <h3>주문 상품 정보</h3>
+
+  <table class="table">
+    <thead>
+    <tr>
+      <th colspan="2" scope="col">상품정보</th>
+      <th scope="col">단가</th>  <%--1개당가격--%>
+      <th scope="col">수량</th>
+      <th scope="col">상품금액</th> <%--총 가격--%>
+    </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><img  src="/loadImg/" /></td>
+        <td>gd</td>
+        <td>₩ </td>
+        <td></td>
+        <td data-count="">₩ </td>
+      </tr>
+    </tbody>
+  </table>
   <div>
-    <button type="submit" class="btn btn-primary">결제 완료</button>
+    <label for="address" class="form-label">주소</label>
   </div>
-  </form>
+  <div class="input-group mb-3">
+    <input type="text" id="address" name="address" class="form-control" aria-label="Recipient's username" aria-describedby="button-addon2" readonly>
+    <button class="btn btn-outline-secondary" type="button" id="button-addon2" onclick="addressSearch()">주소찾기</button>
+  </div>
+  <div class="mb-3">
+    <label for="addressDetail" class="form-label">상세주소</label>
+    <input type="text" class="form-control" id="addressDetail">
+  </div>
 </div>
-
-
-
 <!-- Footer-->
 <footer class="py-5" style="background-color: #EBE1D7;">
   <div class="container"><p class="m-0 text-center" style="color: #525252;">Daejeon Polytechnic &reg; HongSeongMin</p></div>
