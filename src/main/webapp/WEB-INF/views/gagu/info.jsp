@@ -134,7 +134,11 @@
         </div>
         <hr class="info_hr">
         <div class="product_buttons">
-                <button type="button" class="btn btn-danger buy_button">결제하기</button>
+                <button type="button" class="btn btn-danger buy_button"
+                        data-gaguid="${item.id}"
+                        data-gaguimg="${item.gaguImg}"
+                        data-name="${item.name}"
+                        data-price="${item.price}">결제하기</button>
                 <button type="button" class="btn btn-secondary cart_button">장바구니에 담기</button>
         </div>
         <div class="etc_button">
@@ -214,9 +218,6 @@
 
     </c:forEach>
 </div>
-
-
-
 <!-- Footer-->
 <footer class="py-5" style="background-color: #EBE1D7;">
     <div class="container"><p class="m-0 text-center" style="color: #525252;">Daejeon Polytechnic &reg; HongSeongMin</p></div>

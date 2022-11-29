@@ -12,4 +12,6 @@ public interface OrdersService {
     void addOrders(Orders orders);
 
     List<Gagu> list(String memberId);
+
+    int payment(Orders orders);
 }

@@ -18,4 +18,9 @@
         INSERT INTO orders
         VALUES(NULL, #{count}, #{price}, #{total}, #{address}, NOW(), #{gaguId}, #{memberId})
     </insert>
+
+    <insert id="payment">
+        INSERT INTO orders
+        VALUES (NULL, #{count}, #{price}, #{total}, #{address}, #{addressDetail}, NOW(), #{gaguId}, #{memberId})
+    </insert>
 </mapper>

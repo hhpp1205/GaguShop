@@ -20,5 +20,7 @@ public class Orders {
     private int gaguId;
     //Member
     private String memberId;
+    //Cart
+    private int cartId;
 
 }

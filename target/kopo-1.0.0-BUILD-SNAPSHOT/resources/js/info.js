@@ -35,24 +35,25 @@ $('.count_button').click(function (){
 
 //결제하기
 $('.buy_button').click(function (){
-   $.ajax({
-       type : "POST",
-       url : "/order/",
-       data : {
-            "count" : $('.product_count_num').data("count"),
-            "gaguId" : $('#gaguId').val()
-       },
-       success : function (data){
-           if(data == "OK"){
-               console.log(data);
-               alert("주문이 완료되었습니다");
-           }else {
-               alert("로그인후 이용해 주세요");
-               location.href = "/login";
-           }
+    let gaguArr = [];
 
-       }
-   })
+    const gaguId = $(this).data("gaguid");
+    const gaguImg = $(this).data("gaguimg");
+    const name = $(this).data("name");
+    const count = countProduct;
+    const price = $(this).data("price");
+
+    const gagu = {
+        'id' : gaguId,
+        'name' : name,
+        'price' : price,
+        'gaguImg' : gaguImg,
+        'cartCount' : count,
+        'cartId' : cartId
+    }
+    gaguArr.push(gagu);
+    sessionStorage.setItem("gaguArr", JSON.stringify(gaguArr));
+    location.href = "/order/payment";
 });
 
 //장바구니 버튼 기능

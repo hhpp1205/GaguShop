@@ -33,4 +33,10 @@
         DELETE FROM cart
         WHERE id = #{cartId}
     </delete>
+
+    <delete id="deleteForPayment">
+        DELETE FROM cart
+        WHERE id = #{cartId}
+    </delete>
+
 </mapper>

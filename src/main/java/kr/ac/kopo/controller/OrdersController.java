@@ -46,5 +46,23 @@ public class OrdersController {
             return "OK";
         }
     }
+
+    @GetMapping("/payment")
+    public String payment(){
+        return "/gagu/payment";
+    }
+
+    @ResponseBody
+    @PostMapping("/payment")
+    public String payment(Orders orders, @SessionAttribute Member member){
+        orders.setMemberId(member.getId());
+        if(orderService.payment(orders) == 1){
+            return "OK";
+        }else {
+            return "FUCk";
+        }
+    }
+
+
 }
 

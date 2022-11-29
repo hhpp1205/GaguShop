@@ -50,4 +50,11 @@ public class CartDaoImpl implements CartDao{
     public void deleteCart(Orders orders) {
         sql.delete("cart.deleteCart",orders);
     }
+
+    @Override
+    public void deleteForPayment(Orders orders) {
+        sql.delete("cart.deleteForPayment", orders);
+    }
+
+
 }

@@ -122,10 +122,12 @@
         <td data-count="${item.cartCount}">₩ ${item.price * item.cartCount}</td>
         <td class="product_td">
           <a class="product_td_a addOrder_button"
+             data-gaguid="${item.id}"
+             data-gaguimg="${item.gaguImg}"
+             data-name="${item.name}"
              data-count="${item.cartCount}"
              data-price="${item.price}"
-             data-total="${item.price * item.cartCount}"
-             data-gaguid="${item.id}" >주문하기</a>
+             data-cartid="${item.cartId}">주문하기</a>
           <a data-cartid="${item.cartId}" class="product_td_a delete_cart">삭제</a>
         </td>
       </tr>

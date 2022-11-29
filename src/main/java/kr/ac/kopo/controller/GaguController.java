@@ -19,14 +19,16 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * TODO
- * 1. 결제 시 주소 추가
- * 1-1. Orders Table 주소 추가 (DB 변경함)
- * 1-2. 결제 클릭시 결제 페이지 이동 (주소 입력)
- * 2. 어드민 주문관리 페이지 구현
+ * 1. info 페이지에서 결제 기능 구현
+ * 2. footer 바닥에 붙이기
+ * 3. 데이터 넣기
  */
 
 @Controller
@@ -319,9 +321,6 @@ public class GaguController {
         return "redirect:/";
     }
 
-    @GetMapping("/payment")
-    public String payment(){
-        return "/gagu/payment";
-    }
+
 
 }

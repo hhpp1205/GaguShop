@@ -13,8 +13,6 @@ $('.oneCheck').click(function (){
     const totalBox = $('input:checkbox[name="chbox"]').length;
     let checkedBox = $('input:checkbox[name="chbox"]:checked').length;
 
-    console.log("totalBox = " + totalBox);
-    console.log("checkBox = " + checkedBox);
 
     if(totalBox == checkedBox){
         $("#allCheck").prop("checked", true);
@@ -24,94 +22,88 @@ $('.oneCheck').click(function (){
 });
 //단일 상품 주문하기 버튼
 $('.addOrder_button').click(function (){
+    let gaguArr = new Array();
+
+    const gaguId = $(this).data("gaguid");
+    const gaguImg = $(this).data("gaguimg");
+    const name = $(this).data("name");
     const count = $(this).data("count");
     const price = $(this).data("price");
-    const total = $(this).data("total");
-    const gaguid = $(this).data("gaguid");
+    const cartId = $(this).data("cartid");
 
-    console.log("count = " + count);
-    console.log("price = " + price);
-    console.log("total = " + total);
-    console.log("gaguId = " + gaguid);
+    const gagu = {
+        'id' : gaguId,
+        'name' : name,
+        'price' : price,
+        'gaguImg' : gaguImg,
+        'cartCount' : count,
+        'cartId' : cartId
+    }
+    gaguArr.push(gagu);
 
-    $.ajax({
-        type : "POST",
-        url : "/order/",
-        data : {
-            "count" : count,
-            "price" : price,
-            "total" : total,
-            "gaguId" : gaguid
-        },
-        success : function (data) {
-            if(data == "OK"){
-                alert("주문이 완료 되었습니다");
-                location.href = "/gagu/cart";
-            }else {
-                alert("주문에 실패 했습니다");
-            }
-        }
-    });
+    sessionStorage.setItem("gaguArr", JSON.stringify(gaguArr));
+    location.href = "/order/payment";
 });
 
 //전체주문 버튼 눌렀을 때
 $('.orderButton_wrapper .allOrder_button').click(function (){
+    let gaguArr = new Array();
 
     $('input:checkbox[name="chbox"]').each(function (){
         const tr = $(this).closest("tr");
         const gaguId = tr.find('.addOrder_button').data("gaguid");
+        const gaguImg = tr.find('.addOrder_button').data("gaguimg");
+        const name = tr.find('.addOrder_button').data("name");
         const count = tr.find('.addOrder_button').data("count");
         const price = tr.find('.addOrder_button').data("price");
-        const total = price * count;
+        const cartId = tr.find('.addOrder_button').data("cartid");
 
-        $.ajax({
-           url:"/order/",
-           method:"POST",
-           data: {
-               "gaguId" : gaguId,
-               "count" : count,
-               "price" : price,
-               "total" : total
-           },
-            success: data => {
-                console.log(data);
-            }
-        });
+        const gagu = {
+            'id' : gaguId,
+            'name' : name,
+            'price' : price,
+            'gaguImg' : gaguImg,
+            'cartCount' : count,
+            'cartId' : cartId
+        }
+        gaguArr.push(gagu);
+
+        console.log(cartId);
     });
-        alert("주문이 완료 되었습니다");
-        location.href = "/gagu/cart";
+    sessionStorage.setItem("gaguArr", JSON.stringify(gaguArr));
+    location.href = "/order/payment";
 });
 
 //선택상품 주문 눌렀을 때
 $('.orderButton_wrapper .selectOrder_button').click(function (){
+    let gaguArr = [];
 
     $('input:checkbox[name="chbox"]').each(function (){
         if( this.checked ==true){
             const tr = $(this).closest("tr");
             const gaguId = tr.find('.addOrder_button').data("gaguid");
+            const gaguImg = tr.find('.addOrder_button').data("gaguimg");
+            const name = tr.find('.addOrder_button').data("name");
             const count = tr.find('.addOrder_button').data("count");
             const price = tr.find('.addOrder_button').data("price");
-            const total = price * count;
+            const cartId = tr.find('.addOrder_button').data("cartid");
 
-            $.ajax({
-                url:"/order/",
-                method:"POST",
-                data: {
-                    "gaguId" : gaguId,
-                    "count" : count,
-                    "price" : price,
-                    "total" : total
-                },
-                success: data => {
-                    console.log(data);
-                }
-            });
+            const gagu = {
+                'id' : gaguId,
+                'name' : name,
+                'price' : price,
+                'gaguImg' : gaguImg,
+                'cartCount' : count,
+                'cartId' : cartId
+            }
+            gaguArr.push(gagu);
         }
     });
-    alert("주문이 완료 되었습니다");
-    location.href = "/gagu/cart";
+    sessionStorage.setItem("gaguArr", JSON.stringify(gaguArr));
+    location.href = "/order/payment";
 });
 
+//장바구니 삭제 버튼 눌렀을 때
 $('.delete_cart').click(function (){
     const cartId = $(this).data('cartid');
 
@@ -128,7 +120,7 @@ $('.delete_cart').click(function (){
                 alert("삭제실패");
             }
         }
-    })
+    });
 
 })
 

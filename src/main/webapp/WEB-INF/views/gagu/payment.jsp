@@ -112,13 +112,7 @@
     </tr>
     </thead>
     <tbody>
-      <tr>
-        <td><img  src="/loadImg/" /></td>
-        <td>gd</td>
-        <td>₩ </td>
-        <td></td>
-        <td data-count="">₩ </td>
-      </tr>
+  <%--주문상품정보--%>
     </tbody>
   </table>
   <div>
@@ -130,7 +124,10 @@
   </div>
   <div class="mb-3">
     <label for="addressDetail" class="form-label">상세주소</label>
-    <input type="text" class="form-control" id="addressDetail">
+    <input type="text" class="form-control" id="addressDetail" name="addressDetail">
+  </div>
+  <div style="text-align: right" class="mb-5">
+    <button type="button" class="btn btn-primary payment_button">결제하기</button>
   </div>
 </div>
 <!-- Footer-->

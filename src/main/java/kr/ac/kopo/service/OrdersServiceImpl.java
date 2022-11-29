@@ -33,4 +33,17 @@ public class OrdersServiceImpl implements OrdersService {
     public List<Gagu> list(String memberId) {
         return orderDao.list(memberId);
     }
+
+    @Transactional
+    @Override
+    public int payment(Orders orders) {
+        int payment = orderDao.payment(orders);
+        if(payment == 1){
+            cartDao.deleteForPayment(orders);
+            return 1;
+        }else {
+            return 0;
+        }
+
+    }
 }

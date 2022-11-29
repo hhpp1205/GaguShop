@@ -32,4 +32,9 @@ public class OrdersDaoImpl implements OrdersDao {
     public List<Gagu> list(String memberId) {
         return sql.selectList("orders.list", memberId);
     }
+
+    @Override
+    public int payment(Orders orders) {
+        return sql.insert("orders.payment", orders);
+    }
 }

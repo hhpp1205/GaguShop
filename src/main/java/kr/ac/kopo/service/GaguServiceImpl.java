@@ -172,6 +172,7 @@ public class GaguServiceImpl implements GaguService{
         reviewDao.update(review);
     }
 
+
     @Override
     public List<Gagu> allCheckWishByMemberId(Member member) {
          return wishDao.allCheckWishByMemberId(member);
