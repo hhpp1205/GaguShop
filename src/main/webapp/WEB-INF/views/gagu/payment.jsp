@@ -91,7 +91,6 @@
       <button class="btn btn-outline-dark" type="submit">
         <i class="bi-cart-fill me-1"></i>
         Cart
-        <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
       </button>
     </form>
   </div>
@@ -115,6 +114,9 @@
   <%--주문상품정보--%>
     </tbody>
   </table>
+  <div style="text-align: right">
+    <span id="total_price"></span>
+  </div>
   <div>
     <label for="address" class="form-label">주소</label>
   </div>
@@ -126,6 +128,7 @@
     <label for="addressDetail" class="form-label">상세주소</label>
     <input type="text" class="form-control" id="addressDetail" name="addressDetail">
   </div>
+
   <div style="text-align: right" class="mb-5">
     <button type="button" class="btn btn-primary payment_button">결제하기</button>
   </div>

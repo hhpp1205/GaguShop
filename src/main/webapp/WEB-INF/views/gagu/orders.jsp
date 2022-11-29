@@ -91,7 +91,6 @@
             <button class="btn btn-outline-dark" type="submit">
                 <i class="bi-cart-fill me-1"></i>
                 Cart
-                <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
             </button>
         </form>
     </div>
@@ -99,7 +98,7 @@
 </nav>
 
 <%--주문 목록--%>
-<div class="container h-auto mb-5">
+<div id="container" class="container h-auto">
     <h1>주문목록</h1>
     <table class="table">
         <thead>

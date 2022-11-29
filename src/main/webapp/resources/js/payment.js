@@ -1,9 +1,10 @@
-
+let totalPrice = 0;
 const gaguArr = JSON.parse(sessionStorage.getItem("gaguArr"));
 // 페이지 로드 시 상품 목록 불러오기
 $(function (){
-    // sessionStorage.removeItem("gaguArr");
+    sessionStorage.removeItem("gaguArr");
     gaguArr.forEach((i) => {
+        totalPrice = totalPrice + (i.price * i.cartCount);
         $('tbody').append(
             '<tr>' +
             '<td><img src="/loadImg/' + i.gaguImg + '"/></td>' +
@@ -14,6 +15,9 @@ $(function (){
             '</tr>'
         );
     });
+    $('#total_price').text("총 " + totalPrice + "원");
+    $('#total_price').css('font-size', '25px');
+    $('#total_price').css('color', 'red');
 });
 
 // 주소찾기 눌렀을 때

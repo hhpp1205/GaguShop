@@ -49,7 +49,6 @@ $('.buy_button').click(function (){
         'price' : price,
         'gaguImg' : gaguImg,
         'cartCount' : count,
-        'cartId' : cartId
     }
     gaguArr.push(gagu);
     sessionStorage.setItem("gaguArr", JSON.stringify(gaguArr));
