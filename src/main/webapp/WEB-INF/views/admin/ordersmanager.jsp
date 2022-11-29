@@ -1,5 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!-- CSS only -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
 <!-- JavaScript Bundle with Popper -->
@@ -19,7 +20,6 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
   <!-- Core theme CSS (includes Bootstrap)-->
   <link href="/css/styles.css" rel="stylesheet" />
-  <link href="/css/payment.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -98,51 +98,38 @@
 </nav>
 
 <div class="container">
-  <h1>결제</h1>
-  <h3>주문 상품 정보</h3>
-
+  <h1>주문관리</h1>
   <table class="table">
     <thead>
     <tr>
-      <th colspan="2" scope="col">상품정보</th>
-      <th scope="col">단가</th>  <%--1개당가격--%>
+      <th scope="col">가구번호</th>
+      <th scope="col">제품명</th>
+      <th scope="col">단가</th>
       <th scope="col">수량</th>
-      <th scope="col">총 상품금액</th> <%--총 가격--%>
+      <th scope="col">총 상품금액</th>
+      <th scope="col">날짜</th>
+      <th scope="col">주소</th>
+      <th scope="col">상세주소</th>
     </tr>
     </thead>
     <tbody>
-  <%--주문상품정보--%>
+    <c:forEach var="order" items="${list}">
+      <tr>
+        <td>${order.gaguId}</td>
+        <td>${order.gaguName}</td>
+        <td>${order.price}</td>
+        <td>${order.count}</td>
+        <td>${order.total}</td>
+        <td><fmt:formatDate value="${order.saleDate}" pattern="yyyy-MM-dd" type="date"/></td>
+        <td>${order.address}</td>
+        <td>${order.addressDetail}</td>
+      </tr>
+    </c:forEach>
     </tbody>
   </table>
-  <div style="text-align: right">
-    <span id="total_price"></span>
-  </div>
-  <div>
-    <label for="address" class="form-label">주소</label>
-  </div>
-  <div class="input-group mb-3">
-    <input type="text" id="address" name="address" class="form-control" aria-label="Recipient's username" aria-describedby="button-addon2" readonly>
-    <button class="btn btn-outline-secondary" type="button" id="button-addon2" onclick="addressSearch()">주소찾기</button>
-  </div>
-  <div class="mb-3">
-    <label for="addressDetail" class="form-label">상세주소</label>
-    <input type="text" class="form-control" id="addressDetail" name="addressDetail">
-  </div>
-
-  <div style="text-align: right" class="mb-5">
-    <button type="button" class="btn btn-primary payment_button">결제하기</button>
-  </div>
 </div>
-<!-- Footer-->
-<footer class="py-5" style="background-color: #EBE1D7;">
-  <div class="container"><p class="m-0 text-center" style="color: #525252;">Daejeon Polytechnic &reg; HongSeongMin</p></div>
-</footer>
-<!-- Bootstrap core JS-->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-<!-- Core theme JS-->
-<script src="/js/scripts.js"></script>
-<script src="/js/payment.js"></script>
-<!--다음 주소 API-->
-<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+
+
+
 </body>
 </html>

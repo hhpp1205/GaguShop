@@ -23,4 +23,11 @@
         INSERT INTO orders
         VALUES (NULL, #{count}, #{price}, #{total}, #{address}, #{addressDetail}, NOW(), #{gaguId}, #{memberId})
     </insert>
+
+    <select id="adminList" resultType="Orders">
+        SELECT o.*, g.name gagu_name
+        FROM orders o INNER JOIN gagu g ON(o.gagu_id = g.id)
+        ORDER BY sale_date DESC
+        LIMIT 30
+    </select>
 </mapper>

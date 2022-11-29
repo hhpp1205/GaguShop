@@ -18,6 +18,7 @@ public class Orders {
 
     //Gagu
     private int gaguId;
+    private String gaguName;
     //Member
     private String memberId;
     //Cart

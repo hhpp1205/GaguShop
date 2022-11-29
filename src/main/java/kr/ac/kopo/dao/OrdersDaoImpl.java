@@ -2,6 +2,7 @@ package kr.ac.kopo.dao;
 
 import kr.ac.kopo.model.Gagu;
 import kr.ac.kopo.model.Orders;
+import kr.ac.kopo.util.Pager;
 import lombok.RequiredArgsConstructor;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,5 +37,10 @@ public class OrdersDaoImpl implements OrdersDao {
     @Override
     public int payment(Orders orders) {
         return sql.insert("orders.payment", orders);
+    }
+
+    @Override
+    public List<Orders> adminList(Pager pager) {
+        return sql.selectList("orders.adminList", pager);
     }
 }

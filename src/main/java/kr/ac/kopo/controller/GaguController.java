@@ -26,8 +26,8 @@ import java.util.Map;
 
 /**
  * TODO
- * 1. info 페이지에서 결제 기능 구현
- * 2. footer 바닥에 붙이기
+ * 1. Admin 주문관리 페이지 페이징 구현
+ * 2. Admin 주문관리 페이지 기간별 팔린 금액 보기
  * 3. 데이터 넣기
  */
 
