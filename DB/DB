@@ -1,6 +1,6 @@
 -- --------------------------------------------------------
 -- 호스트:                          127.0.0.1
--- 서버 버전:                        10.9.3-MariaDB - mariadb.org binary distribution
+-- 서버 버전:                        10.8.4-MariaDB - mariadb.org binary distribution
 -- 서버 OS:                        Win64
 -- HeidiSQL 버전:                  11.3.0.6295
 -- --------------------------------------------------------
@@ -27,23 +27,67 @@ CREATE TABLE IF NOT EXISTS `attach` (
   PRIMARY KEY (`id`),
   KEY `gagu_id` (`gagu_id`),
   CONSTRAINT `FK_attach_gagu` FOREIGN KEY (`gagu_id`) REFERENCES `gagu` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=utf8mb4 COMMENT='이미지';
+) ENGINE=InnoDB AUTO_INCREMENT=91 DEFAULT CHARSET=utf8mb4 COMMENT='이미지';
 
--- 테이블 데이터 gagushop.attach:~11 rows (대략적) 내보내기
+-- 테이블 데이터 gagushop.attach:~56 rows (대략적) 내보내기
 /*!40000 ALTER TABLE `attach` DISABLE KEYS */;
 INSERT IGNORE INTO `attach` (`id`, `gagu_id`, `filename`) VALUES
-	(13, 49, 'ghgh.jpg'),
-	(16, 52, 'ghgh.jpg'),
-	(18, 54, 'ghgh.jpg'),
-	(19, 55, '222.jpg'),
-	(20, 55, '333.jpg'),
-	(21, 56, '222.jpg'),
-	(22, 56, '111.jpg'),
-	(23, 56, '11992340234270.jpg'),
-	(24, 57, '333.jpg'),
-	(25, 57, '222.jpg'),
-	(26, 57, 'S600_ebf27610-105a-4261-b7b9-cf9f8aec62a4.png'),
-	(32, 166, '9fd16947-d88f-49a3-ab59-a39ddb9b3dd3.jpg');
+	(35, 181, '4abfdff6-acc8-40bb-838e-219e89969820.jpg'),
+	(36, 182, '5fa21c1f-5360-4084-85c9-3f67c326eed3.jpg'),
+	(37, 183, 'c598a76e-333c-4d63-9567-5bb8858822e8.jpg'),
+	(38, 184, 'afa0d7ee-f8cb-4cbe-960d-4dbe8db9c90a.png'),
+	(39, 185, '443f05e3-60c1-4775-8942-3364700afc46.jpg'),
+	(40, 185, '9b4b134e-57a2-4ebd-9360-c0e2fdadae67.jpg'),
+	(41, 186, '304c2f6d-1d09-4e26-a21f-ff15b7f6b56b.png'),
+	(42, 187, 'b4b12d6b-1fa4-4eef-a4fa-c7957ef7dba1.jpg'),
+	(43, 188, 'b3e3fdbb-75ce-4307-be1f-f07ad9b1a835.jpg'),
+	(44, 188, '729d042a-47bc-4d32-8199-897b3b5b02a5.jpg'),
+	(45, 188, 'e47381da-0080-4995-83a6-b0db6a168412.jpg'),
+	(46, 189, 'e83c6e8a-8272-44dd-8060-cfd1ec410982.jpg'),
+	(47, 189, 'e2bc7979-274b-4e06-b6ca-eceecd7ec0c6.jpg'),
+	(48, 189, '7d4f77d5-5049-465e-adf0-c4c92b3e12ea.jpg'),
+	(49, 190, '8887fbae-6099-44fd-ba7b-19368783b251.jpg'),
+	(50, 191, 'bb03b5f5-6ab9-4671-9d2c-18f8d5de3e00.jpg'),
+	(51, 191, 'fe0683a5-375c-447e-942e-e4963e7237b7.jpg'),
+	(52, 192, '833f8515-6f1c-4c08-a6a4-f78487077531.jpg'),
+	(53, 192, '4920c632-c2a2-4874-ac6c-e9e4ec9775ad.jpg'),
+	(54, 192, '08eb85d6-8b53-4f13-808b-6a3a7ad1dd78.jpg'),
+	(55, 193, '80053529-5ed3-4ac6-9784-bf3e8f9d9f6e.jpg'),
+	(56, 193, 'a5cca69f-854f-430c-a63c-2bdb21152c52.jpg'),
+	(57, 194, 'c12082e3-b88d-4fe6-9911-13e66059631b.jpg'),
+	(58, 194, '19c30bd9-c813-43d5-9d58-70802a445722.jpg'),
+	(59, 195, '9c359d75-2f45-4a04-9973-fe59b81fd09c.png'),
+	(60, 196, '4162cc6a-f72c-4ac7-abf7-1a3bd6ab45fb.jpg'),
+	(61, 196, '4c8125bc-66fc-4f2c-9013-1dd5ca9afbf4.jpg'),
+	(62, 197, '05fec466-f491-4518-a71b-85a647a8d4d6.jpg'),
+	(63, 197, '9f8847c3-2960-47b3-9687-8390ec23ca77.jpg'),
+	(64, 198, '69f9f13d-5493-4fcf-a535-855b72dcbbb0.jpg'),
+	(65, 198, '5a9b46bd-387a-4484-bfe6-0e535a8d3105.jpg'),
+	(66, 199, 'a23773a6-ba98-45b2-a79f-509960c8b499.jpg'),
+	(67, 200, '4afa9ca9-bc87-42b0-aee3-b0f777cd5ccc.jpg'),
+	(68, 201, '72608161-f193-4f94-b894-dfd3c852fd2f.jpg'),
+	(69, 201, '292cc6fc-15fe-416b-81d2-82fd5225d3d8.jpg'),
+	(70, 202, '2324abe1-cc86-43f8-8f56-82d1b3dd7d76.jpg'),
+	(71, 202, '9ee49fce-88fe-4c1a-9049-3e541cb83987.jpg'),
+	(72, 202, '18bf6a9b-8d52-4b24-b7d0-506ca74b2e45.jpg'),
+	(73, 203, '39e85b0f-a332-42f8-9cef-0f8b42d4fdb1.jpg'),
+	(74, 203, 'bc35478f-0488-4951-958c-882c244a64d0.jpg'),
+	(75, 203, 'e9588210-1bbf-4a08-b4ca-532abe285e57.jpg'),
+	(76, 204, '09b870ec-66ed-4889-80e2-2feb090d1edb.jpg'),
+	(77, 204, '1a8e58b7-ff72-4ab3-b103-52d99f4c2faa.jpg'),
+	(78, 205, '9f60064f-bf27-47a1-bacc-df51a5af9f8e.jpg'),
+	(79, 205, '5f0a41eb-efde-415f-8f9b-cc6a03266ff3.jpg'),
+	(80, 206, 'f0e8ebcb-c97e-41cf-86ef-9cfb468fd201.jpg'),
+	(81, 206, '9fb09330-f66b-4213-81e4-9ac684d56469.jpg'),
+	(82, 206, '30d27af2-fe10-45d7-baab-8ddf8e71e31f.jpg'),
+	(83, 207, '7ee82956-2853-4b0f-bd33-c596adb10ec5.jpg'),
+	(84, 208, '40828c1f-c9c6-45ae-a485-b2287495fc3e.jpg'),
+	(85, 209, '9226e200-a433-42d7-82bd-8c911f0f1a44.jpg'),
+	(86, 209, 'b8c27b25-3c42-4f40-ac88-dde68216657a.jpg'),
+	(87, 209, 'f396ced9-5e32-4d4f-b791-1d3fe3e37dd3.jpg'),
+	(88, 210, 'c98a4c91-4e9d-423a-a414-ef509bb5a1eb.jpg'),
+	(89, 210, 'a33b3f9d-398b-4a96-b42a-6df7a0279e24.jpg'),
+	(90, 211, '857fdea2-206f-4398-9966-2075f16ef30b.jpg');
 /*!40000 ALTER TABLE `attach` ENABLE KEYS */;
 
 -- 테이블 gagushop.cart 구조 내보내기
@@ -58,7 +102,7 @@ CREATE TABLE IF NOT EXISTS `cart` (
   KEY `gagu_id` (`gagu_id`),
   CONSTRAINT `FK_cart_gagu` FOREIGN KEY (`gagu_id`) REFERENCES `gagu` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `FK_cart_member` FOREIGN KEY (`member_id`) REFERENCES `member` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=113 DEFAULT CHARSET=utf8mb4 COMMENT='장바구니';
+) ENGINE=InnoDB AUTO_INCREMENT=116 DEFAULT CHARSET=utf8mb4 COMMENT='장바구니';
 
 -- 테이블 데이터 gagushop.cart:~0 rows (대략적) 내보내기
 /*!40000 ALTER TABLE `cart` DISABLE KEYS */;
@@ -79,27 +123,42 @@ CREATE TABLE IF NOT EXISTS `gagu` (
   KEY `id` (`id`),
   CONSTRAINT `FK_gagu_gagu_keyword` FOREIGN KEY (`keyword`) REFERENCES `gagu_keyword` (`keyword`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `FK_gagu_member` FOREIGN KEY (`member_id`) REFERENCES `member` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=172 DEFAULT CHARSET=utf8mb4 COMMENT='가구';
+) ENGINE=InnoDB AUTO_INCREMENT=212 DEFAULT CHARSET=utf8mb4 COMMENT='가구';
 
--- 테이블 데이터 gagushop.gagu:~16 rows (대략적) 내보내기
+-- 테이블 데이터 gagushop.gagu:~31 rows (대략적) 내보내기
 /*!40000 ALTER TABLE `gagu` DISABLE KEYS */;
 INSERT IGNORE INTO `gagu` (`id`, `name`, `price`, `gagu_img`, `keyword`, `member_id`) VALUES
-	(48, '침대이미지', 3231, '11992340234270.jpg', '거실장', 'kopo'),
-	(49, '침대이미지323', 3232, 'ghgh.jpg', '거실장', 'kopo'),
-	(52, '침대이미지6556', 323, '11992340234270.jpg', '거실장', 'kopo'),
-	(54, '침대이미지3', 32, 'ghgh.jpg', '거실장', 'kopo'),
-	(55, '침대이미지666', 423421, '111.jpg', '거실장', 'kopo'),
-	(56, '침대대대대', 6464, '333.jpg', '거실장', 'kopo'),
-	(57, '침대침대침대', 6566, '11992340234270.jpg', '거실장', 'kopo'),
-	(159, '3213213', 32111, '2ad1a6a1-c546-4c76-b672-1ea8f3ad6ca7.jpg', '거실장', 'admin'),
-	(163, 'Test', 123, '9af406aa-9acb-4802-9080-dbe28ac4f0b2.jpg', '거실장', 'admin'),
-	(164, '벨벨', 321321, '4fc39609-abcf-40ad-a3f4-0e548af0ae02.jpg', '거실장', 'admin'),
-	(165, 'TestTest', 99999, '36678d7d-1365-4ed7-b011-86ced51a51b7.jpg', '소파', 'admin'),
-	(166, '현멘현멘', 1231322, '4a6e37ba-29d1-4624-a335-811cda2460c6.jpg', '매트리스', 'admin'),
-	(168, '메인사진없음', 111111, NULL, '매트리스', 'admin'),
-	(169, '하하하하하하하하하', 25000, 'a5a244da-f3af-4b2c-a2c8-4602822e14cc.jpg', '소파', 'admin'),
-	(170, '완전짱1233', 1, '1f0266a0-934d-4bc2-97a3-ae1bf38e8e1f.jpg', '거실장', 'admin'),
-	(171, '푸표푸표123', 421413, 'cc81c1fc-fa8e-4e7f-9b63-6df582dc175f.jpg', '매트리스', 'admin');
+	(181, '저상형 패밀리 침대 Q+S', 1096000, '586a67ee-6897-4414-a27d-3292fc78594c.jpg', '침대', 'admin'),
+	(182, '모션베드 캐주얼(라텍스,책상형)', 2090000, '8f9043e4-f674-4602-9f38-d4b482b875b7.jpg', '침대', 'admin'),
+	(183, '침대 (S)', 498000, '3ce5d795-6d3e-4847-9a1c-eef406cd1e72.jpg', '침대', 'admin'),
+	(184, '저상형 침대 (SS) - 범퍼가드형', 962000, '720bf0cc-7d0a-40f8-be81-1465df2ba898.png', '침대', 'admin'),
+	(185, '트윈모션베드 1800폭(복합,USB형,K)', 3210000, '440596bd-e291-47bc-8b55-f5fc5fb98f3d.jpg', '침대', 'admin'),
+	(186, '침대(Q)', 759000, 'e0c24e27-48a5-4d54-805a-5b59aacde42d.png', '침대', 'admin'),
+	(187, '코코 스프링 매트리스 (S)', 399000, '87a6eee0-23af-4009-ba96-ebc3b7db4826.jpg', '침대', 'admin'),
+	(188, '리프트업 테이블 600폭', 269000, 'dabaad5b-4419-4bda-b28d-4000510c3e91.jpg', '악세서리', 'admin'),
+	(189, '2000폭 AV장(고급형_유리포함)', 759000, '16ca07d4-a04f-47ee-8df3-e10b19fafe83.jpg', '거실장', 'admin'),
+	(190, '1600폭 6단 거실장', 787000, '52c6335e-5352-4c15-ad45-745b65ea792f.jpg', '거실장', 'admin'),
+	(191, '콘솔장 1800폭', 499000, '6586b216-3c39-47a1-8eee-22c680686b3f.jpg', '거실장', 'admin'),
+	(192, '800폭 사이드장 (글라이더형)', 314000, 'c4c570b3-cf22-43eb-954a-a710139aa6b3.jpg', '거실장', 'admin'),
+	(193, '코너형 천연가죽 모듈소파', 2800000, 'a1669549-d8a1-43fd-8e54-4721d25f176d.jpg', '소파', 'admin'),
+	(194, '수납협탁 400폭', 139000, 'a7d3ba1f-eaba-429c-ae50-a466ca1a04e1.jpg', '수납장', 'admin'),
+	(195, '3단 서랍장 800폭', 399000, '2569c0ab-882f-482b-94a8-a15b6dc6d085.png', '수납장', 'admin'),
+	(196, '와이드체스트 1200폭(화장대형)', 534000, '26092825-92ba-4bcf-b089-cf50e69eb3bf.jpg', '수납장', 'admin'),
+	(197, '와이드체스트 1200폭(거울형)', 521000, '9a91fa81-b4c8-43f3-80f7-2a5b29ac4b9a.jpg', '수납장', 'admin'),
+	(198, '모리니 테이블 2100폭', 799000, '47afa509-2613-418a-afdd-1cccdc19d428.jpg', '식탁', 'admin'),
+	(199, '시에토스 패밀리테이블 1600폭(페닉스)', 899000, '1c5b07f7-f023-4b20-95fe-36bb51c061f5.jpg', '식탁', 'admin'),
+	(200, '홈바 세트 1200폭(우드쉘,D450)', 547000, 'b8afadc6-bb50-4c6f-bece-f41ddf92137e.jpg', '식탁', 'admin'),
+	(201, '글렌스튜디오 전신거울행거', 240000, 'a66322c2-ae53-4824-93e7-7fb221ab35bd.jpg', '악세서리', 'admin'),
+	(202, '쿠션스텝', 125000, 'cccec12d-b324-4f8b-afc2-c62874d0aaa5.jpg', '악세서리', 'admin'),
+	(203, '로이 서랍형옷장(4형)', 689000, '3f4b1e7d-bb12-4f70-bd81-c9305a6dddc8.jpg', '옷장', 'admin'),
+	(204, ' 미엘 미니옷장 800폭', 469000, '5701f2c2-2da7-4bb0-a876-d7e9877ab7b0.jpg', '옷장', 'admin'),
+	(205, '비비 의자 (인조가죽)', 209000, 'c1295792-f5ea-407c-99dc-26f3174d3f71.jpg', '의자', 'admin'),
+	(206, '세타플러스 의자 (플라스틱)', 145000, 'ee7c7704-f970-4b33-b21b-e6459f75da53.jpg', '의자', 'admin'),
+	(207, '폴 바스툴(우드쉘)', 139000, '0b1069a4-70d5-4b31-9dd2-e99ccce1008c.jpg', '의자', 'admin'),
+	(208, '캐스터네츠x데스커 데스크스텝 책상 세트', 241000, 'f1ce10c3-6b65-4ca8-b853-8749b6fcc9fd.jpg', '테이블', 'admin'),
+	(209, '델타듀얼 1200폭 델타듀얼 소파테이블', 399000, 'be6a8a8e-8aa3-4018-aa58-9b7415e8efb3.jpg', '테이블', 'admin'),
+	(210, '미엘갤러리 화장대 800폭', 529000, '5939dd8d-136d-41cc-8768-327d2802a9d8.jpg', '화장대', 'admin'),
+	(211, '헤이즐 화장대 800폭', 359000, '336bd491-f4a5-467b-9fb3-c0e26a9648e8.jpg', '화장대', 'admin');
 /*!40000 ALTER TABLE `gagu` ENABLE KEYS */;
 
 -- 테이블 gagushop.gagu_keyword 구조 내보내기
@@ -138,12 +197,13 @@ CREATE TABLE IF NOT EXISTS `member` (
   KEY `id` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='사용자';
 
--- 테이블 데이터 gagushop.member:~3 rows (대략적) 내보내기
+-- 테이블 데이터 gagushop.member:~4 rows (대략적) 내보내기
 /*!40000 ALTER TABLE `member` DISABLE KEYS */;
 INSERT IGNORE INTO `member` (`id`, `pwd`, `name`, `phone_number`) VALUES
 	('admin', '*A4B6157319038724E3560894F7F932C8886EBFCF', '홍성민', '01087426723'),
+	('best008004', '*A4B6157319038724E3560894F7F932C8886EBFCF', '김말자', '01077777777'),
 	('kopo', '*A4B6157319038724E3560894F7F932C8886EBFCF', '홍성민', '01087426723'),
-	('TestId', '*7297C3E22DEB91303FC493303A8158AD4231F486', '321', '321');
+	('poko', '*A4B6157319038724E3560894F7F932C8886EBFCF', '김현민', '01012005800');
 /*!40000 ALTER TABLE `member` ENABLE KEYS */;
 
 -- 테이블 gagushop.orders 구조 내보내기
@@ -163,12 +223,14 @@ CREATE TABLE IF NOT EXISTS `orders` (
   KEY `gagu_id` (`gagu_id`),
   CONSTRAINT `FK_order_member` FOREIGN KEY (`member_id`) REFERENCES `member` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `FK_sales_list_gagu` FOREIGN KEY (`gagu_id`) REFERENCES `gagu` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=60 DEFAULT CHARSET=utf8mb4 COMMENT='주문\r\n';
+) ENGINE=InnoDB AUTO_INCREMENT=72 DEFAULT CHARSET=utf8mb4 COMMENT='주문\r\n';
 
--- 테이블 데이터 gagushop.orders:~1 rows (대략적) 내보내기
+-- 테이블 데이터 gagushop.orders:~3 rows (대략적) 내보내기
 /*!40000 ALTER TABLE `orders` DISABLE KEYS */;
 INSERT IGNORE INTO `orders` (`id`, `count`, `price`, `total`, `address`, `address_detail`, `sale_date`, `gagu_id`, `member_id`) VALUES
-	(59, 1, 0, 0, NULL, NULL, '2022-11-19', 165, 'kopo');
+	(69, 1, 1096000, 1096000, '대전 동구 우암로 352-21', '비전관 602호', '2022-11-30', 181, 'kopo'),
+	(70, 1, 1096000, 1096000, '경기 안산시 상록구 감골공원길 5', '청솔빌라 203호', '2022-11-30', 181, 'best008004'),
+	(71, 1, 1096000, 1096000, '서울 강남구 가로수길 9', '63빌딩 63층', '2022-11-30', 181, 'poko');
 /*!40000 ALTER TABLE `orders` ENABLE KEYS */;
 
 -- 테이블 gagushop.review 구조 내보내기
@@ -186,13 +248,14 @@ CREATE TABLE IF NOT EXISTS `review` (
   KEY `member_id` (`member_id`),
   CONSTRAINT `FK__gagu` FOREIGN KEY (`gagu_id`) REFERENCES `gagu` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `FK__member` FOREIGN KEY (`member_id`) REFERENCES `member` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COMMENT='리뷰';
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COMMENT='리뷰';
 
--- 테이블 데이터 gagushop.review:~2 rows (대략적) 내보내기
+-- 테이블 데이터 gagushop.review:~3 rows (대략적) 내보내기
 /*!40000 ALTER TABLE `review` DISABLE KEYS */;
 INSERT IGNORE INTO `review` (`id`, `review_img`, `review_star`, `comment`, `reg_date`, `gagu_id`, `member_id`) VALUES
-	(6, '1cf52cc3-0c4b-43b0-8c3c-8dbac44a5e34.jpg', 4, '32132131', '2022-11-23', 165, 'kopo'),
-	(8, NULL, 3, '452154124', '2022-11-23', 165, 'kopo');
+	(9, '9bce23dd-a796-488d-a436-7628a289887c.jpg', 5, '분리형 범퍼 패밀리침대 ^_^아기가 너무 좋아해요!', '2022-11-30', 181, 'kopo'),
+	(10, '4a64d546-cfcf-4838-99fc-23250b88bde3.jpg', 5, '애기가 저 가드 잡고 서서 장난치는걸 너무 좋아해요! 그리고 일룸 매트리스 너무 좋네요!! 반했어용ㅎㅎㅎㅎ 추가로 배송기사님도 너무 친절하고 꼼꼼하게 설치해주셔서 감동!!', '2022-11-30', 181, 'best008004'),
+	(11, 'd2f27e1d-683b-4d63-bd90-8422c3427b80.jpg', 4, '공간이 좋고 가드가 젤맘에 들어요 아늑해요!', '2022-11-30', 181, 'poko');
 /*!40000 ALTER TABLE `review` ENABLE KEYS */;
 
 -- 테이블 gagushop.wish 구조 내보내기
@@ -207,8 +270,32 @@ CREATE TABLE IF NOT EXISTS `wish` (
   CONSTRAINT `FK_wish_member` FOREIGN KEY (`member_id`) REFERENCES `member` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='클라이언트가 좋아요를 누른 상품';
 
--- 테이블 데이터 gagushop.wish:~1 rows (대략적) 내보내기
+-- 테이블 데이터 gagushop.wish:~23 rows (대략적) 내보내기
 /*!40000 ALTER TABLE `wish` DISABLE KEYS */;
+INSERT IGNORE INTO `wish` (`gagu_id`, `member_id`) VALUES
+	(181, 'best008004'),
+	(181, 'kopo'),
+	(181, 'poko'),
+	(182, 'kopo'),
+	(184, 'best008004'),
+	(186, 'kopo'),
+	(186, 'poko'),
+	(189, 'kopo'),
+	(189, 'poko'),
+	(190, 'poko'),
+	(191, 'kopo'),
+	(192, 'best008004'),
+	(193, 'kopo'),
+	(194, 'poko'),
+	(195, 'kopo'),
+	(200, 'best008004'),
+	(204, 'poko'),
+	(205, 'kopo'),
+	(205, 'poko'),
+	(208, 'kopo'),
+	(210, 'poko'),
+	(211, 'best008004'),
+	(211, 'poko');
 /*!40000 ALTER TABLE `wish` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;

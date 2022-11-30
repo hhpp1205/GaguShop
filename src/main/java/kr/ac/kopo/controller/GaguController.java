@@ -51,7 +51,7 @@ public class GaguController {
 
     @PostMapping("/add")
     public String add(@Validated @ModelAttribute("gagu") GaguAddForm form, BindingResult bindingResult,
-                      @RequestParam(value = "file", required = false)MultipartFile file,
+                      @RequestParam(value = "file")MultipartFile file,
                       @SessionAttribute Member member,
                       RedirectAttributes redirectAttributes) throws IOException {
 
@@ -63,6 +63,7 @@ public class GaguController {
         item.setName(form.getName());
         item.setPrice(form.getPrice());
         item.setKeyword(form.getKeyword());
+        item.setAttach(form.getAttach());
 
         MultipartBinder binder = new MultipartBinder();
 
