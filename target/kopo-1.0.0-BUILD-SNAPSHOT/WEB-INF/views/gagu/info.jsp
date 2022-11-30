@@ -92,7 +92,6 @@
             <button class="btn btn-outline-dark" type="submit">
                 <i class="bi-cart-fill me-1"></i>
                 Cart
-                <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
             </button>
         </form>
     </div>
@@ -218,9 +217,6 @@
 
     </c:forEach>
 </div>
-
-
-
 <!-- Footer-->
 <footer class="py-5" style="background-color: #EBE1D7;">
     <div class="container"><p class="m-0 text-center" style="color: #525252;">Daejeon Polytechnic &reg; HongSeongMin</p></div>

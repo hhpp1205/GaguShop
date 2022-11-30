@@ -1,5 +1,6 @@
 package kr.ac.kopo.dao;
 
+import kr.ac.kopo.model.AdminTotal;
 import kr.ac.kopo.model.Gagu;
 import kr.ac.kopo.model.Orders;
 import kr.ac.kopo.util.Pager;
@@ -42,5 +43,15 @@ public class OrdersDaoImpl implements OrdersDao {
     @Override
     public List<Orders> adminList(Pager pager) {
         return sql.selectList("orders.adminList", pager);
+    }
+
+    @Override
+    public AdminTotal adminTotal() {
+        return sql.selectOne("orders.monthTotalSalePrice");
+    }
+
+    @Override
+    public AdminTotal mostSaleProduct() {
+        return sql.selectOne("orders.monthMostSaleProduct");
     }
 }

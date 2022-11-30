@@ -2,6 +2,7 @@ package kr.ac.kopo.service;
 
 import kr.ac.kopo.dao.CartDao;
 import kr.ac.kopo.dao.OrdersDao;
+import kr.ac.kopo.model.AdminTotal;
 import kr.ac.kopo.model.Gagu;
 import kr.ac.kopo.model.Orders;
 import kr.ac.kopo.util.Pager;
@@ -50,6 +51,16 @@ public class OrdersServiceImpl implements OrdersService {
 
     @Override
     public List<Orders> adminList(Pager pager) {
+
         return orderDao.adminList(pager);
+    }
+    @Transactional
+    @Override
+    public AdminTotal adminTotal() {
+         AdminTotal mostSaleProduct = orderDao.mostSaleProduct();
+        AdminTotal adminTotal = orderDao.adminTotal();
+        adminTotal.setMonthMostSaleProduct(mostSaleProduct.getMonthMostSaleProduct());
+        adminTotal.setMonthMostSaleProductCnt(mostSaleProduct.getMonthMostSaleProductCnt());
+        return adminTotal;
     }
 }

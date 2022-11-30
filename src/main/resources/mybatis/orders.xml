@@ -27,7 +27,21 @@
     <select id="adminList" resultType="Orders">
         SELECT o.*, g.name gagu_name
         FROM orders o INNER JOIN gagu g ON(o.gagu_id = g.id)
-        ORDER BY sale_date DESC
+        ORDER BY sale_date DESC, total DESC
         LIMIT 30
+    </select>
+
+    <select id="monthTotalSalePrice" resultType="AdminTotal">
+        SELECT COUNT(*) month_total_orders_cnt, SUM(total) month_total_price
+        FROM orders
+        WHERE sale_date BETWEEN LAST_DAY(NOW() - INTERVAL 1 month) + interval 1 DAY AND LAST_DAY(NOW())
+    </select>
+
+    <select id="monthMostSaleProduct" resultType="AdminTotal">
+        SELECT gagu_id month_most_sale_product, MAX(cnt) month_most_sale_product_cnt
+        FROM (SELECT gagu_id, SUM(COUNT) cnt
+              FROM orders
+              WHERE sale_date BETWEEN LAST_DAY(NOW() - INTERVAL 1 month) + interval 1 DAY AND LAST_DAY(NOW())
+              GROUP BY gagu_id) a
     </select>
 </mapper>

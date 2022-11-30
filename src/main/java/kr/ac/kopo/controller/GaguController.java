@@ -26,9 +26,7 @@ import java.util.Map;
 
 /**
  * TODO
- * 1. Admin 주문관리 페이지 페이징 구현
- * 2. Admin 주문관리 페이지 기간별 팔린 금액 보기
- * 3. 데이터 넣기
+ * 1. 데이터 넣기
  */
 
 @Controller

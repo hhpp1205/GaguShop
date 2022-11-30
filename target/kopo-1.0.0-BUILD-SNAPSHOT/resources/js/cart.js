@@ -78,6 +78,11 @@ $('.orderButton_wrapper .allOrder_button').click(function (){
 $('.orderButton_wrapper .selectOrder_button').click(function (){
     let gaguArr = [];
 
+    if($('input:checkbox[name="chbox"]:checked').length == 0){
+        alert("상품을 선택해 주세요");
+        return;
+    }
+
     $('input:checkbox[name="chbox"]').each(function (){
         if( this.checked ==true){
             const tr = $(this).closest("tr");

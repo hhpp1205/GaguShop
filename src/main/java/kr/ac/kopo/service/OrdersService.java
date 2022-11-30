@@ -1,5 +1,6 @@
 package kr.ac.kopo.service;
 
+import kr.ac.kopo.model.AdminTotal;
 import kr.ac.kopo.model.Gagu;
 import kr.ac.kopo.model.Orders;
 import kr.ac.kopo.util.Pager;
@@ -17,4 +18,6 @@ public interface OrdersService {
     int payment(Orders orders);
 
     List<Orders> adminList(Pager pager);
+
+    AdminTotal adminTotal();
 }

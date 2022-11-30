@@ -1,5 +1,4 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!-- CSS only -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
 <!-- JavaScript Bundle with Popper -->
@@ -91,7 +90,6 @@
             <button class="btn btn-outline-dark" type="submit">
                 <i class="bi-cart-fill me-1"></i>
                 Cart
-                <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
             </button>
         </form>
     </div>
@@ -99,7 +97,7 @@
 </nav>
 
 <%--주문 목록--%>
-<div class="container h-auto mb-5">
+<div id="container" class="container h-auto">
     <h1>주문목록</h1>
     <table class="table">
         <thead>

@@ -1,5 +1,6 @@
 package kr.ac.kopo.controller;
 
+import kr.ac.kopo.model.AdminTotal;
 import kr.ac.kopo.model.Gagu;
 import kr.ac.kopo.model.Orders;
 import kr.ac.kopo.service.MemberService;
@@ -39,7 +40,9 @@ public class AdminController {
     @GetMapping("/ordersmanager")
     public String ordersManager(Pager pager, Model model) {
         List<Orders> list = ordersService.adminList(pager);
+        AdminTotal adminTotal = ordersService.adminTotal();
         model.addAttribute("list", list);
+        model.addAttribute("adminTotal", adminTotal);
 
         return "/admin/ordersmanager";
     }

@@ -97,8 +97,27 @@
   </div>
 </nav>
 
-<div class="container">
-  <h1>주문관리</h1>
+<div class="container mt-5">
+
+  <h3>통계</h3>
+  <table class="table mb-5">
+    <thead>
+    <tr>
+      <th scope="col">이번 달 총 판매 금액</th>
+      <th scope="col">이번 달 총 주문건수</th>
+      <th scope="col">이번 달 가장 많이 팔린 가구ID</th>
+    </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>${adminTotal.monthTotalPrice}</td>
+        <td>${adminTotal.monthTotalOrdersCnt}</td>
+        <td><a href="/gagu/info/${adminTotal.monthMostSaleProduct}">${adminTotal.monthMostSaleProduct}</a>(${adminTotal.monthMostSaleProductCnt})개</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>주문관리</h3>
   <table class="table">
     <thead>
     <tr>
@@ -127,6 +146,7 @@
     </c:forEach>
     </tbody>
   </table>
+
 </div>
 
 
